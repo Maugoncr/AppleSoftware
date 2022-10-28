@@ -33,7 +33,6 @@
             this.panelTop = new System.Windows.Forms.Panel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.cbSelect = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -96,29 +95,19 @@
             // 
             // iconButton1
             // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 35;
             this.iconButton1.Location = new System.Drawing.Point(568, 175);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(166, 34);
+            this.iconButton1.Size = new System.Drawing.Size(59, 34);
             this.iconButton1.TabIndex = 0;
-            this.iconButton1.Text = "ON";
-            this.iconButton1.UseVisualStyleBackColor = true;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(568, 240);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(166, 34);
-            this.iconButton2.TabIndex = 1;
-            this.iconButton2.Text = "OFF";
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // cbSelect
             // 
@@ -164,7 +153,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel5.Location = new System.Drawing.Point(30, 130);
+            this.panel5.Location = new System.Drawing.Point(180, 130);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(5, 80);
             this.panel5.TabIndex = 12;
@@ -172,7 +161,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel7.Location = new System.Drawing.Point(207, 130);
+            this.panel7.Location = new System.Drawing.Point(357, 130);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(5, 80);
             this.panel7.TabIndex = 13;
@@ -180,7 +169,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel9.Location = new System.Drawing.Point(30, 130);
+            this.panel9.Location = new System.Drawing.Point(180, 130);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(182, 5);
             this.panel9.TabIndex = 15;
@@ -188,7 +177,7 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel10.Location = new System.Drawing.Point(30, 205);
+            this.panel10.Location = new System.Drawing.Point(180, 205);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(182, 5);
             this.panel10.TabIndex = 16;
@@ -196,7 +185,7 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel11.Location = new System.Drawing.Point(30, 314);
+            this.panel11.Location = new System.Drawing.Point(180, 314);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(182, 5);
             this.panel11.TabIndex = 20;
@@ -204,7 +193,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel12.Location = new System.Drawing.Point(30, 239);
+            this.panel12.Location = new System.Drawing.Point(180, 239);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(182, 5);
             this.panel12.TabIndex = 19;
@@ -212,7 +201,7 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel13.Location = new System.Drawing.Point(207, 239);
+            this.panel13.Location = new System.Drawing.Point(357, 239);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(5, 80);
             this.panel13.TabIndex = 18;
@@ -220,7 +209,7 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel14.Location = new System.Drawing.Point(30, 239);
+            this.panel14.Location = new System.Drawing.Point(180, 239);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(5, 80);
             this.panel14.TabIndex = 17;
@@ -229,7 +218,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 162);
+            this.label1.Location = new System.Drawing.Point(200, 162);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 22);
             this.label1.TabIndex = 21;
@@ -239,7 +228,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 267);
+            this.label2.Location = new System.Drawing.Point(200, 267);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 22);
             this.label2.TabIndex = 22;
@@ -248,7 +237,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.pictureBox1.Location = new System.Drawing.Point(153, 147);
+            this.pictureBox1.Location = new System.Drawing.Point(303, 147);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,7 +247,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.pictureBox2.Location = new System.Drawing.Point(153, 255);
+            this.pictureBox2.Location = new System.Drawing.Point(303, 255);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -277,6 +266,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(931, 307);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 22);
@@ -287,6 +277,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(1077, 307);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 22);
@@ -297,6 +288,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(931, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 22);
@@ -307,6 +299,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(931, 152);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 22);
@@ -317,6 +310,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(931, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 22);
@@ -327,6 +321,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(1077, 234);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 22);
@@ -337,6 +332,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(1077, 152);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 22);
@@ -347,6 +343,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(1077, 77);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 22);
@@ -394,8 +391,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbSelect);
             this.Controls.Add(this.iconButton1);
-            this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.panelTop);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMainSystem";
@@ -416,7 +413,6 @@
         private FontAwesome.Sharp.IconButton btnClose;
         private System.Windows.Forms.BindingSource bindingSource1;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.ComboBox cbSelect;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
