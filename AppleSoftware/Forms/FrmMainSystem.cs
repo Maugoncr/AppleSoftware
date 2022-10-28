@@ -26,16 +26,19 @@ namespace AppleSoftware.Forms
 
         private void FrmMainSystem_Load(object sender, EventArgs e)
         {
+            TimerHoraFecha.Start();
             CargarCombo();
             LimpiarArranque();
+            checkByRanges.Checked = true;
         }
 
         private void CargarCombo()
         {
             // --  0
-            cbSelect.Items.Add("Cooling");
-            // -- 1
             cbSelect.Items.Add("Heating");
+            // -- 1
+            cbSelect.Items.Add("Cooling");
+            
         }
 
         private void LimpiarArranque()
@@ -55,7 +58,9 @@ namespace AppleSoftware.Forms
             checkByRanges.Enabled = false;
 
             txtSetTemp1.Clear();
+           
             txtSetTemp2.Clear();
+           
 
             lbStatus.Text = "-----";
             lbStatus.ForeColor = Color.Red;
@@ -79,6 +84,9 @@ namespace AppleSoftware.Forms
             panel2.BackColor = Color.FromArgb(64, 64, 64);
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel4.BackColor = Color.FromArgb(64, 64, 64);
+
+            panelHeating.BackColor = SystemColors.Control;
+            panelCooling.BackColor = SystemColors.Control;
 
             led1.Image.Dispose();
             led2.Image.Dispose();
@@ -121,8 +129,13 @@ namespace AppleSoftware.Forms
 
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
 
-                if (cbSelect.SelectedIndex == 0)
+                // Cooling
+                if (cbSelect.SelectedIndex == 1)
                 {
+                    txtSetTemp2.Text = "5";
+                    txtSetTemp1.Text = "80";
+                   
+
                     led1.Image.Dispose();
                     led2.Image.Dispose();
                     led1.Image = Properties.Resources.led_on_green;
@@ -145,9 +158,17 @@ namespace AppleSoftware.Forms
                     panel13.BackColor = Color.FromArgb(64, 64, 64);
                     panel14.BackColor = Color.FromArgb(64, 64, 64);
 
+                    panelCooling.BackColor = Color.Yellow;
+                    panelHeating.BackColor = SystemColors.Control;
+
                 }
-                else if (cbSelect.SelectedIndex == 1)
+                // Heating
+                else if (cbSelect.SelectedIndex == 0)
                 {
+                    txtSetTemp2.Text = "5";
+                    txtSetTemp1.Text = "80";
+                   
+
                     led1.Image.Dispose();
                     led2.Image.Dispose();
                     led2.Image = Properties.Resources.led_on_green;
@@ -171,6 +192,8 @@ namespace AppleSoftware.Forms
                     panel7.BackColor = Color.FromArgb(64, 64, 64);
                     panel10.BackColor = Color.FromArgb(64, 64, 64);
 
+                    panelHeating.BackColor = Color.Yellow;
+                    panelCooling.BackColor = SystemColors.Control;
                 }
 
             }
@@ -346,8 +369,17 @@ namespace AppleSoftware.Forms
             {
                 if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()) && !string.IsNullOrEmpty(txtSetTemp2.Text.Trim()))
                 {
-                    R = true;
-                    return R;
+                    if (Convert.ToInt32(txtSetTemp1.Text.Trim()) > Convert.ToInt32(txtSetTemp2.Text.Trim()))
+                    {
+                        R = true;
+                        return R;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong ranges", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return R;
+                    }
+                   
                 }
             }
             MessageBox.Show("There are empty spaces", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -357,6 +389,31 @@ namespace AppleSoftware.Forms
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarArranque();
+            checkByRanges.Checked = true;
+        }
+
+        private void TimerHoraFecha_Tick(object sender, EventArgs e)
+        {
+            string fecha = DateTime.Now.ToString("dddd, MM/dd/yyyy");
+            lbHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            lbFecha.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fecha);
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
+            {
+                btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+                lbConnectedStatus.Text = "Connected";
+                lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
+            }
+            else if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
+            {
+                btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+                lbConnectedStatus.Text = "Disconnected";
+                lbConnectedStatus.ForeColor = Color.Red;
+            }
+
         }
     }
 }

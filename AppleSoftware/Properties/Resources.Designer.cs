@@ -63,6 +63,16 @@ namespace AppleSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EMO {
+            get {
+                object obj = ResourceManager.GetObject("EMO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap led_off {
             get {
                 object obj = ResourceManager.GetObject("led_off", resourceCulture);
