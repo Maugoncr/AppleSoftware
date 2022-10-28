@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainSystem));
             this.panelTop = new System.Windows.Forms.Panel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnON = new FontAwesome.Sharp.IconButton();
             this.cbSelect = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,11 +47,11 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.led1 = new System.Windows.Forms.PictureBox();
+            this.led2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -76,9 +76,19 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.TrackbarTemp = new XComponent.SliderBar.MACTrackBar();
+            this.txtSetTemp1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkOnlyOne = new System.Windows.Forms.CheckBox();
+            this.checkByRanges = new System.Windows.Forms.CheckBox();
+            this.lbSetTemp2 = new System.Windows.Forms.Label();
+            this.txtSetTemp2 = new System.Windows.Forms.TextBox();
+            this.checkTemp1 = new System.Windows.Forms.CheckBox();
+            this.checkTemp2 = new System.Windows.Forms.CheckBox();
+            this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -107,30 +117,33 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // iconButton1
+            // btnON
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 35;
-            this.iconButton1.Location = new System.Drawing.Point(52, 159);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(59, 34);
-            this.iconButton1.TabIndex = 0;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnON.FlatAppearance.BorderSize = 0;
+            this.btnON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnON.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnON.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.btnON.IconColor = System.Drawing.Color.White;
+            this.btnON.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnON.IconSize = 35;
+            this.btnON.Location = new System.Drawing.Point(52, 159);
+            this.btnON.Name = "btnON";
+            this.btnON.Size = new System.Drawing.Size(59, 34);
+            this.btnON.TabIndex = 0;
+            this.btnON.UseVisualStyleBackColor = false;
+            this.btnON.Click += new System.EventHandler(this.btnON_Click);
             // 
             // cbSelect
             // 
+            this.cbSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSelect.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSelect.FormattingEnabled = true;
             this.cbSelect.Location = new System.Drawing.Point(30, 67);
             this.cbSelect.Name = "cbSelect";
             this.cbSelect.Size = new System.Drawing.Size(300, 32);
             this.cbSelect.TabIndex = 7;
+            this.cbSelect.SelectionChangeCommitted += new System.EventHandler(this.cbSelect_SelectionChangeCommitted);
             // 
             // panel1
             // 
@@ -248,25 +261,25 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "Heating";
             // 
-            // pictureBox1
+            // led1
             // 
-            this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.pictureBox1.Location = new System.Drawing.Point(368, 147);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
+            this.led1.Image = global::AppleSoftware.Properties.Resources.led_off;
+            this.led1.Location = new System.Drawing.Point(368, 147);
+            this.led1.Name = "led1";
+            this.led1.Size = new System.Drawing.Size(38, 37);
+            this.led1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.led1.TabIndex = 23;
+            this.led1.TabStop = false;
             // 
-            // pictureBox2
+            // led2
             // 
-            this.pictureBox2.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.pictureBox2.Location = new System.Drawing.Point(368, 255);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(38, 37);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
+            this.led2.Image = global::AppleSoftware.Properties.Resources.led_off;
+            this.led2.Location = new System.Drawing.Point(368, 255);
+            this.led2.Name = "led2";
+            this.led2.Size = new System.Drawing.Size(38, 37);
+            this.led2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.led2.TabIndex = 24;
+            this.led2.TabStop = false;
             // 
             // panel6
             // 
@@ -287,16 +300,16 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "Status:";
             // 
-            // label12
+            // lbStatus
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(58, 236);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 23);
-            this.label12.TabIndex = 35;
-            this.label12.Text = "OFF";
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatus.ForeColor = System.Drawing.Color.Red;
+            this.lbStatus.Location = new System.Drawing.Point(58, 236);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(44, 23);
+            this.lbStatus.TabIndex = 35;
+            this.lbStatus.Text = "OFF";
             // 
             // label13
             // 
@@ -325,6 +338,7 @@
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(30, 618);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(109, 33);
             this.textBox1.TabIndex = 38;
             // 
@@ -333,6 +347,7 @@
             this.textBox2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(182, 618);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(109, 33);
             this.textBox2.TabIndex = 41;
             // 
@@ -363,6 +378,7 @@
             this.textBox3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(331, 618);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(109, 33);
             this.textBox3.TabIndex = 44;
             // 
@@ -393,6 +409,7 @@
             this.textBox4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(485, 618);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(109, 33);
             this.textBox4.TabIndex = 47;
             // 
@@ -423,6 +440,7 @@
             this.textBox5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(632, 618);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(109, 33);
             this.textBox5.TabIndex = 50;
             // 
@@ -453,6 +471,7 @@
             this.textBox6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(794, 618);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(109, 33);
             this.textBox6.TabIndex = 53;
             // 
@@ -483,6 +502,7 @@
             this.textBox7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(948, 618);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(109, 33);
             this.textBox7.TabIndex = 56;
             // 
@@ -513,6 +533,7 @@
             this.textBox8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(1109, 618);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(109, 33);
             this.textBox8.TabIndex = 59;
             // 
@@ -538,11 +559,151 @@
             this.label28.TabIndex = 57;
             this.label28.Text = "Station 8";
             // 
+            // TrackbarTemp
+            // 
+            this.TrackbarTemp.BackColor = System.Drawing.Color.Transparent;
+            this.TrackbarTemp.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.TrackbarTemp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrackbarTemp.ForeColor = System.Drawing.Color.Black;
+            this.TrackbarTemp.IndentHeight = 6;
+            this.TrackbarTemp.Location = new System.Drawing.Point(159, 117);
+            this.TrackbarTemp.Maximum = 100;
+            this.TrackbarTemp.Minimum = 0;
+            this.TrackbarTemp.Name = "TrackbarTemp";
+            this.TrackbarTemp.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.TrackbarTemp.Size = new System.Drawing.Size(56, 202);
+            this.TrackbarTemp.TabIndex = 60;
+            this.TrackbarTemp.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(146)))), ((int)(((byte)(148)))));
+            this.TrackbarTemp.TickFrequency = 10;
+            this.TrackbarTemp.TickHeight = 2;
+            this.TrackbarTemp.TrackerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TrackbarTemp.TrackerSize = new System.Drawing.Size(15, 15);
+            this.TrackbarTemp.TrackLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(93)))), ((int)(((byte)(90)))));
+            this.TrackbarTemp.TrackLineHeight = 2;
+            this.TrackbarTemp.TrackLineSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(93)))), ((int)(((byte)(90)))));
+            this.TrackbarTemp.Value = 0;
+            this.TrackbarTemp.Scroll += new System.EventHandler(this.TrackbarTemp_Scroll);
+            // 
+            // txtSetTemp1
+            // 
+            this.txtSetTemp1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetTemp1.Location = new System.Drawing.Point(30, 357);
+            this.txtSetTemp1.Name = "txtSetTemp1";
+            this.txtSetTemp1.Size = new System.Drawing.Size(185, 27);
+            this.txtSetTemp1.TabIndex = 61;
+            this.txtSetTemp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSetTemp1.TextChanged += new System.EventHandler(this.txtSetTemp1_TextChanged);
+            this.txtSetTemp1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetTemp1_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(26, 330);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 19);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Set Temperature:";
+            // 
+            // checkOnlyOne
+            // 
+            this.checkOnlyOne.AutoSize = true;
+            this.checkOnlyOne.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkOnlyOne.Location = new System.Drawing.Point(276, 330);
+            this.checkOnlyOne.Name = "checkOnlyOne";
+            this.checkOnlyOne.Size = new System.Drawing.Size(98, 25);
+            this.checkOnlyOne.TabIndex = 63;
+            this.checkOnlyOne.Text = "Only one";
+            this.checkOnlyOne.UseVisualStyleBackColor = true;
+            this.checkOnlyOne.CheckedChanged += new System.EventHandler(this.checkOnlyOne_CheckedChanged);
+            // 
+            // checkByRanges
+            // 
+            this.checkByRanges.AutoSize = true;
+            this.checkByRanges.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkByRanges.Location = new System.Drawing.Point(276, 361);
+            this.checkByRanges.Name = "checkByRanges";
+            this.checkByRanges.Size = new System.Drawing.Size(108, 25);
+            this.checkByRanges.TabIndex = 64;
+            this.checkByRanges.Text = "By Ranges";
+            this.checkByRanges.UseVisualStyleBackColor = true;
+            this.checkByRanges.CheckedChanged += new System.EventHandler(this.checkByRanges_CheckedChanged);
+            // 
+            // lbSetTemp2
+            // 
+            this.lbSetTemp2.AutoSize = true;
+            this.lbSetTemp2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSetTemp2.ForeColor = System.Drawing.Color.Black;
+            this.lbSetTemp2.Location = new System.Drawing.Point(26, 400);
+            this.lbSetTemp2.Name = "lbSetTemp2";
+            this.lbSetTemp2.Size = new System.Drawing.Size(158, 19);
+            this.lbSetTemp2.TabIndex = 66;
+            this.lbSetTemp2.Text = "Set Temperature 2:";
+            // 
+            // txtSetTemp2
+            // 
+            this.txtSetTemp2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetTemp2.Location = new System.Drawing.Point(30, 427);
+            this.txtSetTemp2.Name = "txtSetTemp2";
+            this.txtSetTemp2.Size = new System.Drawing.Size(185, 27);
+            this.txtSetTemp2.TabIndex = 65;
+            this.txtSetTemp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSetTemp2.TextChanged += new System.EventHandler(this.txtSetTemp2_TextChanged);
+            this.txtSetTemp2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetTemp2_KeyPress);
+            // 
+            // checkTemp1
+            // 
+            this.checkTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkTemp1.Location = new System.Drawing.Point(222, 361);
+            this.checkTemp1.Name = "checkTemp1";
+            this.checkTemp1.Size = new System.Drawing.Size(18, 25);
+            this.checkTemp1.TabIndex = 67;
+            this.checkTemp1.UseVisualStyleBackColor = true;
+            this.checkTemp1.CheckedChanged += new System.EventHandler(this.checkTemp1_CheckedChanged);
+            // 
+            // checkTemp2
+            // 
+            this.checkTemp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkTemp2.Location = new System.Drawing.Point(221, 429);
+            this.checkTemp2.Name = "checkTemp2";
+            this.checkTemp2.Size = new System.Drawing.Size(18, 25);
+            this.checkTemp2.TabIndex = 68;
+            this.checkTemp2.UseVisualStyleBackColor = true;
+            this.checkTemp2.CheckedChanged += new System.EventHandler(this.checkTemp2_CheckedChanged);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.btnLimpiar.IconColor = System.Drawing.Color.White;
+            this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiar.IconSize = 35;
+            this.btnLimpiar.Location = new System.Drawing.Point(1208, 500);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(42, 34);
+            this.btnLimpiar.TabIndex = 69;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 696);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.checkTemp2);
+            this.Controls.Add(this.checkTemp1);
+            this.Controls.Add(this.lbSetTemp2);
+            this.Controls.Add(this.txtSetTemp2);
+            this.Controls.Add(this.checkByRanges);
+            this.Controls.Add(this.checkOnlyOne);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtSetTemp1);
+            this.Controls.Add(this.TrackbarTemp);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label28);
@@ -567,11 +728,11 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.led2);
+            this.Controls.Add(this.led1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel11);
@@ -587,7 +748,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbSelect);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnON);
             this.Controls.Add(this.panelTop);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -597,8 +758,8 @@
             this.Text = "FrmMainSystem";
             this.Load += new System.EventHandler(this.FrmMainSystem_Load);
             this.panelTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,7 +769,7 @@
 
         private System.Windows.Forms.Panel panelTop;
         private FontAwesome.Sharp.IconButton btnClose;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnON;
         private System.Windows.Forms.ComboBox cbSelect;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -624,11 +785,11 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox led1;
+        private System.Windows.Forms.PictureBox led2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
@@ -653,5 +814,15 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
+        private XComponent.SliderBar.MACTrackBar TrackbarTemp;
+        private System.Windows.Forms.TextBox txtSetTemp1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkOnlyOne;
+        private System.Windows.Forms.CheckBox checkByRanges;
+        private System.Windows.Forms.Label lbSetTemp2;
+        private System.Windows.Forms.TextBox txtSetTemp2;
+        private System.Windows.Forms.CheckBox checkTemp1;
+        private System.Windows.Forms.CheckBox checkTemp2;
+        private FontAwesome.Sharp.IconButton btnLimpiar;
     }
 }
