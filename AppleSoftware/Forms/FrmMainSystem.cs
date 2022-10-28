@@ -21,5 +21,10 @@ namespace AppleSoftware.Forms
         {
             this.Close();
         }
+
+        private void FrmMainSystem_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
