@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AppleSoftware.Forms
 {
@@ -48,6 +49,42 @@ namespace AppleSoftware.Forms
             checkTemp1.Checked = true;
             checkByRanges.Checked = false;
             CualTemperatura = 1;
+
+            // about chart
+
+            chart1.Series["TC-1"].Points.Clear();
+            chart1.Series["TC-1"].Color = Color.Red;
+            chart1.Series["TC-1"].BorderWidth = 3;
+            chart1.Series["TC-2"].Points.Clear();
+            chart1.Series["TC-2"].Color = Color.Blue;
+            chart1.Series["TC-2"].BorderWidth = 3;
+            chart1.Series["TC-3"].Points.Clear();
+            chart1.Series["TC-3"].Color = Color.Yellow;
+            chart1.Series["TC-3"].BorderWidth = 3;
+            chart1.Series["TC-4"].Points.Clear();
+            chart1.Series["TC-4"].Color = Color.Orange;
+            chart1.Series["TC-4"].BorderWidth = 3;
+            chart1.Series["TC-5"].Points.Clear();
+            chart1.Series["TC-5"].Color = Color.Brown;
+            chart1.Series["TC-5"].BorderWidth = 3;
+            chart1.Series["TC-6"].Points.Clear();
+            chart1.Series["TC-6"].Color = Color.SkyBlue;
+            chart1.Series["TC-6"].BorderWidth = 3;
+            chart1.Series["TC-7"].Points.Clear();
+            chart1.Series["TC-7"].Color = Color.Purple;
+            chart1.Series["TC-7"].BorderWidth = 3;
+            chart1.Series["TC-8"].Points.Clear();
+            chart1.Series["TC-8"].Color = Color.Green;
+            chart1.Series["TC-8"].BorderWidth = 3;
+
+            ChartArea CA = chart1.ChartAreas[0];
+            CA.CursorX.AutoScroll = true;
+
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            
+
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
 
             // Desactivar todo hasta que eliga cooling o heating
 
@@ -406,15 +443,45 @@ namespace AppleSoftware.Forms
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
                 lbConnectedStatus.Text = "Connected";
                 lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
+
+                // cCHANGER
+                timerForTC.Start();
+
             }
             else if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
             {
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
                 lbConnectedStatus.Text = "Disconnected";
                 lbConnectedStatus.ForeColor = Color.Red;
+
+                timerForTC.Stop();
             }
 
         }
+        double tiempo = 0;
+        private void timerForTC_Tick(object sender, EventArgs e)
+        {
+            tiempo = tiempo + 100;
+            double temp = tiempo / 1000;
+
+            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),"20");
+            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),"22");
+            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),"24");
+            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),"26");
+            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),"28");
+            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),"30");
+            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),"32");
+            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),"34");
+
+            chart1.ChartAreas[0].RecalculateAxesScale();
+
+          
+            
+
+
+        }
+
+    
     }
 }
 
