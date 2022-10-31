@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,14 @@ namespace AppleSoftware.Forms
             CargarCombo();
             LimpiarArranque();
             checkByRanges.Checked = true;
+
+            if (cbCOMSelect.Items.Count > 0)
+            {
+                cbCOMSelect.SelectedIndex = 0;
+                btnConnect.Enabled = true;
+            }
+
+
         }
 
         private void CargarCombo()
@@ -49,6 +58,14 @@ namespace AppleSoftware.Forms
             checkTemp1.Checked = true;
             checkByRanges.Checked = false;
             CualTemperatura = 1;
+
+            // CONECTAR COM
+            btnConnect.Enabled = false;
+
+            cbCOMSelect.Enabled = true;
+            string[] ports = SerialPort.GetPortNames();
+            cbCOMSelect.Items.Clear();
+            cbCOMSelect.Items.AddRange(ports);
 
             // about chart
 
@@ -85,6 +102,9 @@ namespace AppleSoftware.Forms
             
 
             chart1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
+
+
+            i = false;
 
             // Desactivar todo hasta que eliga cooling o heating
 
@@ -436,20 +456,63 @@ namespace AppleSoftware.Forms
             lbFecha.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fecha);
         }
 
+        private bool reconocerCOM(string COM)
+        {
+            try
+            {
+                if (serialPort1.IsOpen)
+                {
+                    serialPort1.Close();
+                    return false;
+                }
+                // Remember Baud Rate
+                serialPort1.PortName = COM;
+                serialPort1.Open();
+
+                string validarData = serialPort1.ReadExisting();
+
+                if (validarData == null || validarData == "")
+                {
+                    serialPort1.Close();
+
+                    MessageBox.Show("Data is not being received correctly. The program will not start until this is fixed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
             {
-                btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
-                lbConnectedStatus.Text = "Connected";
-                lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
+                if (reconocerCOM(cbCOMSelect.SelectedItem.ToString()))
+                {
+                    btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+                    lbConnectedStatus.Text = "Connected";
+                    lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
 
-                // cCHANGER
-                timerForTC.Start();
+                    // cCHANGER
+                    timerForTC.Start();
+
+                }
 
             }
             else if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
             {
+                if (serialPort1.IsOpen)
+                {
+                    serialPort1.Close();
+                }
+
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
                 lbConnectedStatus.Text = "Disconnected";
                 lbConnectedStatus.ForeColor = Color.Red;
@@ -458,30 +521,101 @@ namespace AppleSoftware.Forms
             }
 
         }
+
+
+
+
+
+
+
         double tiempo = 0;
         private void timerForTC_Tick(object sender, EventArgs e)
         {
             tiempo = tiempo + 100;
             double temp = tiempo / 1000;
 
-            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),"20");
-            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),"22");
-            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),"24");
-            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),"26");
-            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),"28");
-            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),"30");
-            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),"32");
-            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),"34");
+            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC1.ToString());
+            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC2.ToString());
+            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC3.ToString());
+            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC4.ToString());
+            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC5.ToString());
+            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC6.ToString());
+            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC7.ToString());
+            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC8.ToString());
 
             chart1.ChartAreas[0].RecalculateAxesScale();
 
-          
-            
+            txtTC1.Text = TC1.ToString() + "°C";
+            txtTC2.Text = TC2.ToString() + "°C";
+            txtTC3.Text = TC3.ToString() + "°C";
+            txtTC4.Text = TC4.ToString() + "°C";
+            txtTC5.Text = TC5.ToString() + "°C";
+            txtTC6.Text = TC6.ToString() + "°C";
+            txtTC7.Text = TC7.ToString() + "°C";
+            txtTC8.Text = TC8.ToString() + "°C";
+            txtActualTempTCGeneral.Text = TC9.ToString() + "°C";
 
 
         }
 
-    
+
+        double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
+
+
+        private void cbCOMSelect_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cbCOMSelect.SelectedIndex >= 0)
+            {
+                btnConnect.Enabled = true;
+            }
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write(txtTest.Text.ToString());
+        }
+
+        Boolean i = false;
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (i == false)
+            {
+                tiempo = 0;
+                i = true;
+            }
+
+            try
+            {
+                CapturarInformacion(serialPort1.ReadLine());
+              
+                serialPort1.DiscardInBuffer();
+                    
+            }
+            catch (Exception)
+            {
+            }
+
+
+        }
+
+        private void CapturarInformacion(string cadena)
+        {
+            string[] temps = cadena.Split(',');
+
+            TC1 = Convert.ToDouble(temps[0]);
+            TC2 = Convert.ToDouble(temps[1]);
+            TC3 = Convert.ToDouble(temps[2]);
+            TC4 = Convert.ToDouble(temps[3]);
+            TC5 = Convert.ToDouble(temps[4]);
+            TC6 = Convert.ToDouble(temps[5]);
+            TC7 = Convert.ToDouble(temps[6]);
+            TC8 = Convert.ToDouble(temps[7]);
+            TC9 = Convert.ToDouble(temps[8]);
+
+        }
+
+
     }
 }
 

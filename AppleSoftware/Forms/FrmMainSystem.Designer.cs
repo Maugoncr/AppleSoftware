@@ -64,26 +64,26 @@
             this.lbStatus = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTC1 = new System.Windows.Forms.TextBox();
+            this.txtTC2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTC3 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTC4 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtTC5 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtTC6 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtTC7 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTC8 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.TrackbarTemp = new XComponent.SliderBar.MACTrackBar();
@@ -144,6 +144,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timerForTC = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.txtTest = new System.Windows.Forms.TextBox();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.panelHeating.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
@@ -392,23 +397,23 @@
             this.label14.TabIndex = 37;
             this.label14.Text = "Zone-TC-1";
             // 
-            // textBox1
+            // txtTC1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(30, 618);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(109, 33);
-            this.textBox1.TabIndex = 38;
+            this.txtTC1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC1.Location = new System.Drawing.Point(30, 618);
+            this.txtTC1.Name = "txtTC1";
+            this.txtTC1.ReadOnly = true;
+            this.txtTC1.Size = new System.Drawing.Size(109, 33);
+            this.txtTC1.TabIndex = 38;
             // 
-            // textBox2
+            // txtTC2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(182, 618);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(109, 33);
-            this.textBox2.TabIndex = 41;
+            this.txtTC2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC2.Location = new System.Drawing.Point(182, 618);
+            this.txtTC2.Name = "txtTC2";
+            this.txtTC2.ReadOnly = true;
+            this.txtTC2.Size = new System.Drawing.Size(109, 33);
+            this.txtTC2.TabIndex = 41;
             // 
             // label15
             // 
@@ -432,14 +437,14 @@
             this.label16.TabIndex = 39;
             this.label16.Text = "Station-2";
             // 
-            // textBox3
+            // txtTC3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(359, 618);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(109, 33);
-            this.textBox3.TabIndex = 44;
+            this.txtTC3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC3.Location = new System.Drawing.Point(359, 618);
+            this.txtTC3.Name = "txtTC3";
+            this.txtTC3.ReadOnly = true;
+            this.txtTC3.Size = new System.Drawing.Size(109, 33);
+            this.txtTC3.TabIndex = 44;
             // 
             // label17
             // 
@@ -463,14 +468,14 @@
             this.label18.TabIndex = 42;
             this.label18.Text = "Station-3";
             // 
-            // textBox4
+            // txtTC4
             // 
-            this.textBox4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(537, 618);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(109, 33);
-            this.textBox4.TabIndex = 47;
+            this.txtTC4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC4.Location = new System.Drawing.Point(537, 618);
+            this.txtTC4.Name = "txtTC4";
+            this.txtTC4.ReadOnly = true;
+            this.txtTC4.Size = new System.Drawing.Size(109, 33);
+            this.txtTC4.TabIndex = 47;
             // 
             // label19
             // 
@@ -494,14 +499,14 @@
             this.label20.TabIndex = 45;
             this.label20.Text = "Station-4";
             // 
-            // textBox5
+            // txtTC5
             // 
-            this.textBox5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(709, 618);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(109, 33);
-            this.textBox5.TabIndex = 50;
+            this.txtTC5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC5.Location = new System.Drawing.Point(709, 618);
+            this.txtTC5.Name = "txtTC5";
+            this.txtTC5.ReadOnly = true;
+            this.txtTC5.Size = new System.Drawing.Size(109, 33);
+            this.txtTC5.TabIndex = 50;
             // 
             // label21
             // 
@@ -525,14 +530,14 @@
             this.label22.TabIndex = 48;
             this.label22.Text = "Station-5";
             // 
-            // textBox6
+            // txtTC6
             // 
-            this.textBox6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(890, 618);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(109, 33);
-            this.textBox6.TabIndex = 53;
+            this.txtTC6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC6.Location = new System.Drawing.Point(890, 618);
+            this.txtTC6.Name = "txtTC6";
+            this.txtTC6.ReadOnly = true;
+            this.txtTC6.Size = new System.Drawing.Size(109, 33);
+            this.txtTC6.TabIndex = 53;
             // 
             // label23
             // 
@@ -556,14 +561,14 @@
             this.label24.TabIndex = 51;
             this.label24.Text = "Station-6";
             // 
-            // textBox7
+            // txtTC7
             // 
-            this.textBox7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(1061, 618);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(109, 33);
-            this.textBox7.TabIndex = 56;
+            this.txtTC7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC7.Location = new System.Drawing.Point(1061, 618);
+            this.txtTC7.Name = "txtTC7";
+            this.txtTC7.ReadOnly = true;
+            this.txtTC7.Size = new System.Drawing.Size(109, 33);
+            this.txtTC7.TabIndex = 56;
             // 
             // label25
             // 
@@ -587,14 +592,14 @@
             this.label26.TabIndex = 54;
             this.label26.Text = "Station-7";
             // 
-            // textBox8
+            // txtTC8
             // 
-            this.textBox8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(1240, 618);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(109, 33);
-            this.textBox8.TabIndex = 59;
+            this.txtTC8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTC8.Location = new System.Drawing.Point(1240, 618);
+            this.txtTC8.Name = "txtTC8";
+            this.txtTC8.ReadOnly = true;
+            this.txtTC8.Size = new System.Drawing.Size(109, 33);
+            this.txtTC8.TabIndex = 59;
             // 
             // label27
             // 
@@ -772,7 +777,7 @@
             // 
             this.led2.BackColor = System.Drawing.Color.Transparent;
             this.led2.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.led2.Location = new System.Drawing.Point(123, 19);
+            this.led2.Location = new System.Drawing.Point(116, 18);
             this.led2.Name = "led2";
             this.led2.Size = new System.Drawing.Size(38, 37);
             this.led2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1088,35 +1093,35 @@
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "TC-1";
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
             series2.Name = "TC-2";
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Legend = "Legend1";
             series3.Name = "TC-3";
             series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series4.Legend = "Legend1";
             series4.Name = "TC-4";
             series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series5.Legend = "Legend1";
             series5.Name = "TC-5";
             series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series6.Legend = "Legend1";
             series6.Name = "TC-6";
             series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series7.Legend = "Legend1";
             series7.Name = "TC-7";
             series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series8.Legend = "Legend1";
             series8.Name = "TC-8";
             this.chart1.Series.Add(series1);
@@ -1197,6 +1202,7 @@
             this.cbCOMSelect.Name = "cbCOMSelect";
             this.cbCOMSelect.Size = new System.Drawing.Size(217, 29);
             this.cbCOMSelect.TabIndex = 106;
+            this.cbCOMSelect.SelectionChangeCommitted += new System.EventHandler(this.cbCOMSelect_SelectionChangeCommitted);
             // 
             // btnConnect
             // 
@@ -1273,12 +1279,71 @@
             // serialPort1
             // 
             this.serialPort1.DiscardNull = true;
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // txtTest
+            // 
+            this.txtTest.Location = new System.Drawing.Point(1172, 376);
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(205, 20);
+            this.txtTest.TabIndex = 113;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Unity;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 25;
+            this.iconButton2.Location = new System.Drawing.Point(1172, 402);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(41, 26);
+            this.iconButton2.TabIndex = 114;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(806, 516);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(37, 17);
+            this.label30.TabIndex = 115;
+            this.label30.Text = "time";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(441, 263);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(48, 17);
+            this.label31.TabIndex = 116;
+            this.label31.Text = "Temps";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(446, 279);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(39, 17);
+            this.label32.TabIndex = 117;
+            this.label32.Text = "in °C";
             // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1435, 702);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.iconButton2);
+            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.panel15);
@@ -1331,28 +1396,28 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSetTemp1);
             this.Controls.Add(this.TrackbarTemp);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.txtTC8);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtTC7);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtTC6);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtTC5);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtTC4);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtTC3);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtTC2);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTC1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lbStatus);
@@ -1414,26 +1479,26 @@
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTC1;
+        private System.Windows.Forms.TextBox txtTC2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTC3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTC4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtTC5;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtTC6;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtTC7;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTC8;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private XComponent.SliderBar.MACTrackBar TrackbarTemp;
@@ -1493,5 +1558,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timerForTC;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.TextBox txtTest;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
     }
 }
