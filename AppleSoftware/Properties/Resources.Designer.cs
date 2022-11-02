@@ -73,6 +73,16 @@ namespace AppleSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EMO2 {
+            get {
+                object obj = ResourceManager.GetObject("EMO2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap led_off {
             get {
                 object obj = ResourceManager.GetObject("led_off", resourceCulture);
@@ -86,6 +96,16 @@ namespace AppleSoftware.Properties {
         internal static System.Drawing.Bitmap led_on_green {
             get {
                 object obj = ResourceManager.GetObject("led_on_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MIDORI_OFICIAL3 {
+            get {
+                object obj = ResourceManager.GetObject("MIDORI OFICIAL3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

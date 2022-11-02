@@ -169,6 +169,7 @@ namespace AppleSoftware.Forms
 
                 checkTemp1.Checked = true;
                 checkTemp1.Enabled = false;
+                lbC2.Visible = false;
 
             }
         }
@@ -277,6 +278,7 @@ namespace AppleSoftware.Forms
                 checkTemp2.Visible = true;
                 checkTemp2.Checked = false;
                 lbSetTemp2.Visible = true;
+                lbC2.Visible = true;
 
                 checkByRanges.Enabled = false;
                 checkOnlyOne.Checked = false;
@@ -560,7 +562,6 @@ namespace AppleSoftware.Forms
 
 
         double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
-
 
         private void cbCOMSelect_SelectionChangeCommitted(object sender, EventArgs e)
         {
