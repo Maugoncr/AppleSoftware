@@ -216,7 +216,7 @@ namespace AppleSoftware.Forms
                     panel13.BackColor = Color.FromArgb(64, 64, 64);
                     panel14.BackColor = Color.FromArgb(64, 64, 64);
 
-                    panelCooling.BackColor = Color.Yellow;
+                    panelCooling.BackColor = Color.Gold;
                     panelHeating.BackColor = SystemColors.Control;
 
                 }
@@ -250,7 +250,7 @@ namespace AppleSoftware.Forms
                     panel7.BackColor = Color.FromArgb(64, 64, 64);
                     panel10.BackColor = Color.FromArgb(64, 64, 64);
 
-                    panelHeating.BackColor = Color.Yellow;
+                    panelHeating.BackColor = Color.Gold;
                     panelCooling.BackColor = SystemColors.Control;
                 }
 
@@ -562,6 +562,8 @@ namespace AppleSoftware.Forms
 
 
         double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
+
+      
 
         private void cbCOMSelect_SelectionChangeCommitted(object sender, EventArgs e)
         {
