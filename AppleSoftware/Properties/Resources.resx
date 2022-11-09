@@ -124,13 +124,61 @@
   <data name="MIDORI OFICIAL3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MIDORI OFICIAL3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="EMO2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EMO2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="led_on_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\led_on_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EMO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EMO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EMO2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EMO2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tc5off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc5off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc5on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc5on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc6off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc6off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc6on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc6on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc7off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc7off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc7on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc7on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc8off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc8off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc8on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc8on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc1off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc1off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc1on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc1on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc2off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc2off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc2on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc2on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc3off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc3off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc3on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc3on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc4off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc4off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tc4on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tc4on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

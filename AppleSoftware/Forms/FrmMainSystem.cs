@@ -508,6 +508,23 @@ namespace AppleSoftware.Forms
                     // cCHANGER
                     timerForTC.Start();
 
+                    PicTC1.Image.Dispose();
+                    PicTC1.Image = Properties.Resources.tc1on;
+                    PicTC2.Image.Dispose();
+                    PicTC2.Image = Properties.Resources.tc2on;
+                    PicTC3.Image.Dispose();
+                    PicTC3.Image = Properties.Resources.tc3on;
+                    PicTC4.Image.Dispose();
+                    PicTC4.Image = Properties.Resources.tc4on;
+                    PicTC5.Image.Dispose();
+                    PicTC5.Image = Properties.Resources.tc5on;
+                    PicTC6.Image.Dispose();
+                    PicTC6.Image = Properties.Resources.tc6on;
+                    PicTC7.Image.Dispose();
+                    PicTC7.Image = Properties.Resources.tc7on;
+                    PicTC8.Image.Dispose();
+                    PicTC8.Image = Properties.Resources.tc8on;
+
                 }
 
             }
@@ -523,6 +540,25 @@ namespace AppleSoftware.Forms
                 lbConnectedStatus.ForeColor = Color.Red;
 
                 timerForTC.Stop();
+
+                PicTC1.Image.Dispose();
+                PicTC1.Image = Properties.Resources.tc1off;
+                PicTC2.Image.Dispose();
+                PicTC2.Image = Properties.Resources.tc2off;
+                PicTC3.Image.Dispose();
+                PicTC3.Image = Properties.Resources.tc3off;
+                PicTC4.Image.Dispose();
+                PicTC4.Image = Properties.Resources.tc4off;
+                PicTC5.Image.Dispose();
+                PicTC5.Image = Properties.Resources.tc5off;
+                PicTC6.Image.Dispose();
+                PicTC6.Image = Properties.Resources.tc6off;
+                PicTC7.Image.Dispose();
+                PicTC7.Image = Properties.Resources.tc7off;
+                PicTC8.Image.Dispose();
+                PicTC8.Image = Properties.Resources.tc8off;
+
+
             }
 
         }

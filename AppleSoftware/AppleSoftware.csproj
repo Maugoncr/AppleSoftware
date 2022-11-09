@@ -113,5 +113,53 @@
   <ItemGroup>
     <None Include="Resources\EMO2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc5off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc5on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc6off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc6on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc7off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc7on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc8off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc8on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc1off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc1on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc2off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc2on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc3off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc3on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc4off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc4on.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
