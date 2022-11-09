@@ -51,6 +51,25 @@ namespace AppleSoftware.Forms
             
         }
 
+        private void ResetearChart() 
+        {
+
+            chart1.Series["TC-1"].Points.Clear();
+            chart1.Series["TC-2"].Points.Clear();
+            chart1.Series["TC-3"].Points.Clear();
+            chart1.Series["TC-4"].Points.Clear();
+            chart1.Series["TC-5"].Points.Clear();
+            chart1.Series["TC-6"].Points.Clear();
+            chart1.Series["TC-7"].Points.Clear();
+            chart1.Series["TC-8"].Points.Clear();
+
+            ChartArea CA = chart1.ChartAreas[0];
+            CA.CursorX.AutoScroll = true;
+
+            i = false;
+
+        }
+
         private void LimpiarArranque()
         {
             cbSelect.SelectedIndex = -1;
@@ -99,9 +118,11 @@ namespace AppleSoftware.Forms
 
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            
+
 
             chart1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
+
+            
 
 
             i = false;
@@ -113,8 +134,13 @@ namespace AppleSoftware.Forms
             txtSetTemp1.Enabled = false;
             checkOnlyOne.Enabled = false;
             checkByRanges.Enabled = false;
-            txtTiempoCool.Enabled = false;
-            txtTemporizador.Enabled = false;
+            
+            btnAddMin.Enabled = false;
+            btnAddMin2.Enabled = false;
+            btnAddSeg.Enabled = false;
+            btnAddSeg2.Enabled = false;
+            btnReset.Enabled = false;
+            btnReset2.Enabled = false;
 
             txtSetTemp1.Clear();
            
@@ -125,27 +151,21 @@ namespace AppleSoftware.Forms
             lbStatus.ForeColor = Color.Red;
 
             TrackbarTemp.Value = 0;
-            //TrackbarTemp.TrackerColor = Color.FromArgb(64, 64, 64);
+          
 
             btnON.BackColor = Color.FromArgb(64, 64, 64);
 
-            //panel11.BackColor = Color.FromArgb(64, 64, 64);
-            //panel12.BackColor = Color.FromArgb(64, 64, 64);
-            //panel13.BackColor = Color.FromArgb(64, 64, 64);
-            //panel14.BackColor = Color.FromArgb(64, 64, 64);
+          
 
             panel5.BackColor = Color.FromArgb(64, 64, 64);
-            //panel9.BackColor = Color.FromArgb(64, 64, 64);
-            //panel7.BackColor = Color.FromArgb(64, 64, 64);
-            //panel10.BackColor = Color.FromArgb(64, 64, 64);
+           
 
             panel1.BackColor = Color.FromArgb(64, 64,64);
             panel2.BackColor = Color.FromArgb(64, 64, 64);
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel4.BackColor = Color.FromArgb(64, 64, 64);
 
-            //panelHeating.BackColor = SystemColors.Control;
-            //panelCooling.BackColor = SystemColors.Control;
+         
 
             led1.Image.Dispose();
             led2.Image.Dispose();
@@ -207,20 +227,14 @@ namespace AppleSoftware.Forms
                     panel3.BackColor = Color.FromArgb(24, 130, 198);
                     panel4.BackColor = Color.FromArgb(24, 130, 198);
 
-                    //TrackbarTemp.TrackerColor = Color.FromArgb(24, 130, 198);
+                    btnAddMin.Enabled = false;
+                    btnAddMin2.Enabled = true;
+                    btnAddSeg.Enabled = false;
+                    btnAddSeg2.Enabled = true;
+                    btnReset.Enabled = false;
+                    btnReset2.Enabled = true;
 
-                    panel5.BackColor = Color.FromArgb(24, 130, 198);
-                    //panel9.BackColor = Color.FromArgb(24, 130, 198);
-                    //panel7.BackColor = Color.FromArgb(24, 130, 198);
-                    //panel10.BackColor = Color.FromArgb(24, 130, 198);
 
-                    //panel11.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel12.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel13.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel14.BackColor = Color.FromArgb(64, 64, 64);
-
-                    //panelCooling.BackColor = Color.Gold;
-                    //panelHeating.BackColor = SystemColors.Control;
 
                 }
                 // Heating
@@ -241,20 +255,15 @@ namespace AppleSoftware.Forms
                     panel3.BackColor = Color.FromArgb(183, 43, 41);
                     panel4.BackColor = Color.FromArgb(183, 43, 41);
 
-                    //TrackbarTemp.TrackerColor = Color.FromArgb(183, 43, 41);
+                    btnAddMin.Enabled = true;
+                    btnAddMin2.Enabled = false;
+                    btnAddSeg.Enabled = true;
+                    btnAddSeg2.Enabled = false;
+                    btnReset.Enabled = true;
+                    btnReset2.Enabled = false;
 
-                    //panel11.BackColor = Color.FromArgb(183, 43, 41);
-                    //panel12.BackColor = Color.FromArgb(183, 43, 41);
-                    //panel13.BackColor = Color.FromArgb(183, 43, 41);
-                    //panel14.BackColor = Color.FromArgb(183, 43, 41);
+                    
 
-                    panel5.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel9.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel7.BackColor = Color.FromArgb(64, 64, 64);
-                    //panel10.BackColor = Color.FromArgb(64, 64, 64);
-
-                    //panelHeating.BackColor = Color.Gold;
-                    //panelCooling.BackColor = SystemColors.Control;
                 }
 
             }
@@ -510,6 +519,7 @@ namespace AppleSoftware.Forms
                     lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
 
                     // cCHANGER
+                    ResetearChart();
                     timerForTC.Start();
 
                     PicTC1.Image.Dispose();
@@ -529,6 +539,12 @@ namespace AppleSoftware.Forms
                     PicTC8.Image.Dispose();
                     PicTC8.Image = Properties.Resources.tc8on;
 
+                    picGREEN.Image.Dispose();
+                    picGREEN.Image = Properties.Resources.tc8on;
+                    picRED.Image.Dispose();
+                    picRED.Image = Properties.Resources.tc1off;
+
+
                 }
 
             }
@@ -544,6 +560,7 @@ namespace AppleSoftware.Forms
                 lbConnectedStatus.ForeColor = Color.Red;
 
                 timerForTC.Stop();
+                ResetearChart();
 
                 PicTC1.Image.Dispose();
                 PicTC1.Image = Properties.Resources.tc1off;
@@ -562,16 +579,14 @@ namespace AppleSoftware.Forms
                 PicTC8.Image.Dispose();
                 PicTC8.Image = Properties.Resources.tc8off;
 
+                picGREEN.Image.Dispose();
+                picGREEN.Image = Properties.Resources.tc8off;
+                picRED.Image.Dispose();
+                picRED.Image = Properties.Resources.tc1on;
 
             }
 
         }
-
-
-
-
-
-
 
         double tiempo = 0;
         private void timerForTC_Tick(object sender, EventArgs e)
@@ -610,7 +625,9 @@ namespace AppleSoftware.Forms
         // Variables para el temporizador
 
         int minutos = 0;
-        int segundos = 0;
+        int segundos = 0; 
+        int minutos2 = 0;
+        int segundos2 = 0;
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -681,6 +698,270 @@ namespace AppleSoftware.Forms
                     }
                 }
             }
+
+
+            if (minutos2 != 0 || segundos2 != 0)
+            {
+                if (segundos2 != 0)
+                {
+                    segundos2--;
+                    if (segundos2 < 10)
+                    {
+                        if (minutos2 < 10)
+                        {
+                            txtTemporizador2.Text = "0" + minutos2.ToString() + ":0" + segundos2.ToString();
+                        }
+                        else
+                        {
+                            txtTemporizador2.Text = minutos2.ToString() + ":0" + segundos2.ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (minutos2 < 10)
+                        {
+                            txtTemporizador2.Text = "0" + minutos2.ToString() + ":" + segundos2.ToString();
+                        }
+                        else
+                        {
+                            txtTemporizador2.Text = minutos2.ToString() + ":" + segundos2.ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    if (minutos2 != 0)
+                    {
+                        minutos2--;
+                        segundos2 = 59;
+                        if (minutos2 < 10)
+                        {
+                            if (segundos2 < 10)
+                            {
+                                txtTemporizador2.Text = "0" + minutos2.ToString() + ":0" + segundos2.ToString();
+                            }
+                            else
+                            {
+                                txtTemporizador2.Text = "0" + minutos2.ToString() + ":" + segundos2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (segundos2 < 10)
+                            {
+                                txtTemporizador2.Text = minutos2.ToString() + ":0" + segundos2.ToString();
+                            }
+                            else
+                            {
+                                txtTemporizador2.Text = minutos2.ToString() + ":" + segundos2.ToString();
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddMin2_Click(object sender, EventArgs e)
+        {
+            if (minutos2 < 59)
+            {
+                minutos2++;
+                if (minutos2 < 10)
+                {
+                    if (segundos2 < 10)
+                    {
+                        txtTemporizador2.Text = "0" + minutos2.ToString() + ":0" + segundos2.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador2.Text = "0" + minutos2.ToString() + ":" + segundos2.ToString();
+                    }
+                }
+                else
+                {
+                    if (segundos2 < 10)
+                    {
+                        txtTemporizador2.Text = minutos2.ToString() + ":0" + segundos2.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador2.Text = minutos2.ToString() + ":" + segundos2.ToString();
+                    }
+                }
+            }
+        }
+
+        private void btnAddSeg2_Click(object sender, EventArgs e)
+        {
+            if (segundos2 < 59)
+            {
+                segundos2++;
+                if (segundos2 < 10)
+                {
+                    if (minutos2 < 10)
+                    {
+                        txtTemporizador2.Text = "0" + minutos2.ToString() + ":0" + segundos2.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador2.Text = minutos2.ToString() + ":0" + segundos2.ToString();
+                    }
+                }
+                else
+                {
+                    if (minutos2 < 10)
+                    {
+                        txtTemporizador2.Text = "0" + minutos2.ToString() + ":" + segundos2.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador2.Text = minutos2.ToString() + ":" + segundos2.ToString();
+                    }
+                }
+            }
+        }
+
+        private void btnReset2_Click(object sender, EventArgs e)
+        {
+            txtTemporizador2.Text = "00:00";
+            minutos2 = 0;
+            segundos2 = 0;
+        }
+
+        private void btnEMO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSimulaSoftware_Click(object sender, EventArgs e)
+        {
+            if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
+            {
+                
+                    btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+                    lbConnectedStatus.Text = "Connected";
+                    lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
+
+                    // cCHANGER
+                    ResetearChart();
+                    timerForSimulation.Start();
+
+                    PicTC1.Image.Dispose();
+                    PicTC1.Image = Properties.Resources.tc1on;
+                    PicTC2.Image.Dispose();
+                    PicTC2.Image = Properties.Resources.tc2on;
+                    PicTC3.Image.Dispose();
+                    PicTC3.Image = Properties.Resources.tc3on;
+                    PicTC4.Image.Dispose();
+                    PicTC4.Image = Properties.Resources.tc4on;
+                    PicTC5.Image.Dispose();
+                    PicTC5.Image = Properties.Resources.tc5on;
+                    PicTC6.Image.Dispose();
+                    PicTC6.Image = Properties.Resources.tc6on;
+                    PicTC7.Image.Dispose();
+                    PicTC7.Image = Properties.Resources.tc7on;
+                    PicTC8.Image.Dispose();
+                    PicTC8.Image = Properties.Resources.tc8on;
+
+                    picGREEN.Image.Dispose();
+                    picGREEN.Image = Properties.Resources.tc8on;
+                    picRED.Image.Dispose();
+                    picRED.Image = Properties.Resources.tc1off;
+
+
+                
+
+            }
+            else if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
+            {
+
+                btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+                lbConnectedStatus.Text = "Disconnected";
+                lbConnectedStatus.ForeColor = Color.Red;
+
+                timerForSimulation.Stop();
+                ResetearChart();
+
+                PicTC1.Image.Dispose();
+                PicTC1.Image = Properties.Resources.tc1off;
+                PicTC2.Image.Dispose();
+                PicTC2.Image = Properties.Resources.tc2off;
+                PicTC3.Image.Dispose();
+                PicTC3.Image = Properties.Resources.tc3off;
+                PicTC4.Image.Dispose();
+                PicTC4.Image = Properties.Resources.tc4off;
+                PicTC5.Image.Dispose();
+                PicTC5.Image = Properties.Resources.tc5off;
+                PicTC6.Image.Dispose();
+                PicTC6.Image = Properties.Resources.tc6off;
+                PicTC7.Image.Dispose();
+                PicTC7.Image = Properties.Resources.tc7off;
+                PicTC8.Image.Dispose();
+                PicTC8.Image = Properties.Resources.tc8off;
+
+                picGREEN.Image.Dispose();
+                picGREEN.Image = Properties.Resources.tc8off;
+                picRED.Image.Dispose();
+                picRED.Image = Properties.Resources.tc1on;
+
+            }
+        }
+
+        double TC1x = 1, TC2x = 2, TC3x = 3, TC4x = 4, TC5x = 5, TC6x = 6, TC7x = 7, TC8x = 8, TC9x = 24;
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCambiarTCSimulation_Click(object sender, EventArgs e)
+        {
+            CapturarInformacion2(txtTest.Text.Trim());
+        }
+
+        double tiempo2 = 0;
+        private void timerForSimulation_Tick(object sender, EventArgs e)
+        {
+            tiempo2 = tiempo2 + 100;
+            double temp = tiempo2 / 1000;
+
+            chart1.Series["TC-1"].Points.AddXY(temp.ToString(), TC1x.ToString());
+            chart1.Series["TC-2"].Points.AddXY(temp.ToString(), TC2x.ToString());
+            chart1.Series["TC-3"].Points.AddXY(temp.ToString(), TC3x.ToString());
+            chart1.Series["TC-4"].Points.AddXY(temp.ToString(), TC4x.ToString());
+            chart1.Series["TC-5"].Points.AddXY(temp.ToString(), TC5x.ToString());
+            chart1.Series["TC-6"].Points.AddXY(temp.ToString(), TC6x.ToString());
+            chart1.Series["TC-7"].Points.AddXY(temp.ToString(), TC7x.ToString());
+            chart1.Series["TC-8"].Points.AddXY(temp.ToString(), TC8x.ToString());
+
+            chart1.ChartAreas[0].RecalculateAxesScale();
+
+            txtTC1.Text = TC1x.ToString() + "°C";
+            txtTC2.Text = TC2x.ToString() + "°C";
+            txtTC3.Text = TC3x.ToString() + "°C";
+            txtTC4.Text = TC4x.ToString() + "°C";
+            txtTC5.Text = TC5x.ToString() + "°C";
+            txtTC6.Text = TC6x.ToString() + "°C";
+            txtTC7.Text = TC7x.ToString() + "°C";
+            txtTC8.Text = TC8x.ToString() + "°C";
+            txtActualTempTCGeneral.Text = TC9x.ToString() + "°C";
         }
 
         private void btnAddSeg_Click(object sender, EventArgs e)
@@ -802,6 +1083,22 @@ namespace AppleSoftware.Forms
             TC7 = Convert.ToDouble(temps[6]);
             TC8 = Convert.ToDouble(temps[7]);
             TC9 = Convert.ToDouble(temps[8]);
+
+        }
+
+        private void CapturarInformacion2(string cadena)
+        {
+            string[] temps = cadena.Split(',');
+
+            TC1x = Convert.ToDouble(temps[0]);
+            TC2x = Convert.ToDouble(temps[1]);
+            TC3x = Convert.ToDouble(temps[2]);
+            TC4x = Convert.ToDouble(temps[3]);
+            TC5x = Convert.ToDouble(temps[4]);
+            TC6x = Convert.ToDouble(temps[5]);
+            TC7x = Convert.ToDouble(temps[6]);
+            TC8x = Convert.ToDouble(temps[7]);
+            TC9x = Convert.ToDouble(temps[8]);
 
         }
 
