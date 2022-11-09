@@ -113,6 +113,8 @@ namespace AppleSoftware.Forms
             txtSetTemp1.Enabled = false;
             checkOnlyOne.Enabled = false;
             checkByRanges.Enabled = false;
+            txtTiempoCool.Enabled = false;
+            txtTiempoHeat.Enabled = false;
 
             txtSetTemp1.Clear();
            
@@ -123,27 +125,27 @@ namespace AppleSoftware.Forms
             lbStatus.ForeColor = Color.Red;
 
             TrackbarTemp.Value = 0;
-            TrackbarTemp.TrackerColor = Color.FromArgb(64, 64, 64);
+            //TrackbarTemp.TrackerColor = Color.FromArgb(64, 64, 64);
 
             btnON.BackColor = Color.FromArgb(64, 64, 64);
 
-            panel11.BackColor = Color.FromArgb(64, 64, 64);
-            panel12.BackColor = Color.FromArgb(64, 64, 64);
-            panel13.BackColor = Color.FromArgb(64, 64, 64);
-            panel14.BackColor = Color.FromArgb(64, 64, 64);
+            //panel11.BackColor = Color.FromArgb(64, 64, 64);
+            //panel12.BackColor = Color.FromArgb(64, 64, 64);
+            //panel13.BackColor = Color.FromArgb(64, 64, 64);
+            //panel14.BackColor = Color.FromArgb(64, 64, 64);
 
             panel5.BackColor = Color.FromArgb(64, 64, 64);
-            panel9.BackColor = Color.FromArgb(64, 64, 64);
-            panel7.BackColor = Color.FromArgb(64, 64, 64);
-            panel10.BackColor = Color.FromArgb(64, 64, 64);
+            //panel9.BackColor = Color.FromArgb(64, 64, 64);
+            //panel7.BackColor = Color.FromArgb(64, 64, 64);
+            //panel10.BackColor = Color.FromArgb(64, 64, 64);
 
             panel1.BackColor = Color.FromArgb(64, 64,64);
             panel2.BackColor = Color.FromArgb(64, 64, 64);
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel4.BackColor = Color.FromArgb(64, 64, 64);
 
-            panelHeating.BackColor = SystemColors.Control;
-            panelCooling.BackColor = SystemColors.Control;
+            //panelHeating.BackColor = SystemColors.Control;
+            //panelCooling.BackColor = SystemColors.Control;
 
             led1.Image.Dispose();
             led2.Image.Dispose();
@@ -162,7 +164,8 @@ namespace AppleSoftware.Forms
                 checkTemp2.Visible = false;
                 checkTemp2.Checked = false;
                 lbSetTemp2.Visible = false;
-                
+
+
                 checkByRanges.Checked = false;
                 checkOnlyOne.Enabled = false;
                 checkByRanges.Enabled = true;
@@ -204,20 +207,20 @@ namespace AppleSoftware.Forms
                     panel3.BackColor = Color.FromArgb(24, 130, 198);
                     panel4.BackColor = Color.FromArgb(24, 130, 198);
 
-                    TrackbarTemp.TrackerColor = Color.FromArgb(24, 130, 198);
+                    //TrackbarTemp.TrackerColor = Color.FromArgb(24, 130, 198);
 
                     panel5.BackColor = Color.FromArgb(24, 130, 198);
-                    panel9.BackColor = Color.FromArgb(24, 130, 198);
-                    panel7.BackColor = Color.FromArgb(24, 130, 198);
-                    panel10.BackColor = Color.FromArgb(24, 130, 198);
+                    //panel9.BackColor = Color.FromArgb(24, 130, 198);
+                    //panel7.BackColor = Color.FromArgb(24, 130, 198);
+                    //panel10.BackColor = Color.FromArgb(24, 130, 198);
 
-                    panel11.BackColor = Color.FromArgb(64, 64, 64);
-                    panel12.BackColor = Color.FromArgb(64, 64, 64);
-                    panel13.BackColor = Color.FromArgb(64, 64, 64);
-                    panel14.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel11.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel12.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel13.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel14.BackColor = Color.FromArgb(64, 64, 64);
 
-                    panelCooling.BackColor = Color.Gold;
-                    panelHeating.BackColor = SystemColors.Control;
+                    //panelCooling.BackColor = Color.Gold;
+                    //panelHeating.BackColor = SystemColors.Control;
 
                 }
                 // Heating
@@ -238,20 +241,20 @@ namespace AppleSoftware.Forms
                     panel3.BackColor = Color.FromArgb(183, 43, 41);
                     panel4.BackColor = Color.FromArgb(183, 43, 41);
 
-                    TrackbarTemp.TrackerColor = Color.FromArgb(183, 43, 41);
+                    //TrackbarTemp.TrackerColor = Color.FromArgb(183, 43, 41);
 
-                    panel11.BackColor = Color.FromArgb(183, 43, 41);
-                    panel12.BackColor = Color.FromArgb(183, 43, 41);
-                    panel13.BackColor = Color.FromArgb(183, 43, 41);
-                    panel14.BackColor = Color.FromArgb(183, 43, 41);
+                    //panel11.BackColor = Color.FromArgb(183, 43, 41);
+                    //panel12.BackColor = Color.FromArgb(183, 43, 41);
+                    //panel13.BackColor = Color.FromArgb(183, 43, 41);
+                    //panel14.BackColor = Color.FromArgb(183, 43, 41);
 
                     panel5.BackColor = Color.FromArgb(64, 64, 64);
-                    panel9.BackColor = Color.FromArgb(64, 64, 64);
-                    panel7.BackColor = Color.FromArgb(64, 64, 64);
-                    panel10.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel9.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel7.BackColor = Color.FromArgb(64, 64, 64);
+                    //panel10.BackColor = Color.FromArgb(64, 64, 64);
 
-                    panelHeating.BackColor = Color.Gold;
-                    panelCooling.BackColor = SystemColors.Control;
+                    //panelHeating.BackColor = Color.Gold;
+                    //panelCooling.BackColor = SystemColors.Control;
                 }
 
             }
@@ -563,7 +566,11 @@ namespace AppleSoftware.Forms
 
         double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
 
-      
+        private void btnEMO_DoubleClick(object sender, EventArgs e)
+        {
+            LimpiarArranque();
+            checkByRanges.Checked = true;
+        }
 
         private void cbCOMSelect_SelectionChangeCommitted(object sender, EventArgs e)
         {
