@@ -114,7 +114,7 @@ namespace AppleSoftware.Forms
             checkOnlyOne.Enabled = false;
             checkByRanges.Enabled = false;
             txtTiempoCool.Enabled = false;
-            txtTiempoHeat.Enabled = false;
+            txtTemporizador.Enabled = false;
 
             txtSetTemp1.Clear();
            
@@ -395,6 +395,8 @@ namespace AppleSoftware.Forms
                 checkTemp2.Enabled = false;
 
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
+
+                timerTempo.Start();
             }
             else if (lbStatus.Text == "ON")
             {
@@ -411,6 +413,8 @@ namespace AppleSoftware.Forms
                 checkTemp2.Enabled = true;
 
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
+
+                timerTempo.Stop();
             }
         }
 
@@ -601,6 +605,146 @@ namespace AppleSoftware.Forms
 
 
         double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
+
+
+        // Variables para el temporizador
+
+        int minutos = 0;
+        int segundos = 0;
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtTemporizador.Text = "00:00";
+            minutos = 0;
+            segundos = 0;
+        }
+
+        private void timerTempo_Tick(object sender, EventArgs e)
+        {
+            if (minutos != 0 || segundos != 0)
+            {
+                if (segundos != 0)
+                {
+                            segundos--;
+                            if (segundos < 10)
+                            {
+                                if (minutos < 10)
+                                {
+                                    txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
+                                }
+                                else
+                                {
+                                    txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
+                                }
+                            }
+                            else
+                            {
+                                if (minutos < 10)
+                                {
+                                    txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
+                                }
+                                else
+                                {
+                                    txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
+                                }
+                            }
+                }
+                else
+                {
+                    if (minutos!=0)
+                    {
+                        minutos--;
+                        segundos = 59;
+                        if (minutos < 10)
+                        {
+                            if (segundos < 10)
+                            {
+                                txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
+                            }
+                            else
+                            {
+                                txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (segundos < 10)
+                            {
+                                txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
+                            }
+                            else
+                            {
+                                txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        private void btnAddSeg_Click(object sender, EventArgs e)
+        {
+            if (segundos < 59)
+            {
+                segundos++;
+                if (segundos < 10)
+                {
+                    if (minutos < 10)
+                    {
+                        txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
+                    }
+                }
+                else
+                {
+                    if (minutos < 10)
+                    {
+                        txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
+                    }
+                }
+            }
+        }
+
+        private void btnAddMin_Click(object sender, EventArgs e)
+        {
+            if (minutos<59)
+            {
+                minutos++;
+                if (minutos < 10)
+                {
+                    if (segundos < 10)
+                    {
+                        txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
+                    }
+                }
+                else
+                {
+                    if (segundos < 10)
+                    {
+                        txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
+                    }
+                    else
+                    {
+                        txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
+                    }
+                }
+            }
+        }
+
+
+
 
         private void btnEMO_DoubleClick(object sender, EventArgs e)
         {

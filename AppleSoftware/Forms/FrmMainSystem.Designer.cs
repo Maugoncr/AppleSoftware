@@ -132,7 +132,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.txtTiempoHeat = new System.Windows.Forms.TextBox();
+            this.txtTemporizador = new System.Windows.Forms.TextBox();
             this.txtTiempoCool = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -164,6 +164,10 @@
             this.PicTC6 = new System.Windows.Forms.PictureBox();
             this.PicTC7 = new System.Windows.Forms.PictureBox();
             this.PicTC8 = new System.Windows.Forms.PictureBox();
+            this.btnAddMin = new FontAwesome.Sharp.IconButton();
+            this.btnAddSeg = new FontAwesome.Sharp.IconButton();
+            this.btnReset = new FontAwesome.Sharp.IconButton();
+            this.timerTempo = new System.Windows.Forms.Timer(this.components);
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -1191,13 +1195,16 @@
             this.panel17.Size = new System.Drawing.Size(300, 3);
             this.panel17.TabIndex = 119;
             // 
-            // txtTiempoHeat
+            // txtTemporizador
             // 
-            this.txtTiempoHeat.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTiempoHeat.Location = new System.Drawing.Point(210, 383);
-            this.txtTiempoHeat.Name = "txtTiempoHeat";
-            this.txtTiempoHeat.Size = new System.Drawing.Size(100, 29);
-            this.txtTiempoHeat.TabIndex = 120;
+            this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTemporizador.Location = new System.Drawing.Point(222, 382);
+            this.txtTemporizador.Name = "txtTemporizador";
+            this.txtTemporizador.ReadOnly = true;
+            this.txtTemporizador.Size = new System.Drawing.Size(74, 29);
+            this.txtTemporizador.TabIndex = 120;
+            this.txtTemporizador.Text = "00:00";
+            this.txtTemporizador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTiempoCool
             // 
@@ -1519,12 +1526,65 @@
             this.PicTC8.TabIndex = 152;
             this.PicTC8.TabStop = false;
             // 
+            // btnAddMin
+            // 
+            this.btnAddMin.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAddMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMin.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddMin.IconColor = System.Drawing.Color.Black;
+            this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddMin.IconSize = 10;
+            this.btnAddMin.Location = new System.Drawing.Point(238, 417);
+            this.btnAddMin.Name = "btnAddMin";
+            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin.TabIndex = 153;
+            this.btnAddMin.UseVisualStyleBackColor = false;
+            this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
+            // 
+            // btnAddSeg
+            // 
+            this.btnAddSeg.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAddSeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSeg.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddSeg.IconColor = System.Drawing.Color.Black;
+            this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSeg.IconSize = 10;
+            this.btnAddSeg.Location = new System.Drawing.Point(263, 417);
+            this.btnAddSeg.Name = "btnAddSeg";
+            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg.TabIndex = 154;
+            this.btnAddSeg.UseVisualStyleBackColor = false;
+            this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnReset.IconColor = System.Drawing.Color.Black;
+            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset.IconSize = 15;
+            this.btnReset.Location = new System.Drawing.Point(302, 384);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(26, 23);
+            this.btnReset.TabIndex = 155;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // timerTempo
+            // 
+            this.timerTempo.Interval = 1000;
+            this.timerTempo.Tick += new System.EventHandler(this.timerTempo_Tick);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 740);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnAddSeg);
+            this.Controls.Add(this.btnAddMin);
             this.Controls.Add(this.PicTC8);
             this.Controls.Add(this.PicTC7);
             this.Controls.Add(this.PicTC6);
@@ -1546,7 +1606,7 @@
             this.Controls.Add(this.TrackbarTemp);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txtTiempoCool);
-            this.Controls.Add(this.txtTiempoHeat);
+            this.Controls.Add(this.txtTemporizador);
             this.Controls.Add(this.panel17);
             this.Controls.Add(this.panel16);
             this.Controls.Add(this.label32);
@@ -1770,7 +1830,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.TextBox txtTiempoHeat;
+        private System.Windows.Forms.TextBox txtTemporizador;
         private System.Windows.Forms.TextBox txtTiempoCool;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label9;
@@ -1794,5 +1854,9 @@
         private System.Windows.Forms.PictureBox PicTC6;
         private System.Windows.Forms.PictureBox PicTC7;
         private System.Windows.Forms.PictureBox PicTC8;
+        private FontAwesome.Sharp.IconButton btnAddMin;
+        private FontAwesome.Sharp.IconButton btnAddSeg;
+        private FontAwesome.Sharp.IconButton btnReset;
+        private System.Windows.Forms.Timer timerTempo;
     }
 }
