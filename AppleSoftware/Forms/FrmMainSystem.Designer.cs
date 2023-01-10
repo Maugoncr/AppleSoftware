@@ -124,7 +124,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timerForTC = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.txtTest = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -145,7 +144,6 @@
             this.label42 = new System.Windows.Forms.Label();
             this.led2 = new System.Windows.Forms.PictureBox();
             this.led1 = new System.Windows.Forms.PictureBox();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnConnect = new FontAwesome.Sharp.IconButton();
             this.btnEMO = new System.Windows.Forms.PictureBox();
@@ -170,11 +168,11 @@
             this.picYELLOW = new System.Windows.Forms.PictureBox();
             this.picRED = new System.Windows.Forms.PictureBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.btnSimulaSoftware = new FontAwesome.Sharp.IconButton();
             this.timerForSimulation = new System.Windows.Forms.Timer(this.components);
-            this.btnCambiarTCSimulation = new FontAwesome.Sharp.IconButton();
+            this.SelectTittle = new System.Windows.Forms.Label();
+            this.txtTest = new System.Windows.Forms.TextBox();
+            this.btnSetTemp = new FontAwesome.Sharp.IconButton();
             this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -289,7 +287,7 @@
             this.cbSelect.FormattingEnabled = true;
             this.cbSelect.Location = new System.Drawing.Point(29, 186);
             this.cbSelect.Name = "cbSelect";
-            this.cbSelect.Size = new System.Drawing.Size(135, 30);
+            this.cbSelect.Size = new System.Drawing.Size(215, 30);
             this.cbSelect.TabIndex = 7;
             this.cbSelect.SelectionChangeCommitted += new System.EventHandler(this.cbSelect_SelectionChangeCommitted);
             // 
@@ -333,7 +331,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(133, 231);
+            this.label2.Location = new System.Drawing.Point(147, 231);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 22;
@@ -622,7 +620,7 @@
             // txtSetTemp1
             // 
             this.txtSetTemp1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetTemp1.Location = new System.Drawing.Point(59, 377);
+            this.txtSetTemp1.Location = new System.Drawing.Point(60, 304);
             this.txtSetTemp1.Name = "txtSetTemp1";
             this.txtSetTemp1.Size = new System.Drawing.Size(77, 29);
             this.txtSetTemp1.TabIndex = 61;
@@ -636,18 +634,18 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(29, 349);
+            this.label3.Location = new System.Drawing.Point(30, 276);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 18);
+            this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 62;
-            this.label3.Text = "Set Temp Heating";
+            this.label3.Text = "Set Temp";
             // 
             // checkOnlyOne
             // 
             this.checkOnlyOne.AutoSize = true;
             this.checkOnlyOne.BackColor = System.Drawing.Color.White;
             this.checkOnlyOne.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkOnlyOne.Location = new System.Drawing.Point(142, 278);
+            this.checkOnlyOne.Location = new System.Drawing.Point(198, 533);
             this.checkOnlyOne.Name = "checkOnlyOne";
             this.checkOnlyOne.Size = new System.Drawing.Size(87, 22);
             this.checkOnlyOne.TabIndex = 63;
@@ -660,7 +658,7 @@
             this.checkByRanges.AutoSize = true;
             this.checkByRanges.BackColor = System.Drawing.Color.White;
             this.checkByRanges.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkByRanges.Location = new System.Drawing.Point(33, 278);
+            this.checkByRanges.Location = new System.Drawing.Point(89, 533);
             this.checkByRanges.Name = "checkByRanges";
             this.checkByRanges.Size = new System.Drawing.Size(103, 22);
             this.checkByRanges.TabIndex = 64;
@@ -674,7 +672,7 @@
             this.lbSetTemp2.BackColor = System.Drawing.Color.White;
             this.lbSetTemp2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSetTemp2.ForeColor = System.Drawing.Color.Black;
-            this.lbSetTemp2.Location = new System.Drawing.Point(34, 450);
+            this.lbSetTemp2.Location = new System.Drawing.Point(35, 450);
             this.lbSetTemp2.Name = "lbSetTemp2";
             this.lbSetTemp2.Size = new System.Drawing.Size(132, 18);
             this.lbSetTemp2.TabIndex = 66;
@@ -683,7 +681,7 @@
             // txtSetTemp2
             // 
             this.txtSetTemp2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetTemp2.Location = new System.Drawing.Point(59, 477);
+            this.txtSetTemp2.Location = new System.Drawing.Point(60, 477);
             this.txtSetTemp2.Name = "txtSetTemp2";
             this.txtSetTemp2.Size = new System.Drawing.Size(77, 29);
             this.txtSetTemp2.TabIndex = 65;
@@ -695,7 +693,7 @@
             // 
             this.checkTemp1.BackColor = System.Drawing.Color.White;
             this.checkTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkTemp1.Location = new System.Drawing.Point(39, 377);
+            this.checkTemp1.Location = new System.Drawing.Point(40, 304);
             this.checkTemp1.Name = "checkTemp1";
             this.checkTemp1.Size = new System.Drawing.Size(18, 30);
             this.checkTemp1.TabIndex = 67;
@@ -706,7 +704,7 @@
             // 
             this.checkTemp2.BackColor = System.Drawing.Color.White;
             this.checkTemp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkTemp2.Location = new System.Drawing.Point(37, 477);
+            this.checkTemp2.Location = new System.Drawing.Point(38, 477);
             this.checkTemp2.Name = "checkTemp2";
             this.checkTemp2.Size = new System.Drawing.Size(18, 28);
             this.checkTemp2.TabIndex = 68;
@@ -716,7 +714,7 @@
             // txtActualTempTCGeneral
             // 
             this.txtActualTempTCGeneral.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(236, 186);
+            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(250, 439);
             this.txtActualTempTCGeneral.Name = "txtActualTempTCGeneral";
             this.txtActualTempTCGeneral.Size = new System.Drawing.Size(96, 29);
             this.txtActualTempTCGeneral.TabIndex = 70;
@@ -728,7 +726,7 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(178, 192);
+            this.label4.Location = new System.Drawing.Point(192, 445);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 18);
             this.label4.TabIndex = 71;
@@ -948,7 +946,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(141, 381);
+            this.label8.Location = new System.Drawing.Point(142, 308);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 22);
             this.label8.TabIndex = 95;
@@ -960,7 +958,7 @@
             this.lbC2.BackColor = System.Drawing.Color.White;
             this.lbC2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbC2.ForeColor = System.Drawing.Color.Black;
-            this.lbC2.Location = new System.Drawing.Point(137, 480);
+            this.lbC2.Location = new System.Drawing.Point(138, 480);
             this.lbC2.Name = "lbC2";
             this.lbC2.Size = new System.Drawing.Size(32, 22);
             this.lbC2.TabIndex = 96;
@@ -1130,15 +1128,6 @@
             this.serialPort1.DiscardNull = true;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // txtTest
-            // 
-            this.txtTest.BackColor = System.Drawing.Color.White;
-            this.txtTest.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTest.Location = new System.Drawing.Point(1133, 598);
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(148, 29);
-            this.txtTest.TabIndex = 113;
-            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -1176,7 +1165,7 @@
             // 
             this.txtTemporizador.BackColor = System.Drawing.Color.White;
             this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador.Location = new System.Drawing.Point(177, 377);
+            this.txtTemporizador.Location = new System.Drawing.Point(60, 340);
             this.txtTemporizador.Name = "txtTemporizador";
             this.txtTemporizador.ReadOnly = true;
             this.txtTemporizador.Size = new System.Drawing.Size(77, 29);
@@ -1307,7 +1296,7 @@
             // 
             this.led2.BackColor = System.Drawing.Color.White;
             this.led2.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.led2.Location = new System.Drawing.Point(201, 222);
+            this.led2.Location = new System.Drawing.Point(215, 222);
             this.led2.Name = "led2";
             this.led2.Size = new System.Drawing.Size(29, 29);
             this.led2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1324,22 +1313,6 @@
             this.led1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.led1.TabIndex = 23;
             this.led1.TabStop = false;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Unity;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 25;
-            this.iconButton2.Location = new System.Drawing.Point(1133, 567);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(41, 26);
-            this.iconButton2.TabIndex = 114;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // iconButton1
             // 
@@ -1489,7 +1462,7 @@
             this.btnAddMin.IconColor = System.Drawing.Color.Black;
             this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(194, 412);
+            this.btnAddMin.Location = new System.Drawing.Point(77, 375);
             this.btnAddMin.Name = "btnAddMin";
             this.btnAddMin.Size = new System.Drawing.Size(18, 18);
             this.btnAddMin.TabIndex = 153;
@@ -1504,7 +1477,7 @@
             this.btnAddSeg.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(223, 412);
+            this.btnAddSeg.Location = new System.Drawing.Point(106, 375);
             this.btnAddSeg.Name = "btnAddSeg";
             this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
             this.btnAddSeg.TabIndex = 154;
@@ -1519,7 +1492,7 @@
             this.btnReset.IconColor = System.Drawing.Color.Black;
             this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(262, 379);
+            this.btnReset.Location = new System.Drawing.Point(145, 342);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(26, 23);
             this.btnReset.TabIndex = 155;
@@ -1535,7 +1508,7 @@
             // 
             this.txtTemporizador2.BackColor = System.Drawing.Color.White;
             this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador2.Location = new System.Drawing.Point(178, 477);
+            this.txtTemporizador2.Location = new System.Drawing.Point(179, 477);
             this.txtTemporizador2.Name = "txtTemporizador2";
             this.txtTemporizador2.ReadOnly = true;
             this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
@@ -1551,7 +1524,7 @@
             this.btnAddMin2.IconColor = System.Drawing.Color.Black;
             this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin2.IconSize = 10;
-            this.btnAddMin2.Location = new System.Drawing.Point(193, 512);
+            this.btnAddMin2.Location = new System.Drawing.Point(194, 512);
             this.btnAddMin2.Name = "btnAddMin2";
             this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
             this.btnAddMin2.TabIndex = 157;
@@ -1566,7 +1539,7 @@
             this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg2.IconSize = 10;
-            this.btnAddSeg2.Location = new System.Drawing.Point(222, 512);
+            this.btnAddSeg2.Location = new System.Drawing.Point(223, 512);
             this.btnAddSeg2.Name = "btnAddSeg2";
             this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
             this.btnAddSeg2.TabIndex = 158;
@@ -1581,7 +1554,7 @@
             this.btnReset2.IconColor = System.Drawing.Color.Black;
             this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReset2.IconSize = 15;
-            this.btnReset2.Location = new System.Drawing.Point(261, 477);
+            this.btnReset2.Location = new System.Drawing.Point(262, 477);
             this.btnReset2.Name = "btnReset2";
             this.btnReset2.Size = new System.Drawing.Size(26, 23);
             this.btnReset2.TabIndex = 159;
@@ -1636,40 +1609,47 @@
             this.label43.TabIndex = 163;
             this.label43.Text = "Current status:";
             // 
-            // btnSimulaSoftware
-            // 
-            this.btnSimulaSoftware.BackColor = System.Drawing.Color.White;
-            this.btnSimulaSoftware.FlatAppearance.BorderSize = 0;
-            this.btnSimulaSoftware.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimulaSoftware.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
-            this.btnSimulaSoftware.IconColor = System.Drawing.Color.Black;
-            this.btnSimulaSoftware.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSimulaSoftware.Location = new System.Drawing.Point(252, 88);
-            this.btnSimulaSoftware.Name = "btnSimulaSoftware";
-            this.btnSimulaSoftware.Size = new System.Drawing.Size(48, 33);
-            this.btnSimulaSoftware.TabIndex = 164;
-            this.btnSimulaSoftware.UseVisualStyleBackColor = false;
-            this.btnSimulaSoftware.Click += new System.EventHandler(this.btnSimulaSoftware_Click);
-            // 
             // timerForSimulation
             // 
             this.timerForSimulation.Tick += new System.EventHandler(this.timerForSimulation_Tick);
             // 
-            // btnCambiarTCSimulation
+            // SelectTittle
             // 
-            this.btnCambiarTCSimulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCambiarTCSimulation.FlatAppearance.BorderSize = 0;
-            this.btnCambiarTCSimulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarTCSimulation.IconChar = FontAwesome.Sharp.IconChar.Unity;
-            this.btnCambiarTCSimulation.IconColor = System.Drawing.Color.White;
-            this.btnCambiarTCSimulation.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCambiarTCSimulation.IconSize = 25;
-            this.btnCambiarTCSimulation.Location = new System.Drawing.Point(1240, 567);
-            this.btnCambiarTCSimulation.Name = "btnCambiarTCSimulation";
-            this.btnCambiarTCSimulation.Size = new System.Drawing.Size(41, 26);
-            this.btnCambiarTCSimulation.TabIndex = 165;
-            this.btnCambiarTCSimulation.UseVisualStyleBackColor = false;
-            this.btnCambiarTCSimulation.Click += new System.EventHandler(this.btnCambiarTCSimulation_Click);
+            this.SelectTittle.AutoSize = true;
+            this.SelectTittle.BackColor = System.Drawing.Color.White;
+            this.SelectTittle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectTittle.ForeColor = System.Drawing.Color.Black;
+            this.SelectTittle.Location = new System.Drawing.Point(103, 276);
+            this.SelectTittle.Name = "SelectTittle";
+            this.SelectTittle.Size = new System.Drawing.Size(63, 18);
+            this.SelectTittle.TabIndex = 62;
+            this.SelectTittle.Text = "Choose";
+            // 
+            // txtTest
+            // 
+            this.txtTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTest.Location = new System.Drawing.Point(180, 308);
+            this.txtTest.Multiline = true;
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(152, 61);
+            this.txtTest.TabIndex = 164;
+            // 
+            // btnSetTemp
+            // 
+            this.btnSetTemp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSetTemp.FlatAppearance.BorderSize = 0;
+            this.btnSetTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetTemp.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
+            this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSetTemp.IconSize = 25;
+            this.btnSetTemp.Location = new System.Drawing.Point(172, 270);
+            this.btnSetTemp.Name = "btnSetTemp";
+            this.btnSetTemp.Size = new System.Drawing.Size(34, 28);
+            this.btnSetTemp.TabIndex = 165;
+            this.btnSetTemp.UseVisualStyleBackColor = false;
+            this.btnSetTemp.Click += new System.EventHandler(this.btnSetTemp_Click);
             // 
             // label44
             // 
@@ -1677,24 +1657,11 @@
             this.label44.BackColor = System.Drawing.Color.White;
             this.label44.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.Black;
-            this.label44.Location = new System.Drawing.Point(227, 94);
+            this.label44.Location = new System.Drawing.Point(292, 287);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(19, 18);
+            this.label44.Size = new System.Drawing.Size(40, 18);
             this.label44.TabIndex = 166;
-            this.label44.Text = "S";
-            this.label44.Click += new System.EventHandler(this.label44_Click);
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.White;
-            this.label45.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.Color.Black;
-            this.label45.Location = new System.Drawing.Point(1250, 546);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(19, 18);
-            this.label45.TabIndex = 167;
-            this.label45.Text = "S";
+            this.label44.Text = "Sent";
             // 
             // FrmMainSystem
             // 
@@ -1702,10 +1669,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
-            this.Controls.Add(this.label45);
             this.Controls.Add(this.label44);
-            this.Controls.Add(this.btnCambiarTCSimulation);
-            this.Controls.Add(this.btnSimulaSoftware);
+            this.Controls.Add(this.btnSetTemp);
+            this.Controls.Add(this.txtTest);
+            this.Controls.Add(this.SelectTittle);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.picGREEN);
             this.Controls.Add(this.picYELLOW);
@@ -1745,8 +1712,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label30);
-            this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.lbConnectedStatus);
@@ -1947,8 +1912,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timerForTC;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.TextBox txtTest;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
@@ -1989,10 +1952,10 @@
         private System.Windows.Forms.PictureBox picYELLOW;
         private System.Windows.Forms.PictureBox picRED;
         private System.Windows.Forms.Label label43;
-        private FontAwesome.Sharp.IconButton btnSimulaSoftware;
         private System.Windows.Forms.Timer timerForSimulation;
-        private FontAwesome.Sharp.IconButton btnCambiarTCSimulation;
+        private System.Windows.Forms.Label SelectTittle;
+        private System.Windows.Forms.TextBox txtTest;
+        private FontAwesome.Sharp.IconButton btnSetTemp;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
     }
 }

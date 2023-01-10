@@ -15,6 +15,7 @@ namespace AppleSoftware.Forms
     public partial class FrmMainSystem : Form
     {
         public int CualTemperatura;
+        public static string FormatCadena = "Ninguno";
 
         public FrmMainSystem()
         {
@@ -31,7 +32,7 @@ namespace AppleSoftware.Forms
             TimerHoraFecha.Start();
             CargarCombo();
             LimpiarArranque();
-            checkByRanges.Checked = true;
+            //checkByRanges.Checked = true;
 
             if (cbCOMSelect.Items.Count > 0)
             {
@@ -77,6 +78,7 @@ namespace AppleSoftware.Forms
             checkTemp1.Checked = true;
             checkByRanges.Checked = false;
             CualTemperatura = 1;
+            FormatCadena = "Ninguno";
 
             // CONECTAR COM
             btnConnect.Enabled = false;
@@ -142,13 +144,18 @@ namespace AppleSoftware.Forms
             btnReset.Enabled = false;
             btnReset2.Enabled = false;
 
+
             txtSetTemp1.Clear();
            
             txtSetTemp2.Clear();
-           
 
+            SelectTittle.Text = "";
             lbStatus.Text = "-----";
             lbStatus.ForeColor = Color.Red;
+
+            //Desactivar hasta tener la conexion
+
+            cbSelect.Enabled = false;
 
             TrackbarTemp.Value = 0;
           
@@ -213,6 +220,9 @@ namespace AppleSoftware.Forms
                 // Cooling
                 if (cbSelect.SelectedIndex == 1)
                 {
+                    FormatCadena = "Chiller";
+
+                    SelectTittle.Text = "Cooling";
                     txtSetTemp2.Text = "5";
                     txtSetTemp1.Text = "80";
                    
@@ -240,6 +250,9 @@ namespace AppleSoftware.Forms
                 // Heating
                 else if (cbSelect.SelectedIndex == 0)
                 {
+                    FormatCadena = "Heater";
+
+                    SelectTittle.Text = "Heating";
                     txtSetTemp2.Text = "5";
                     txtSetTemp1.Text = "80";
                    
@@ -394,7 +407,6 @@ namespace AppleSoftware.Forms
                 lbStatus.Text = "ON";
                 lbStatus.ForeColor = Color.FromArgb(0, 143, 57);
                 cbSelect.Enabled = false;
-
                 TrackbarTemp.Enabled = false;
                 txtSetTemp1.Enabled = false;
                 txtSetTemp2.Enabled = false;
@@ -402,17 +414,25 @@ namespace AppleSoftware.Forms
                 checkByRanges.Enabled = false;
                 checkTemp1.Enabled = false;
                 checkTemp2.Enabled = false;
-
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
-
                 timerTempo.Start();
+
+                //Comando iniciar Chiller
+
+                if (FormatCadena == "Chiller")
+                {
+                    serialPort1.DataBits = 7;
+                    serialPort1.Parity = Parity.Even;
+                    serialPort1.Write(":0106000C0001EC");
+                }
+
+
             }
             else if (lbStatus.Text == "ON")
             {
                 lbStatus.Text = "OFF";
                 lbStatus.ForeColor = Color.FromArgb(183, 43, 41);
                 cbSelect.Enabled = true;
-
                 TrackbarTemp.Enabled = true;
                 txtSetTemp1.Enabled = true;
                 txtSetTemp2.Enabled = true;
@@ -420,10 +440,18 @@ namespace AppleSoftware.Forms
                 checkByRanges.Enabled = true;
                 checkTemp1.Enabled = true;
                 checkTemp2.Enabled = true;
-
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
-
                 timerTempo.Stop();
+
+                //Apagar Chiller
+
+                if (FormatCadena == "Chiller")
+                {
+                    serialPort1.DataBits = 7;
+                    serialPort1.Parity = Parity.Even;
+                    serialPort1.Write(":0106000C0000ED");
+                }
+
             }
         }
 
@@ -514,6 +542,8 @@ namespace AppleSoftware.Forms
             {
                 if (reconocerCOM(cbCOMSelect.SelectedItem.ToString()))
                 {
+                    cbSelect.Enabled = true;
+                    cbCOMSelect.Enabled = false;
                     btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
                     lbConnectedStatus.Text = "Connected";
                     lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
@@ -554,7 +584,7 @@ namespace AppleSoftware.Forms
                 {
                     serialPort1.Close();
                 }
-
+                LimpiarArranque();
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
                 lbConnectedStatus.Text = "Disconnected";
                 lbConnectedStatus.ForeColor = Color.Red;
@@ -926,14 +956,45 @@ namespace AppleSoftware.Forms
 
         double TC1x = 1, TC2x = 2, TC3x = 3, TC4x = 4, TC5x = 5, TC6x = 6, TC7x = 7, TC8x = 8, TC9x = 24;
 
-        private void label44_Click(object sender, EventArgs e)
+        private void btnSetTemp_Click(object sender, EventArgs e)
         {
+            int ConsTemp = 18;
+            string Temperatura = txtSetTemp1.Text;
+            Temperatura += "0";
+            Temperatura = decimalHexadecimal(Convert.ToInt32(Temperatura));
 
-        }
+            if (Temperatura.Length == 3)
+            {
+                string newTempPlus0 = "0" + Temperatura;
+                Temperatura = newTempPlus0;
+            }
+            else if (Temperatura.Length == 2)
+            {
+                string newTempPlus0 = "00" + Temperatura;
+                Temperatura = newTempPlus0;
+            }
 
-        private void btnCambiarTCSimulation_Click(object sender, EventArgs e)
-        {
-            CapturarInformacion2(txtTest.Text.Trim());
+            string TemperaturaComand = Temperatura;
+
+            string Temp1par = Temperatura.Substring(0, 2);
+            string Temp2par = Temperatura.Substring(2, 2);
+
+            int Temp1 = hexadecimalDecimal(Temp1par);
+            int Temp2 = hexadecimalDecimal(Temp2par);
+
+            Temperatura = (Temp1 + Temp2 + ConsTemp).ToString();
+
+            Temperatura = (255 - Convert.ToInt32(Temperatura) + 1).ToString();
+
+            Temperatura = decimalHexadecimal(Convert.ToInt32(Temperatura));
+
+            string ComandoFinal = ":0106000B" + TemperaturaComand + Temperatura;
+
+            txtTest.Text = ComandoFinal;
+
+            serialPort1.Write(ComandoFinal);
+
+
         }
 
         double tiempo2 = 0;
@@ -1041,10 +1102,6 @@ namespace AppleSoftware.Forms
             }
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            serialPort1.Write(txtTest.Text.ToString());
-        }
 
         Boolean i = false;
 
@@ -1100,6 +1157,51 @@ namespace AppleSoftware.Forms
             TC8x = Convert.ToDouble(temps[7]);
             TC9x = Convert.ToDouble(temps[8]);
 
+        }
+
+        // Metodos para conversiones hexa a decimal y viceversa
+
+        public static String decimalHexadecimal(int numero)
+        {
+            char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F' };
+            String hexadecimal = "";
+            const int DIVISOR = 16;
+            long resto = 0;
+            for (int i = numero % DIVISOR, j = 0; numero > 0; numero /= DIVISOR, i = numero % DIVISOR, j++)
+            {
+                resto = i % DIVISOR;
+                if (resto >= 10)
+                {
+                    hexadecimal = letras[resto - 10] + hexadecimal;
+
+                }
+                else
+                {
+                    hexadecimal = resto + hexadecimal;
+                }
+            }
+            return hexadecimal;
+        }
+        public static int hexadecimalDecimal(String hexadecimal)
+        {
+            int numero = 0;
+            const int DIVISOR = 16;
+            for (int i = 0, j = hexadecimal.Length - 1; i < hexadecimal.Length; i++, j--)
+            {
+                if (hexadecimal[i] >= '0' && hexadecimal[i] <= '9')
+                {
+                    numero += (int)Math.Pow(DIVISOR, j) * Convert.ToInt32(hexadecimal[i] + "");
+                }
+                else if (hexadecimal[i] >= 'A' && hexadecimal[i] <= 'F')
+                {
+                    numero += (int)Math.Pow(DIVISOR, j) * Convert.ToInt32((hexadecimal[i] - 'A' + 10) + "");
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            return numero;
         }
 
 
