@@ -7,6 +7,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -157,7 +158,7 @@ namespace AppleSoftware.Forms
 
             cbSelect.Enabled = false;
 
-            TrackbarTemp.Value = 0;
+            TrackbarTemp.Value = 5;
           
 
             btnON.BackColor = Color.FromArgb(64, 64, 64);
@@ -181,6 +182,24 @@ namespace AppleSoftware.Forms
             led2.Image = Properties.Resources.led_off;
 
         }
+
+        //private void CambiarTrackbar()
+        //{
+        //    if (TrackbarTemp.Minimum == 5 && TrackbarTemp.Maximum == 40)
+        //    {
+        //        lbl_P_90.Visible = false;
+
+        //    }
+        //    else
+        //    {
+        //        lbl_P_90.Visible = true;
+        //        lbl_P_90.Location = 383, 95;
+
+        //    }      
+        
+        //}
+
+
 
         private void checkOnlyOne_CheckedChanged(object sender, EventArgs e)
         {
@@ -221,10 +240,14 @@ namespace AppleSoftware.Forms
                 if (cbSelect.SelectedIndex == 1)
                 {
                     FormatCadena = "Chiller";
+                    //TrackbarTemp.Minimum = 5;
+                    //TrackbarTemp.Maximum = 40;
+                    //TrackbarTemp.Size = new System.Drawing.Size(32, 231);
+                    //TrackbarTemp.Location = new System.Drawing.Point(353, 88);
 
                     SelectTittle.Text = "Cooling";
                     txtSetTemp2.Text = "5";
-                    txtSetTemp1.Text = "80";
+                    txtSetTemp1.Text = "40";
                    
 
                     led1.Image.Dispose();
@@ -354,7 +377,7 @@ namespace AppleSoftware.Forms
             {
                 if (Convert.ToInt32(txtSetTemp1.Text.Trim()) > 100)
                 {
-                    MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtSetTemp1.Clear();
                     TrackbarTemp.Value = 0;
                     return;
@@ -370,7 +393,7 @@ namespace AppleSoftware.Forms
             {
                 if (Convert.ToInt32(txtSetTemp2.Text.Trim()) > 100)
                 {
-                    MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtSetTemp2.Clear();
                     TrackbarTemp.Value = 0;
                     return;
@@ -383,7 +406,7 @@ namespace AppleSoftware.Forms
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
-                MessageBox.Show("Only numbers are allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("Only numbers are allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
             }
@@ -393,7 +416,7 @@ namespace AppleSoftware.Forms
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
-                MessageBox.Show("Only numbers are allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("Only numbers are allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
             }
@@ -421,9 +444,9 @@ namespace AppleSoftware.Forms
 
                 if (FormatCadena == "Chiller")
                 {
-                    serialPort1.DataBits = 7;
-                    serialPort1.Parity = Parity.Even;
-                    serialPort1.Write(":0106000C0001EC");
+                   // serialPort1.DataBits = 7;
+                   // serialPort1.Parity = Parity.Even;
+                    serialPort1.WriteLine(":0106000C0001EC"+Environment.NewLine);
                 }
 
 
@@ -447,9 +470,9 @@ namespace AppleSoftware.Forms
 
                 if (FormatCadena == "Chiller")
                 {
-                    serialPort1.DataBits = 7;
-                    serialPort1.Parity = Parity.Even;
-                    serialPort1.Write(":0106000C0000ED");
+                  //  serialPort1.DataBits = 7;
+                 //   serialPort1.Parity = Parity.Even;
+                    serialPort1.WriteLine(":0106000C0000ED"+Environment.NewLine);
                 }
 
             }
@@ -479,13 +502,13 @@ namespace AppleSoftware.Forms
                     }
                     else
                     {
-                        MessageBox.Show("Wrong ranges", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Wrong ranges", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return R;
                     }
                    
                 }
             }
-            MessageBox.Show("There are empty spaces", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            System.Windows.Forms.MessageBox.Show("There are empty spaces", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return R;
         }
 
@@ -515,17 +538,17 @@ namespace AppleSoftware.Forms
                 serialPort1.PortName = COM;
                 serialPort1.Open();
 
-                string validarData = serialPort1.ReadExisting();
+                //string validarData = serialPort1.ReadExisting();
 
-                if (validarData == null || validarData == "")
-                {
-                    serialPort1.Close();
+                //if (validarData == null || validarData == "")
+                //{
+                //    serialPort1.Close();
 
-                    MessageBox.Show("Data is not being received correctly. The program will not start until this is fixed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    MessageBox.Show("Data is not being received correctly. The program will not start until this is fixed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
-                    return false;
-                }
+                //    return false;
+                //}
 
                 return true;
             }
@@ -992,7 +1015,7 @@ namespace AppleSoftware.Forms
 
             txtTest.Text = ComandoFinal;
 
-            serialPort1.Write(ComandoFinal);
+            serialPort1.WriteLine(ComandoFinal+Environment.NewLine);
 
 
         }

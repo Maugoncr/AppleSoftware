@@ -57,7 +57,7 @@ namespace AppleSoftware.Forms
 
                     // 
 
-                    serialPort1.WriteLine("#030\r");
+                    serialPort1.WriteLine(txtSend.Text+Environment.NewLine);
 
 
                     txtSend.Clear();

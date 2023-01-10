@@ -71,6 +71,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmChartTesting.resx">
+      <DependentUpon>FrmChartTesting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainSystem.resx">
       <DependentUpon>FrmMainSystem.cs</DependentUpon>
     </EmbeddedResource>

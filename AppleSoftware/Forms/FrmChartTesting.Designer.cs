@@ -109,6 +109,8 @@
             // 
             // serialPort1
             // 
+            this.serialPort1.DataBits = 7;
+            this.serialPort1.Parity = System.IO.Ports.Parity.Even;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // timer1

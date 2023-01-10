@@ -142,55 +142,55 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
+            this.timerTempo = new System.Windows.Forms.Timer(this.components);
+            this.txtTemporizador2 = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.timerForSimulation = new System.Windows.Forms.Timer(this.components);
+            this.SelectTittle = new System.Windows.Forms.Label();
+            this.txtTest = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.btnSetTemp = new FontAwesome.Sharp.IconButton();
+            this.picGREEN = new System.Windows.Forms.PictureBox();
+            this.picYELLOW = new System.Windows.Forms.PictureBox();
+            this.picRED = new System.Windows.Forms.PictureBox();
+            this.btnReset2 = new FontAwesome.Sharp.IconButton();
+            this.btnAddSeg2 = new FontAwesome.Sharp.IconButton();
+            this.btnAddMin2 = new FontAwesome.Sharp.IconButton();
+            this.btnReset = new FontAwesome.Sharp.IconButton();
+            this.btnAddSeg = new FontAwesome.Sharp.IconButton();
+            this.btnAddMin = new FontAwesome.Sharp.IconButton();
+            this.PicTC8 = new System.Windows.Forms.PictureBox();
+            this.PicTC7 = new System.Windows.Forms.PictureBox();
+            this.PicTC6 = new System.Windows.Forms.PictureBox();
+            this.PicTC5 = new System.Windows.Forms.PictureBox();
+            this.PicTC4 = new System.Windows.Forms.PictureBox();
+            this.PicTC3 = new System.Windows.Forms.PictureBox();
+            this.PicTC2 = new System.Windows.Forms.PictureBox();
+            this.PicTC1 = new System.Windows.Forms.PictureBox();
             this.led2 = new System.Windows.Forms.PictureBox();
             this.led1 = new System.Windows.Forms.PictureBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnConnect = new FontAwesome.Sharp.IconButton();
             this.btnEMO = new System.Windows.Forms.PictureBox();
             this.btnON = new FontAwesome.Sharp.IconButton();
-            this.PicTC1 = new System.Windows.Forms.PictureBox();
-            this.PicTC2 = new System.Windows.Forms.PictureBox();
-            this.PicTC3 = new System.Windows.Forms.PictureBox();
-            this.PicTC4 = new System.Windows.Forms.PictureBox();
-            this.PicTC5 = new System.Windows.Forms.PictureBox();
-            this.PicTC6 = new System.Windows.Forms.PictureBox();
-            this.PicTC7 = new System.Windows.Forms.PictureBox();
-            this.PicTC8 = new System.Windows.Forms.PictureBox();
-            this.btnAddMin = new FontAwesome.Sharp.IconButton();
-            this.btnAddSeg = new FontAwesome.Sharp.IconButton();
-            this.btnReset = new FontAwesome.Sharp.IconButton();
-            this.timerTempo = new System.Windows.Forms.Timer(this.components);
-            this.txtTemporizador2 = new System.Windows.Forms.TextBox();
-            this.btnAddMin2 = new FontAwesome.Sharp.IconButton();
-            this.btnAddSeg2 = new FontAwesome.Sharp.IconButton();
-            this.btnReset2 = new FontAwesome.Sharp.IconButton();
-            this.picGREEN = new System.Windows.Forms.PictureBox();
-            this.picYELLOW = new System.Windows.Forms.PictureBox();
-            this.picRED = new System.Windows.Forms.PictureBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.timerForSimulation = new System.Windows.Forms.Timer(this.components);
-            this.SelectTittle = new System.Windows.Forms.Label();
-            this.txtTest = new System.Windows.Forms.TextBox();
-            this.btnSetTemp = new FontAwesome.Sharp.IconButton();
-            this.label44 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGREEN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYELLOW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRED)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -1125,7 +1125,8 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.DiscardNull = true;
+            this.serialPort1.DataBits = 7;
+            this.serialPort1.Parity = System.IO.Ports.Parity.Even;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // label30
@@ -1292,6 +1293,295 @@
             this.label42.Size = new System.Drawing.Size(10, 103);
             this.label42.TabIndex = 135;
             // 
+            // timerTempo
+            // 
+            this.timerTempo.Interval = 1000;
+            this.timerTempo.Tick += new System.EventHandler(this.timerTempo_Tick);
+            // 
+            // txtTemporizador2
+            // 
+            this.txtTemporizador2.BackColor = System.Drawing.Color.White;
+            this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTemporizador2.Location = new System.Drawing.Point(179, 477);
+            this.txtTemporizador2.Name = "txtTemporizador2";
+            this.txtTemporizador2.ReadOnly = true;
+            this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
+            this.txtTemporizador2.TabIndex = 156;
+            this.txtTemporizador2.Text = "00:00";
+            this.txtTemporizador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.BackColor = System.Drawing.Color.White;
+            this.label43.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.Color.Black;
+            this.label43.Location = new System.Drawing.Point(1161, 365);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(108, 18);
+            this.label43.TabIndex = 163;
+            this.label43.Text = "Current status:";
+            // 
+            // timerForSimulation
+            // 
+            this.timerForSimulation.Tick += new System.EventHandler(this.timerForSimulation_Tick);
+            // 
+            // SelectTittle
+            // 
+            this.SelectTittle.AutoSize = true;
+            this.SelectTittle.BackColor = System.Drawing.Color.White;
+            this.SelectTittle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectTittle.ForeColor = System.Drawing.Color.Black;
+            this.SelectTittle.Location = new System.Drawing.Point(103, 276);
+            this.SelectTittle.Name = "SelectTittle";
+            this.SelectTittle.Size = new System.Drawing.Size(63, 18);
+            this.SelectTittle.TabIndex = 62;
+            this.SelectTittle.Text = "Choose";
+            // 
+            // txtTest
+            // 
+            this.txtTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTest.Location = new System.Drawing.Point(180, 308);
+            this.txtTest.Multiline = true;
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(152, 61);
+            this.txtTest.TabIndex = 164;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.White;
+            this.label44.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.Color.Black;
+            this.label44.Location = new System.Drawing.Point(292, 287);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(40, 18);
+            this.label44.TabIndex = 166;
+            this.label44.Text = "Sent";
+            // 
+            // btnSetTemp
+            // 
+            this.btnSetTemp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSetTemp.FlatAppearance.BorderSize = 0;
+            this.btnSetTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetTemp.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
+            this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSetTemp.IconSize = 25;
+            this.btnSetTemp.Location = new System.Drawing.Point(172, 270);
+            this.btnSetTemp.Name = "btnSetTemp";
+            this.btnSetTemp.Size = new System.Drawing.Size(34, 28);
+            this.btnSetTemp.TabIndex = 165;
+            this.btnSetTemp.UseVisualStyleBackColor = false;
+            this.btnSetTemp.Click += new System.EventHandler(this.btnSetTemp_Click);
+            // 
+            // picGREEN
+            // 
+            this.picGREEN.BackColor = System.Drawing.Color.White;
+            this.picGREEN.Image = global::AppleSoftware.Properties.Resources.tc8off;
+            this.picGREEN.Location = new System.Drawing.Point(1201, 395);
+            this.picGREEN.Name = "picGREEN";
+            this.picGREEN.Size = new System.Drawing.Size(35, 35);
+            this.picGREEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picGREEN.TabIndex = 162;
+            this.picGREEN.TabStop = false;
+            this.picGREEN.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // picYELLOW
+            // 
+            this.picYELLOW.BackColor = System.Drawing.Color.White;
+            this.picYELLOW.Image = global::AppleSoftware.Properties.Resources.tc3off;
+            this.picYELLOW.Location = new System.Drawing.Point(1201, 450);
+            this.picYELLOW.Name = "picYELLOW";
+            this.picYELLOW.Size = new System.Drawing.Size(35, 35);
+            this.picYELLOW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picYELLOW.TabIndex = 161;
+            this.picYELLOW.TabStop = false;
+            this.picYELLOW.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // picRED
+            // 
+            this.picRED.BackColor = System.Drawing.Color.White;
+            this.picRED.Image = global::AppleSoftware.Properties.Resources.tc1on;
+            this.picRED.Location = new System.Drawing.Point(1201, 500);
+            this.picRED.Name = "picRED";
+            this.picRED.Size = new System.Drawing.Size(35, 35);
+            this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRED.TabIndex = 160;
+            this.picRED.TabStop = false;
+            this.picRED.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // btnReset2
+            // 
+            this.btnReset2.BackColor = System.Drawing.Color.White;
+            this.btnReset2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset2.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            this.btnReset2.IconColor = System.Drawing.Color.Black;
+            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset2.IconSize = 15;
+            this.btnReset2.Location = new System.Drawing.Point(262, 477);
+            this.btnReset2.Name = "btnReset2";
+            this.btnReset2.Size = new System.Drawing.Size(26, 23);
+            this.btnReset2.TabIndex = 159;
+            this.btnReset2.UseVisualStyleBackColor = false;
+            this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
+            // 
+            // btnAddSeg2
+            // 
+            this.btnAddSeg2.BackColor = System.Drawing.Color.White;
+            this.btnAddSeg2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSeg2.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
+            this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSeg2.IconSize = 10;
+            this.btnAddSeg2.Location = new System.Drawing.Point(223, 512);
+            this.btnAddSeg2.Name = "btnAddSeg2";
+            this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg2.TabIndex = 158;
+            this.btnAddSeg2.UseVisualStyleBackColor = false;
+            this.btnAddSeg2.Click += new System.EventHandler(this.btnAddSeg2_Click);
+            // 
+            // btnAddMin2
+            // 
+            this.btnAddMin2.BackColor = System.Drawing.Color.White;
+            this.btnAddMin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMin2.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddMin2.IconColor = System.Drawing.Color.Black;
+            this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddMin2.IconSize = 10;
+            this.btnAddMin2.Location = new System.Drawing.Point(194, 512);
+            this.btnAddMin2.Name = "btnAddMin2";
+            this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin2.TabIndex = 157;
+            this.btnAddMin2.UseVisualStyleBackColor = false;
+            this.btnAddMin2.Click += new System.EventHandler(this.btnAddMin2_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.White;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            this.btnReset.IconColor = System.Drawing.Color.Black;
+            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset.IconSize = 15;
+            this.btnReset.Location = new System.Drawing.Point(145, 342);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(26, 23);
+            this.btnReset.TabIndex = 155;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnAddSeg
+            // 
+            this.btnAddSeg.BackColor = System.Drawing.Color.White;
+            this.btnAddSeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSeg.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddSeg.IconColor = System.Drawing.Color.Black;
+            this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSeg.IconSize = 10;
+            this.btnAddSeg.Location = new System.Drawing.Point(106, 375);
+            this.btnAddSeg.Name = "btnAddSeg";
+            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg.TabIndex = 154;
+            this.btnAddSeg.UseVisualStyleBackColor = false;
+            this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
+            // 
+            // btnAddMin
+            // 
+            this.btnAddMin.BackColor = System.Drawing.Color.White;
+            this.btnAddMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMin.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddMin.IconColor = System.Drawing.Color.Black;
+            this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddMin.IconSize = 10;
+            this.btnAddMin.Location = new System.Drawing.Point(77, 375);
+            this.btnAddMin.Name = "btnAddMin";
+            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin.TabIndex = 153;
+            this.btnAddMin.UseVisualStyleBackColor = false;
+            this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
+            // 
+            // PicTC8
+            // 
+            this.PicTC8.Image = global::AppleSoftware.Properties.Resources.tc8off;
+            this.PicTC8.Location = new System.Drawing.Point(1242, 666);
+            this.PicTC8.Name = "PicTC8";
+            this.PicTC8.Size = new System.Drawing.Size(30, 32);
+            this.PicTC8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC8.TabIndex = 152;
+            this.PicTC8.TabStop = false;
+            // 
+            // PicTC7
+            // 
+            this.PicTC7.Image = global::AppleSoftware.Properties.Resources.tc7off;
+            this.PicTC7.Location = new System.Drawing.Point(1085, 662);
+            this.PicTC7.Name = "PicTC7";
+            this.PicTC7.Size = new System.Drawing.Size(30, 32);
+            this.PicTC7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC7.TabIndex = 151;
+            this.PicTC7.TabStop = false;
+            // 
+            // PicTC6
+            // 
+            this.PicTC6.Image = global::AppleSoftware.Properties.Resources.tc6off;
+            this.PicTC6.Location = new System.Drawing.Point(919, 662);
+            this.PicTC6.Name = "PicTC6";
+            this.PicTC6.Size = new System.Drawing.Size(30, 32);
+            this.PicTC6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC6.TabIndex = 150;
+            this.PicTC6.TabStop = false;
+            // 
+            // PicTC5
+            // 
+            this.PicTC5.Image = global::AppleSoftware.Properties.Resources.tc5off;
+            this.PicTC5.Location = new System.Drawing.Point(757, 662);
+            this.PicTC5.Name = "PicTC5";
+            this.PicTC5.Size = new System.Drawing.Size(30, 32);
+            this.PicTC5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC5.TabIndex = 149;
+            this.PicTC5.TabStop = false;
+            // 
+            // PicTC4
+            // 
+            this.PicTC4.Image = global::AppleSoftware.Properties.Resources.tc4off;
+            this.PicTC4.Location = new System.Drawing.Point(595, 662);
+            this.PicTC4.Name = "PicTC4";
+            this.PicTC4.Size = new System.Drawing.Size(30, 32);
+            this.PicTC4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC4.TabIndex = 148;
+            this.PicTC4.TabStop = false;
+            // 
+            // PicTC3
+            // 
+            this.PicTC3.Image = global::AppleSoftware.Properties.Resources.tc3off;
+            this.PicTC3.Location = new System.Drawing.Point(431, 662);
+            this.PicTC3.Name = "PicTC3";
+            this.PicTC3.Size = new System.Drawing.Size(30, 32);
+            this.PicTC3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC3.TabIndex = 147;
+            this.PicTC3.TabStop = false;
+            // 
+            // PicTC2
+            // 
+            this.PicTC2.Image = global::AppleSoftware.Properties.Resources.tc2off;
+            this.PicTC2.Location = new System.Drawing.Point(273, 662);
+            this.PicTC2.Name = "PicTC2";
+            this.PicTC2.Size = new System.Drawing.Size(30, 32);
+            this.PicTC2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC2.TabIndex = 146;
+            this.PicTC2.TabStop = false;
+            // 
+            // PicTC1
+            // 
+            this.PicTC1.Image = global::AppleSoftware.Properties.Resources.tc1off;
+            this.PicTC1.Location = new System.Drawing.Point(116, 662);
+            this.PicTC1.Name = "PicTC1";
+            this.PicTC1.Size = new System.Drawing.Size(30, 32);
+            this.PicTC1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTC1.TabIndex = 145;
+            this.PicTC1.TabStop = false;
+            // 
             // led2
             // 
             this.led2.BackColor = System.Drawing.Color.White;
@@ -1373,295 +1663,6 @@
             this.btnON.TabIndex = 0;
             this.btnON.UseVisualStyleBackColor = false;
             this.btnON.Click += new System.EventHandler(this.btnON_Click);
-            // 
-            // PicTC1
-            // 
-            this.PicTC1.Image = global::AppleSoftware.Properties.Resources.tc1off;
-            this.PicTC1.Location = new System.Drawing.Point(116, 662);
-            this.PicTC1.Name = "PicTC1";
-            this.PicTC1.Size = new System.Drawing.Size(30, 32);
-            this.PicTC1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC1.TabIndex = 145;
-            this.PicTC1.TabStop = false;
-            // 
-            // PicTC2
-            // 
-            this.PicTC2.Image = global::AppleSoftware.Properties.Resources.tc2off;
-            this.PicTC2.Location = new System.Drawing.Point(273, 662);
-            this.PicTC2.Name = "PicTC2";
-            this.PicTC2.Size = new System.Drawing.Size(30, 32);
-            this.PicTC2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC2.TabIndex = 146;
-            this.PicTC2.TabStop = false;
-            // 
-            // PicTC3
-            // 
-            this.PicTC3.Image = global::AppleSoftware.Properties.Resources.tc3off;
-            this.PicTC3.Location = new System.Drawing.Point(431, 662);
-            this.PicTC3.Name = "PicTC3";
-            this.PicTC3.Size = new System.Drawing.Size(30, 32);
-            this.PicTC3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC3.TabIndex = 147;
-            this.PicTC3.TabStop = false;
-            // 
-            // PicTC4
-            // 
-            this.PicTC4.Image = global::AppleSoftware.Properties.Resources.tc4off;
-            this.PicTC4.Location = new System.Drawing.Point(595, 662);
-            this.PicTC4.Name = "PicTC4";
-            this.PicTC4.Size = new System.Drawing.Size(30, 32);
-            this.PicTC4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC4.TabIndex = 148;
-            this.PicTC4.TabStop = false;
-            // 
-            // PicTC5
-            // 
-            this.PicTC5.Image = global::AppleSoftware.Properties.Resources.tc5off;
-            this.PicTC5.Location = new System.Drawing.Point(757, 662);
-            this.PicTC5.Name = "PicTC5";
-            this.PicTC5.Size = new System.Drawing.Size(30, 32);
-            this.PicTC5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC5.TabIndex = 149;
-            this.PicTC5.TabStop = false;
-            // 
-            // PicTC6
-            // 
-            this.PicTC6.Image = global::AppleSoftware.Properties.Resources.tc6off;
-            this.PicTC6.Location = new System.Drawing.Point(919, 662);
-            this.PicTC6.Name = "PicTC6";
-            this.PicTC6.Size = new System.Drawing.Size(30, 32);
-            this.PicTC6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC6.TabIndex = 150;
-            this.PicTC6.TabStop = false;
-            // 
-            // PicTC7
-            // 
-            this.PicTC7.Image = global::AppleSoftware.Properties.Resources.tc7off;
-            this.PicTC7.Location = new System.Drawing.Point(1085, 662);
-            this.PicTC7.Name = "PicTC7";
-            this.PicTC7.Size = new System.Drawing.Size(30, 32);
-            this.PicTC7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC7.TabIndex = 151;
-            this.PicTC7.TabStop = false;
-            // 
-            // PicTC8
-            // 
-            this.PicTC8.Image = global::AppleSoftware.Properties.Resources.tc8off;
-            this.PicTC8.Location = new System.Drawing.Point(1242, 666);
-            this.PicTC8.Name = "PicTC8";
-            this.PicTC8.Size = new System.Drawing.Size(30, 32);
-            this.PicTC8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicTC8.TabIndex = 152;
-            this.PicTC8.TabStop = false;
-            // 
-            // btnAddMin
-            // 
-            this.btnAddMin.BackColor = System.Drawing.Color.White;
-            this.btnAddMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddMin.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddMin.IconColor = System.Drawing.Color.Black;
-            this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(77, 375);
-            this.btnAddMin.Name = "btnAddMin";
-            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
-            this.btnAddMin.TabIndex = 153;
-            this.btnAddMin.UseVisualStyleBackColor = false;
-            this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
-            // 
-            // btnAddSeg
-            // 
-            this.btnAddSeg.BackColor = System.Drawing.Color.White;
-            this.btnAddSeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSeg.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddSeg.IconColor = System.Drawing.Color.Black;
-            this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(106, 375);
-            this.btnAddSeg.Name = "btnAddSeg";
-            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
-            this.btnAddSeg.TabIndex = 154;
-            this.btnAddSeg.UseVisualStyleBackColor = false;
-            this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.White;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            this.btnReset.IconColor = System.Drawing.Color.Black;
-            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(145, 342);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(26, 23);
-            this.btnReset.TabIndex = 155;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // timerTempo
-            // 
-            this.timerTempo.Interval = 1000;
-            this.timerTempo.Tick += new System.EventHandler(this.timerTempo_Tick);
-            // 
-            // txtTemporizador2
-            // 
-            this.txtTemporizador2.BackColor = System.Drawing.Color.White;
-            this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador2.Location = new System.Drawing.Point(179, 477);
-            this.txtTemporizador2.Name = "txtTemporizador2";
-            this.txtTemporizador2.ReadOnly = true;
-            this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
-            this.txtTemporizador2.TabIndex = 156;
-            this.txtTemporizador2.Text = "00:00";
-            this.txtTemporizador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnAddMin2
-            // 
-            this.btnAddMin2.BackColor = System.Drawing.Color.White;
-            this.btnAddMin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddMin2.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddMin2.IconColor = System.Drawing.Color.Black;
-            this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddMin2.IconSize = 10;
-            this.btnAddMin2.Location = new System.Drawing.Point(194, 512);
-            this.btnAddMin2.Name = "btnAddMin2";
-            this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
-            this.btnAddMin2.TabIndex = 157;
-            this.btnAddMin2.UseVisualStyleBackColor = false;
-            this.btnAddMin2.Click += new System.EventHandler(this.btnAddMin2_Click);
-            // 
-            // btnAddSeg2
-            // 
-            this.btnAddSeg2.BackColor = System.Drawing.Color.White;
-            this.btnAddSeg2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSeg2.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
-            this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddSeg2.IconSize = 10;
-            this.btnAddSeg2.Location = new System.Drawing.Point(223, 512);
-            this.btnAddSeg2.Name = "btnAddSeg2";
-            this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
-            this.btnAddSeg2.TabIndex = 158;
-            this.btnAddSeg2.UseVisualStyleBackColor = false;
-            this.btnAddSeg2.Click += new System.EventHandler(this.btnAddSeg2_Click);
-            // 
-            // btnReset2
-            // 
-            this.btnReset2.BackColor = System.Drawing.Color.White;
-            this.btnReset2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset2.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            this.btnReset2.IconColor = System.Drawing.Color.Black;
-            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReset2.IconSize = 15;
-            this.btnReset2.Location = new System.Drawing.Point(262, 477);
-            this.btnReset2.Name = "btnReset2";
-            this.btnReset2.Size = new System.Drawing.Size(26, 23);
-            this.btnReset2.TabIndex = 159;
-            this.btnReset2.UseVisualStyleBackColor = false;
-            this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
-            // 
-            // picGREEN
-            // 
-            this.picGREEN.BackColor = System.Drawing.Color.White;
-            this.picGREEN.Image = global::AppleSoftware.Properties.Resources.tc8off;
-            this.picGREEN.Location = new System.Drawing.Point(1201, 395);
-            this.picGREEN.Name = "picGREEN";
-            this.picGREEN.Size = new System.Drawing.Size(35, 35);
-            this.picGREEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picGREEN.TabIndex = 162;
-            this.picGREEN.TabStop = false;
-            this.picGREEN.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // picYELLOW
-            // 
-            this.picYELLOW.BackColor = System.Drawing.Color.White;
-            this.picYELLOW.Image = global::AppleSoftware.Properties.Resources.tc3off;
-            this.picYELLOW.Location = new System.Drawing.Point(1201, 450);
-            this.picYELLOW.Name = "picYELLOW";
-            this.picYELLOW.Size = new System.Drawing.Size(35, 35);
-            this.picYELLOW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picYELLOW.TabIndex = 161;
-            this.picYELLOW.TabStop = false;
-            this.picYELLOW.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // picRED
-            // 
-            this.picRED.BackColor = System.Drawing.Color.White;
-            this.picRED.Image = global::AppleSoftware.Properties.Resources.tc1on;
-            this.picRED.Location = new System.Drawing.Point(1201, 500);
-            this.picRED.Name = "picRED";
-            this.picRED.Size = new System.Drawing.Size(35, 35);
-            this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRED.TabIndex = 160;
-            this.picRED.TabStop = false;
-            this.picRED.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.BackColor = System.Drawing.Color.White;
-            this.label43.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.ForeColor = System.Drawing.Color.Black;
-            this.label43.Location = new System.Drawing.Point(1161, 365);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(108, 18);
-            this.label43.TabIndex = 163;
-            this.label43.Text = "Current status:";
-            // 
-            // timerForSimulation
-            // 
-            this.timerForSimulation.Tick += new System.EventHandler(this.timerForSimulation_Tick);
-            // 
-            // SelectTittle
-            // 
-            this.SelectTittle.AutoSize = true;
-            this.SelectTittle.BackColor = System.Drawing.Color.White;
-            this.SelectTittle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectTittle.ForeColor = System.Drawing.Color.Black;
-            this.SelectTittle.Location = new System.Drawing.Point(103, 276);
-            this.SelectTittle.Name = "SelectTittle";
-            this.SelectTittle.Size = new System.Drawing.Size(63, 18);
-            this.SelectTittle.TabIndex = 62;
-            this.SelectTittle.Text = "Choose";
-            // 
-            // txtTest
-            // 
-            this.txtTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTest.Location = new System.Drawing.Point(180, 308);
-            this.txtTest.Multiline = true;
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(152, 61);
-            this.txtTest.TabIndex = 164;
-            // 
-            // btnSetTemp
-            // 
-            this.btnSetTemp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSetTemp.FlatAppearance.BorderSize = 0;
-            this.btnSetTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetTemp.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
-            this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSetTemp.IconSize = 25;
-            this.btnSetTemp.Location = new System.Drawing.Point(172, 270);
-            this.btnSetTemp.Name = "btnSetTemp";
-            this.btnSetTemp.Size = new System.Drawing.Size(34, 28);
-            this.btnSetTemp.TabIndex = 165;
-            this.btnSetTemp.UseVisualStyleBackColor = false;
-            this.btnSetTemp.Click += new System.EventHandler(this.btnSetTemp_Click);
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.Black;
-            this.label44.Location = new System.Drawing.Point(292, 287);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(40, 18);
-            this.label44.TabIndex = 166;
-            this.label44.Text = "Sent";
             // 
             // FrmMainSystem
             // 
@@ -1803,20 +1804,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTC8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGREEN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYELLOW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRED)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTC1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
