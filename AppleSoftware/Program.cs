@@ -17,7 +17,7 @@ namespace AppleSoftware
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainSystem());
+            Application.Run(new FrmChartTesting());
         }
     }
 }

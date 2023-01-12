@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +15,12 @@ namespace AppleSoftware.Forms
 {
     public partial class FrmChartTesting : Form
     {
+
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         public FrmChartTesting()
         {
             InitializeComponent();
@@ -38,6 +46,7 @@ namespace AppleSoftware.Forms
                 serialPort1.PortName = cboxPort.Text;
                 serialPort1.Open();
                 timer1.Start();
+                serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
             }
             catch (Exception ex)
             {
@@ -57,7 +66,9 @@ namespace AppleSoftware.Forms
 
                     // 
 
-                    serialPort1.WriteLine(txtSend.Text+Environment.NewLine);
+                    serialPort1.Write(txtSend.Text+"\r\n");
+                   // Thread.Sleep(50);
+                    //serialPort1.WriteLine(Environment.NewLine);
 
 
                     txtSend.Clear();
@@ -108,13 +119,13 @@ namespace AppleSoftware.Forms
             }
         }
 
+        // dos lineas llegan, serial config cambia chiller a tc's 
+
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(serialPort1.ReadExisting()))
-            {
-                MessageBox.Show(":)");
-            }
-            txtReceive.Text = serialPort1.ReadLine().ToString();
+            Thread.Sleep(300);
+            string cadena = serialPort1.ReadExisting();
+            txtReceive.Text = cadena;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -190,6 +201,58 @@ namespace AppleSoftware.Forms
             }
             return numero;
         }
+        int count = 0;
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void Cycle()
+        {
+                txtSend.Text = "#030";
+                serialPort1.Write(txtSend.Text + "\r\n");
+                txtSend.Clear();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (count < 101)
+            {
+                Cycle();
+                count++;
+            }
+            else
+            {
+                timer2.Stop();
+                MessageBox.Show("Finalizado 100 ciclos");
+            }
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            serialPort1.DataBits = 8;
+            serialPort1.Parity = Parity.None;
+          //  count = 0;
+           // timer2.Stop();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+
+            Application.Exit();
+
+        }
+
+        private void FrmChartTesting_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 }
