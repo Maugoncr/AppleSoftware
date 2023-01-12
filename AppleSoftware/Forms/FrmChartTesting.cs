@@ -60,18 +60,9 @@ namespace AppleSoftware.Forms
             {
                 if (serialPort1.IsOpen)
                 {
-                    //   byte[] _mass = Encoding.GetEncoding("ASCII").GetBytes(txtSend.Text);
-                    //   serialPort1.Write(_mass, 0, _mass.Length);
-                    //serialPort1.DiscardInBuffer();
-
-                    // 
-
-                    serialPort1.Write(txtSend.Text+"\r\n");
-                   // Thread.Sleep(50);
-                    //serialPort1.WriteLine(Environment.NewLine);
-
-
-                    txtSend.Clear();
+                    serialPort1.DiscardOutBuffer();
+                    serialPort1.Write(txtSend.Text+"\r");
+                   
                 }
             }
             catch (Exception ex)
@@ -120,12 +111,36 @@ namespace AppleSoftware.Forms
         }
 
         // dos lineas llegan, serial config cambia chiller a tc's 
-
+        
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(300);
-            string cadena = serialPort1.ReadExisting();
-            txtReceive.Text = cadena;
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    Thread.Sleep(1000);
+                    if (!string.IsNullOrEmpty(serialPort1.ReadExisting()))
+                    {
+                        ReadData(serialPort1.ReadExisting());
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+           
+        }
+
+        private void ReadData(string data)
+        {
+
+            string tcs = data.Trim();
+
+            txtReceive.Text = tcs;
+
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -201,8 +216,7 @@ namespace AppleSoftware.Forms
             }
             return numero;
         }
-        int count = 0;
-
+      
         private void button2_Click(object sender, EventArgs e)
         {
             timer2.Start();
@@ -210,32 +224,20 @@ namespace AppleSoftware.Forms
 
         private void Cycle()
         {
-                txtSend.Text = "#030";
-                serialPort1.Write(txtSend.Text + "\r\n");
-                txtSend.Clear();
+            serialPort1.DiscardOutBuffer();
+                txtSend.Text = "#03";
+                serialPort1.Write(txtSend.Text + "\r");
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (count < 101)
-            {
-                Cycle();
-                count++;
-            }
-            else
-            {
-                timer2.Stop();
-                MessageBox.Show("Finalizado 100 ciclos");
-            }
+            Cycle();
             
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            serialPort1.DataBits = 8;
-            serialPort1.Parity = Parity.None;
-          //  count = 0;
-           // timer2.Stop();
+            timer2.Stop();
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
