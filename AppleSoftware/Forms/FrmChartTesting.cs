@@ -56,20 +56,22 @@ namespace AppleSoftware.Forms
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (serialPort1.IsOpen)
-                {
-                    serialPort1.DiscardOutBuffer();
-                    serialPort1.Write(txtSend.Text+"\r");
-                   
-                }
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    if (serialPort1.IsOpen)
+            //    {
+            //        serialPort1.DiscardOutBuffer();
+            //        serialPort1.Write(txtSend.Text+"\r");
 
-                MessageBox.Show(ex.Message); ;
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show(ex.Message); ;
+            //}
+
+            ReadData(">+0022.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9");
         }
 
         private void btnReceive_Click(object sender, EventArgs e)
@@ -132,13 +134,93 @@ namespace AppleSoftware.Forms
             }
            
         }
+        string TC1 = "";
+        string TC2 = "";
+        string TC3 = "";
+        string TC4 = "";
+        string TC5 = "";
+        string TC6 = "";
+        string TC7 = "";
+        string TC8 = "";
+        string TC9 = "";
+        string TC10 = "";
+        double TC1Num = 0;
+        double TC2Num = 0;
+        double TC3Num = 0;
+        double TC4Num = 0;
+        double TC5Num = 0;
+        double TC6Num = 0;
+        double TC7Num = 0;
+        double TC8Num = 0;
+        double TC9Num = 0;
+        double TC10Num = 0;
+
 
         private void ReadData(string data)
         {
-
+            // Paso 1 Quitar cualquier espacio
             string tcs = data.Trim();
+            //Paso 2 quitar el >+ inicial
+            tcs = tcs.Substring(2);
+            //Paso 3 separar por +
+            string[] TC = tcs.Split('+');
 
-            txtReceive.Text = tcs;
+            //Paso 4 asignar cada TC
+            if (TC.Length == 10)
+            {
+                TC1 = TC[0];
+                TC2 = TC[1];
+                TC3 = TC[2];
+                TC4 = TC[3];
+                TC5 = TC[4];
+                TC6 = TC[5];
+                TC7 = TC[6];
+                TC8 = TC[7];
+                TC9 = TC[8];
+                TC10 = TC[9];
+            }
+
+            // Paso 5 reasignar valores
+
+            TC1 = TC1.Substring(2);
+            TC2 = TC2.Substring(2);
+            TC3 = TC3.Substring(2);
+            TC4 = TC4.Substring(2);
+            TC5 = TC5.Substring(2);
+            TC6 = TC6.Substring(2);
+            TC7 = TC7.Substring(2);
+            TC8 = TC8.Substring(2);
+            TC9 = TC9.Substring(2);
+            TC10 = TC10.Substring(2);
+            
+            // Paso 6 Separar a las con numeros a las con C°
+
+            TC1Num = Convert.ToDouble(TC1);
+            TC2Num = Convert.ToDouble(TC2);
+            TC3Num = Convert.ToDouble(TC3);
+            TC4Num = Convert.ToDouble(TC4);
+            TC5Num = Convert.ToDouble(TC5);
+            TC6Num = Convert.ToDouble(TC6);
+            TC7Num = Convert.ToDouble(TC7);
+            TC8Num = Convert.ToDouble(TC8);
+            TC9Num = Convert.ToDouble(TC9);
+            TC10Num = Convert.ToDouble(TC10);
+
+            // Paso Final
+            TC1 = TC1 + " C°";
+            TC2 = TC2 + " C°";
+            TC3 = TC3 + " C°";
+            TC4 = TC4 + " C°";
+            TC5 = TC5 + " C°";
+            TC6 = TC6 + " C°";
+            TC7 = TC7 + " C°";
+            TC8 = TC8 + " C°";
+            TC9 = TC9 + " C°";
+            TC10 = TC10 + " C°";
+
+            //TODO GRAFICAR.
+
+            txtReceive.Text = TC1 + " \n"+ TC2 + " \n" + TC3;
 
            
         }

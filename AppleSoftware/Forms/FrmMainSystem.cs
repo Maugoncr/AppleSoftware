@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Application = System.Windows.Forms.Application;
 
 namespace AppleSoftware.Forms
 {
@@ -17,15 +20,24 @@ namespace AppleSoftware.Forms
     {
         public int CualTemperatura;
         public static string FormatCadena = "Ninguno";
-
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         public FrmMainSystem()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+            Application.Exit();
         }
 
         private void FrmMainSystem_Load(object sender, EventArgs e)
@@ -50,7 +62,6 @@ namespace AppleSoftware.Forms
             cbSelect.Items.Add("Heating");
             // -- 1
             cbSelect.Items.Add("Cooling");
-            
         }
 
         private void ResetearChart() 
@@ -88,6 +99,9 @@ namespace AppleSoftware.Forms
             string[] ports = SerialPort.GetPortNames();
             cbCOMSelect.Items.Clear();
             cbCOMSelect.Items.AddRange(ports);
+
+            SetConfigSerialPortForTCS();
+            BanderaRespuestaParaTCS = false;
 
             // about chart
 
@@ -438,15 +452,22 @@ namespace AppleSoftware.Forms
                 checkTemp1.Enabled = false;
                 checkTemp2.Enabled = false;
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
-                timerTempo.Start();
+                Temporizador.Start();
 
                 //Comando iniciar Chiller
 
                 if (FormatCadena == "Chiller")
                 {
-                   // serialPort1.DataBits = 7;
-                   // serialPort1.Parity = Parity.Even;
-                    serialPort1.WriteLine(":0106000C0001EC"+Environment.NewLine);
+                    if (serialPort1.IsOpen)
+                    {
+                        SetConfigSerialPortForChiller();
+                        serialPort1.DiscardOutBuffer();
+                        serialPort1.WriteLine(":0106000C0001EC" + Environment.NewLine);
+                        BanderaRespuestaParaTCS = false;
+                        SetConfigSerialPortForTCS();
+
+                    }
+                   
                 }
 
 
@@ -464,15 +485,17 @@ namespace AppleSoftware.Forms
                 checkTemp1.Enabled = true;
                 checkTemp2.Enabled = true;
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
-                timerTempo.Stop();
+                Temporizador.Stop();
 
                 //Apagar Chiller
 
                 if (FormatCadena == "Chiller")
                 {
-                  //  serialPort1.DataBits = 7;
-                 //   serialPort1.Parity = Parity.Even;
+                    SetConfigSerialPortForChiller();
+                    serialPort1.DiscardOutBuffer();
                     serialPort1.WriteLine(":0106000C0000ED"+Environment.NewLine);
+                    BanderaRespuestaParaTCS = false;
+                    SetConfigSerialPortForTCS();
                 }
 
             }
@@ -572,8 +595,9 @@ namespace AppleSoftware.Forms
                     lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
 
                     // cCHANGER
+                    TimerDataTCS.Start();
                     ResetearChart();
-                    timerForTC.Start();
+                   // timerForTC.Start();
 
                     PicTC1.Image.Dispose();
                     PicTC1.Image = Properties.Resources.tc1on;
@@ -612,6 +636,7 @@ namespace AppleSoftware.Forms
                 lbConnectedStatus.Text = "Disconnected";
                 lbConnectedStatus.ForeColor = Color.Red;
 
+                TimerDataTCS.Stop();
                 timerForTC.Stop();
                 ResetearChart();
 
@@ -647,33 +672,20 @@ namespace AppleSoftware.Forms
             tiempo = tiempo + 100;
             double temp = tiempo / 1000;
 
-            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC1.ToString());
-            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC2.ToString());
-            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC3.ToString());
-            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC4.ToString());
-            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC5.ToString());
-            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC6.ToString());
-            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC7.ToString());
-            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC8.ToString());
+            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC1Num.ToString());
+            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC2Num.ToString());
+            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC3Num.ToString());
+            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC4Num.ToString());
+            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC5Num.ToString());
+            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC6Num.ToString());
+            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC7Num.ToString());
+            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC8Num.ToString());
 
             chart1.ChartAreas[0].RecalculateAxesScale();
 
-            txtTC1.Text = TC1.ToString() + "°C";
-            txtTC2.Text = TC2.ToString() + "°C";
-            txtTC3.Text = TC3.ToString() + "°C";
-            txtTC4.Text = TC4.ToString() + "°C";
-            txtTC5.Text = TC5.ToString() + "°C";
-            txtTC6.Text = TC6.ToString() + "°C";
-            txtTC7.Text = TC7.ToString() + "°C";
-            txtTC8.Text = TC8.ToString() + "°C";
-            txtActualTempTCGeneral.Text = TC9.ToString() + "°C";
-
+            GraficarDatosTxt();
 
         }
-
-
-        double TC1, TC2,TC3,TC4,TC5,TC6,TC7,TC8,TC9;
-
 
         // Variables para el temporizador
 
@@ -689,6 +701,7 @@ namespace AppleSoftware.Forms
             segundos = 0;
         }
 
+        //Temporizador
         private void timerTempo_Tick(object sender, EventArgs e)
         {
             if (minutos != 0 || segundos != 0)
@@ -816,21 +829,6 @@ namespace AppleSoftware.Forms
 
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddMin2_Click(object sender, EventArgs e)
         {
             if (minutos2 < 59)
@@ -903,86 +901,49 @@ namespace AppleSoftware.Forms
 
         }
 
-        private void btnSimulaSoftware_Click(object sender, EventArgs e)
-        {
-            if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
-            {
-                
-                    btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
-                    lbConnectedStatus.Text = "Connected";
-                    lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
-
-                    // cCHANGER
-                    ResetearChart();
-                    timerForSimulation.Start();
-
-                    PicTC1.Image.Dispose();
-                    PicTC1.Image = Properties.Resources.tc1on;
-                    PicTC2.Image.Dispose();
-                    PicTC2.Image = Properties.Resources.tc2on;
-                    PicTC3.Image.Dispose();
-                    PicTC3.Image = Properties.Resources.tc3on;
-                    PicTC4.Image.Dispose();
-                    PicTC4.Image = Properties.Resources.tc4on;
-                    PicTC5.Image.Dispose();
-                    PicTC5.Image = Properties.Resources.tc5on;
-                    PicTC6.Image.Dispose();
-                    PicTC6.Image = Properties.Resources.tc6on;
-                    PicTC7.Image.Dispose();
-                    PicTC7.Image = Properties.Resources.tc7on;
-                    PicTC8.Image.Dispose();
-                    PicTC8.Image = Properties.Resources.tc8on;
-
-                    picGREEN.Image.Dispose();
-                    picGREEN.Image = Properties.Resources.tc8on;
-                    picRED.Image.Dispose();
-                    picRED.Image = Properties.Resources.tc1off;
-
-
-                
-
-            }
-            else if (btnConnect.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
-            {
-
-                btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
-                lbConnectedStatus.Text = "Disconnected";
-                lbConnectedStatus.ForeColor = Color.Red;
-
-                timerForSimulation.Stop();
-                ResetearChart();
-
-                PicTC1.Image.Dispose();
-                PicTC1.Image = Properties.Resources.tc1off;
-                PicTC2.Image.Dispose();
-                PicTC2.Image = Properties.Resources.tc2off;
-                PicTC3.Image.Dispose();
-                PicTC3.Image = Properties.Resources.tc3off;
-                PicTC4.Image.Dispose();
-                PicTC4.Image = Properties.Resources.tc4off;
-                PicTC5.Image.Dispose();
-                PicTC5.Image = Properties.Resources.tc5off;
-                PicTC6.Image.Dispose();
-                PicTC6.Image = Properties.Resources.tc6off;
-                PicTC7.Image.Dispose();
-                PicTC7.Image = Properties.Resources.tc7off;
-                PicTC8.Image.Dispose();
-                PicTC8.Image = Properties.Resources.tc8off;
-
-                picGREEN.Image.Dispose();
-                picGREEN.Image = Properties.Resources.tc8off;
-                picRED.Image.Dispose();
-                picRED.Image = Properties.Resources.tc1on;
-
-            }
-        }
-
-        double TC1x = 1, TC2x = 2, TC3x = 3, TC4x = 4, TC5x = 5, TC6x = 6, TC7x = 7, TC8x = 8, TC9x = 24;
-
         private void btnSetTemp_Click(object sender, EventArgs e)
         {
+            if (serialPort1.IsOpen)
+            {
+                switch (FormatCadena)
+                {
+                    case "Chiller":
+                        SetConfigSerialPortForChiller();
+                        SetTemperatureChiller(txtSetTemp1.Text);
+                        SetConfigSerialPortForTCS();
+                        break;
+                    case "Heater":
+                        //TODO
+                        
+
+                        break;
+                    case "Ninguno":
+                        
+                        break;
+                }
+
+
+            }
+            
+        }
+
+        private void SetConfigSerialPortForChiller()
+        {
+            serialPort1.DataBits = 7;
+            serialPort1.Parity = Parity.Even;
+        }
+
+        private void SetConfigSerialPortForTCS()
+        {
+            serialPort1.DataBits = 8;
+            serialPort1.Parity = Parity.None;
+        
+        }
+
+        private void SetTemperatureChiller(string TemperatureToSet)
+        {
             int ConsTemp = 18;
-            string Temperatura = txtSetTemp1.Text;
+            string Temperatura = TemperatureToSet;
             Temperatura += "0";
             Temperatura = decimalHexadecimal(Convert.ToInt32(Temperatura));
 
@@ -1015,39 +976,12 @@ namespace AppleSoftware.Forms
 
             txtTest.Text = ComandoFinal;
 
-            serialPort1.WriteLine(ComandoFinal+Environment.NewLine);
-
-
+            serialPort1.DiscardOutBuffer();
+            serialPort1.WriteLine(ComandoFinal + Environment.NewLine);
+            BanderaRespuestaParaTCS = false;
         }
 
-        double tiempo2 = 0;
-        private void timerForSimulation_Tick(object sender, EventArgs e)
-        {
-            tiempo2 = tiempo2 + 100;
-            double temp = tiempo2 / 1000;
-
-            chart1.Series["TC-1"].Points.AddXY(temp.ToString(), TC1x.ToString());
-            chart1.Series["TC-2"].Points.AddXY(temp.ToString(), TC2x.ToString());
-            chart1.Series["TC-3"].Points.AddXY(temp.ToString(), TC3x.ToString());
-            chart1.Series["TC-4"].Points.AddXY(temp.ToString(), TC4x.ToString());
-            chart1.Series["TC-5"].Points.AddXY(temp.ToString(), TC5x.ToString());
-            chart1.Series["TC-6"].Points.AddXY(temp.ToString(), TC6x.ToString());
-            chart1.Series["TC-7"].Points.AddXY(temp.ToString(), TC7x.ToString());
-            chart1.Series["TC-8"].Points.AddXY(temp.ToString(), TC8x.ToString());
-
-            chart1.ChartAreas[0].RecalculateAxesScale();
-
-            txtTC1.Text = TC1x.ToString() + "°C";
-            txtTC2.Text = TC2x.ToString() + "°C";
-            txtTC3.Text = TC3x.ToString() + "°C";
-            txtTC4.Text = TC4x.ToString() + "°C";
-            txtTC5.Text = TC5x.ToString() + "°C";
-            txtTC6.Text = TC6x.ToString() + "°C";
-            txtTC7.Text = TC7x.ToString() + "°C";
-            txtTC8.Text = TC8x.ToString() + "°C";
-            txtActualTempTCGeneral.Text = TC9x.ToString() + "°C";
-        }
-
+        
         private void btnAddSeg_Click(object sender, EventArgs e)
         {
             if (segundos < 59)
@@ -1125,62 +1059,41 @@ namespace AppleSoftware.Forms
             }
         }
 
-
+        bool BanderaRespuestaParaTCS = false;
         Boolean i = false;
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (i == false)
+            if (serialPort1.IsOpen)
             {
-                tiempo = 0;
-                i = true;
-            }
+                if (i == false)
+                {
+                    tiempo = 0;
+                    i = true;
+                }
 
-            try
-            {
-                CapturarInformacion(serialPort1.ReadLine());
-              
-                serialPort1.DiscardInBuffer();
-                    
+                    if (BanderaRespuestaParaTCS)
+                    {
+                        try
+                        {
+                            Thread.Sleep(1000);
+                            if (!string.IsNullOrEmpty(serialPort1.ReadExisting()))
+                            {
+                                ReadData(serialPort1.ReadExisting());
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                
             }
-            catch (Exception)
-            {
-            }
-
+           
+          
 
         }
-
-        private void CapturarInformacion(string cadena)
-        {
-            string[] temps = cadena.Split(',');
-
-            TC1 = Convert.ToDouble(temps[0]);
-            TC2 = Convert.ToDouble(temps[1]);
-            TC3 = Convert.ToDouble(temps[2]);
-            TC4 = Convert.ToDouble(temps[3]);
-            TC5 = Convert.ToDouble(temps[4]);
-            TC6 = Convert.ToDouble(temps[5]);
-            TC7 = Convert.ToDouble(temps[6]);
-            TC8 = Convert.ToDouble(temps[7]);
-            TC9 = Convert.ToDouble(temps[8]);
-
-        }
-
-        private void CapturarInformacion2(string cadena)
-        {
-            string[] temps = cadena.Split(',');
-
-            TC1x = Convert.ToDouble(temps[0]);
-            TC2x = Convert.ToDouble(temps[1]);
-            TC3x = Convert.ToDouble(temps[2]);
-            TC4x = Convert.ToDouble(temps[3]);
-            TC5x = Convert.ToDouble(temps[4]);
-            TC6x = Convert.ToDouble(temps[5]);
-            TC7x = Convert.ToDouble(temps[6]);
-            TC8x = Convert.ToDouble(temps[7]);
-            TC9x = Convert.ToDouble(temps[8]);
-
-        }
+        
 
         // Metodos para conversiones hexa a decimal y viceversa
 
@@ -1227,7 +1140,130 @@ namespace AppleSoftware.Forms
             return numero;
         }
 
+        string TC1S = "";
+        string TC2S = "";
+        string TC3S = "";
+        string TC4S = "";
+        string TC5S = "";
+        string TC6S = "";
+        string TC7S = "";
+        string TC8S = "";
+        string TC9S = "";
+        string TC10S = "";
+        double TC1Num = 0;
+        double TC2Num = 0;
+        double TC3Num = 0;
+        double TC4Num = 0;
+        double TC5Num = 0;
+        double TC6Num = 0;
+        double TC7Num = 0;
+        double TC8Num = 0;
+        double TC9Num = 0;
+        double TC10Num = 0;
 
+        private void TimerDataTCS_Tick(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                Cycle();
+            }
+        }
+
+        private void Cycle()
+        {
+            serialPort1.DiscardOutBuffer();
+            serialPort1.Write("#03" + "\r");
+            BanderaRespuestaParaTCS = true;
+        }
+
+
+        private void ReadData(string data)
+        {
+            if (data!= null && data != string.Empty)
+            {
+                // Paso 1 Quitar cualquier espacio
+                string tcs = data.Trim();
+                //Paso 2 quitar el >+ inicial
+                tcs = tcs.Substring(2);
+                //Paso 3 separar por +
+                string[] TC = tcs.Split('+');
+
+                //Paso 4 asignar cada TC
+                if (TC.Length == 10)
+                {
+                    TC1S = TC[0];
+                    TC2S = TC[1];
+                    TC3S = TC[2];
+                    TC4S = TC[3];
+                    TC5S = TC[4];
+                    TC6S = TC[5];
+                    TC7S = TC[6];
+                    TC8S = TC[7];
+                    TC9S = TC[8];
+                    TC10S = TC[9];
+                }
+
+                // Paso 5 reasignar valores
+
+                TC1S = TC1S.Substring(2);
+                TC2S = TC2S.Substring(2);
+                TC3S = TC3S.Substring(2);
+                TC4S = TC4S.Substring(2);
+                TC5S = TC5S.Substring(2);
+                TC6S = TC6S.Substring(2);
+                TC7S = TC7S.Substring(2);
+                TC8S = TC8S.Substring(2);
+                TC9S = TC9S.Substring(2);
+                TC10S = TC10S.Substring(2);
+
+                // Paso 6 Separar a las con numeros a las con C°
+
+                TC1Num = Convert.ToDouble(TC1S);
+                TC2Num = Convert.ToDouble(TC2S);
+                TC3Num = Convert.ToDouble(TC3S);
+                TC4Num = Convert.ToDouble(TC4S);
+                TC5Num = Convert.ToDouble(TC5S);
+                TC6Num = Convert.ToDouble(TC6S);
+                TC7Num = Convert.ToDouble(TC7S);
+                TC8Num = Convert.ToDouble(TC8S);
+                TC9Num = Convert.ToDouble(TC9S);
+                TC10Num = Convert.ToDouble(TC10S);
+
+                // Paso Final
+                TC1S = TC1S + " C°";
+                TC2S = TC2S + " C°";
+                TC3S = TC3S + " C°";
+                TC4S = TC4S + " C°";
+                TC5S = TC5S + " C°";
+                TC6S = TC6S + " C°";
+                TC7S = TC7S + " C°";
+                TC8S = TC8S + " C°";
+                TC9S = TC9S + " C°";
+                TC10S = TC10S + " C°";
+
+                //TODO GRAFICAR.
+                GraficarDatosTxt();
+            }
+        }
+
+        private void GraficarDatosTxt()
+        {
+            txtTC1.Text = TC1S;
+            txtTC2.Text = TC2S;
+            txtTC3.Text = TC3S;
+            txtTC4.Text = TC4S;
+            txtTC5.Text = TC5S;
+            txtTC6.Text = TC6S;
+            txtTC7.Text = TC7S;
+            txtTC8.Text = TC8S;
+            txtActualTempTCGeneral.Text = TC1S;
+        }
+
+        private void panelTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 }
 

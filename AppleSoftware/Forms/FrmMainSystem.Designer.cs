@@ -142,10 +142,9 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.timerTempo = new System.Windows.Forms.Timer(this.components);
+            this.Temporizador = new System.Windows.Forms.Timer(this.components);
             this.txtTemporizador2 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.timerForSimulation = new System.Windows.Forms.Timer(this.components);
             this.SelectTittle = new System.Windows.Forms.Label();
             this.txtTest = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -173,6 +172,7 @@
             this.btnConnect = new FontAwesome.Sharp.IconButton();
             this.btnEMO = new System.Windows.Forms.PictureBox();
             this.btnON = new FontAwesome.Sharp.IconButton();
+            this.TimerDataTCS = new System.Windows.Forms.Timer(this.components);
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -207,6 +207,7 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1300, 68);
             this.panelTop.TabIndex = 0;
+            this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
             // 
             // pictureBox1
             // 
@@ -247,7 +248,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnClose.IconSize = 30;
             this.btnClose.Location = new System.Drawing.Point(1252, 0);
             this.btnClose.Name = "btnClose";
@@ -1125,8 +1126,6 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.DataBits = 7;
-            this.serialPort1.Parity = System.IO.Ports.Parity.Even;
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // label30
@@ -1293,10 +1292,10 @@
             this.label42.Size = new System.Drawing.Size(10, 103);
             this.label42.TabIndex = 135;
             // 
-            // timerTempo
+            // Temporizador
             // 
-            this.timerTempo.Interval = 1000;
-            this.timerTempo.Tick += new System.EventHandler(this.timerTempo_Tick);
+            this.Temporizador.Interval = 1000;
+            this.Temporizador.Tick += new System.EventHandler(this.timerTempo_Tick);
             // 
             // txtTemporizador2
             // 
@@ -1321,10 +1320,6 @@
             this.label43.Size = new System.Drawing.Size(108, 18);
             this.label43.TabIndex = 163;
             this.label43.Text = "Current status:";
-            // 
-            // timerForSimulation
-            // 
-            this.timerForSimulation.Tick += new System.EventHandler(this.timerForSimulation_Tick);
             // 
             // SelectTittle
             // 
@@ -1367,7 +1362,7 @@
             this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetTemp.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
-            this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnSetTemp.IconSize = 25;
             this.btnSetTemp.Location = new System.Drawing.Point(172, 270);
             this.btnSetTemp.Name = "btnSetTemp";
@@ -1386,7 +1381,6 @@
             this.picGREEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picGREEN.TabIndex = 162;
             this.picGREEN.TabStop = false;
-            this.picGREEN.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // picYELLOW
             // 
@@ -1398,7 +1392,6 @@
             this.picYELLOW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picYELLOW.TabIndex = 161;
             this.picYELLOW.TabStop = false;
-            this.picYELLOW.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // picRED
             // 
@@ -1410,7 +1403,6 @@
             this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRED.TabIndex = 160;
             this.picRED.TabStop = false;
-            this.picRED.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // btnReset2
             // 
@@ -1418,7 +1410,7 @@
             this.btnReset2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset2.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
             this.btnReset2.IconColor = System.Drawing.Color.Black;
-            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset2.IconSize = 15;
             this.btnReset2.Location = new System.Drawing.Point(262, 477);
             this.btnReset2.Name = "btnReset2";
@@ -1463,7 +1455,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
             this.btnReset.IconColor = System.Drawing.Color.Black;
-            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset.IconSize = 15;
             this.btnReset.Location = new System.Drawing.Point(145, 342);
             this.btnReset.Name = "btnReset";
@@ -1611,7 +1603,7 @@
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.BookBookmark;
             this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton1.IconSize = 25;
             this.iconButton1.Location = new System.Drawing.Point(1190, 287);
             this.iconButton1.Name = "iconButton1";
@@ -1626,7 +1618,7 @@
             this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
             this.btnConnect.IconColor = System.Drawing.Color.Black;
-            this.btnConnect.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnConnect.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnConnect.Location = new System.Drawing.Point(250, 126);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(48, 33);
@@ -1655,7 +1647,7 @@
             this.btnON.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnON.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
             this.btnON.IconColor = System.Drawing.Color.White;
-            this.btnON.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnON.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnON.IconSize = 35;
             this.btnON.Location = new System.Drawing.Point(113, 579);
             this.btnON.Name = "btnON";
@@ -1663,6 +1655,11 @@
             this.btnON.TabIndex = 0;
             this.btnON.UseVisualStyleBackColor = false;
             this.btnON.Click += new System.EventHandler(this.btnON_Click);
+            // 
+            // TimerDataTCS
+            // 
+            this.TimerDataTCS.Interval = 5000;
+            this.TimerDataTCS.Tick += new System.EventHandler(this.TimerDataTCS_Tick);
             // 
             // FrmMainSystem
             // 
@@ -1944,7 +1941,7 @@
         private FontAwesome.Sharp.IconButton btnAddMin;
         private FontAwesome.Sharp.IconButton btnAddSeg;
         private FontAwesome.Sharp.IconButton btnReset;
-        private System.Windows.Forms.Timer timerTempo;
+        private System.Windows.Forms.Timer Temporizador;
         private System.Windows.Forms.TextBox txtTemporizador2;
         private FontAwesome.Sharp.IconButton btnAddMin2;
         private FontAwesome.Sharp.IconButton btnAddSeg2;
@@ -1953,10 +1950,10 @@
         private System.Windows.Forms.PictureBox picYELLOW;
         private System.Windows.Forms.PictureBox picRED;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Timer timerForSimulation;
         private System.Windows.Forms.Label SelectTittle;
         private System.Windows.Forms.TextBox txtTest;
         private FontAwesome.Sharp.IconButton btnSetTemp;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Timer TimerDataTCS;
     }
 }
