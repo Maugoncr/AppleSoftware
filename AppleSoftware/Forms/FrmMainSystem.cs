@@ -520,9 +520,11 @@ namespace AppleSoftware.Forms
                     if (serialPort1.IsOpen)
                     {
                         SetConfigSerialPortForChiller();
+                        Thread.Sleep(1000);
                         serialPort1.DiscardOutBuffer();
                         serialPort1.WriteLine(":0106000C0001EC" + Environment.NewLine);
                         BanderaRespuestaParaTCS = false;
+                        Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
 
                     }
@@ -551,9 +553,11 @@ namespace AppleSoftware.Forms
                 if (FormatCadena == "Chiller")
                 {
                     SetConfigSerialPortForChiller();
+                    Thread.Sleep(1000);
                     serialPort1.DiscardOutBuffer();
                     serialPort1.WriteLine(":0106000C0000ED"+Environment.NewLine);
                     BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
                     SetConfigSerialPortForTCS();
                 }
 
@@ -968,7 +972,9 @@ namespace AppleSoftware.Forms
                 {
                     case "Chiller":
                         SetConfigSerialPortForChiller();
+                        Thread.Sleep(1000);
                         SetTemperatureChiller(txtSetTemp1.Text);
+                        Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
                         break;
                     case "Heater":

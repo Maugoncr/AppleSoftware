@@ -41,6 +41,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainSystem));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.btnMaxi = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -175,7 +176,6 @@
             this.Chiller2 = new System.Windows.Forms.Panel();
             this.Chiller3 = new System.Windows.Forms.Panel();
             this.Chiller4Label = new System.Windows.Forms.Label();
-            this.btnMaxi = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -212,6 +212,22 @@
             this.panelTop.Size = new System.Drawing.Size(1300, 68);
             this.panelTop.TabIndex = 0;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
+            // 
+            // btnMaxi
+            // 
+            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaxi.FlatAppearance.BorderSize = 0;
+            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaxi.IconColor = System.Drawing.Color.White;
+            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaxi.IconSize = 25;
+            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
+            this.btnMaxi.Name = "btnMaxi";
+            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
+            this.btnMaxi.TabIndex = 99;
+            this.btnMaxi.UseVisualStyleBackColor = false;
+            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
             // 
             // pictureBox1
             // 
@@ -1686,22 +1702,6 @@
             this.Chiller4Label.Size = new System.Drawing.Size(17, 13);
             this.Chiller4Label.TabIndex = 169;
             this.Chiller4Label.Text = "RC";
-            // 
-            // btnMaxi
-            // 
-            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaxi.FlatAppearance.BorderSize = 0;
-            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaxi.IconColor = System.Drawing.Color.White;
-            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMaxi.IconSize = 25;
-            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
-            this.btnMaxi.Name = "btnMaxi";
-            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
-            this.btnMaxi.TabIndex = 99;
-            this.btnMaxi.UseVisualStyleBackColor = false;
-            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
             // 
             // FrmMainSystem
             // 
