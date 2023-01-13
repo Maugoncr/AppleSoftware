@@ -91,6 +91,7 @@ namespace AppleSoftware.Forms
             checkByRanges.Checked = false;
             CualTemperatura = 1;
             FormatCadena = "Ninguno";
+            ChillerRangeOff();
 
             // CONECTAR COM
             btnConnect.Enabled = false;
@@ -139,7 +140,37 @@ namespace AppleSoftware.Forms
 
             chart1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
 
-            
+            // Limpiar datos Tc's
+            txtActualTempTCGeneral.Clear();
+            txtTC1.Clear();
+            txtTC2.Clear();
+            txtTC3.Clear();
+            txtTC4.Clear();
+            txtTC5.Clear();
+            txtTC6.Clear();
+            txtTC7.Clear();
+            txtTC8.Clear();
+
+             TC1S = "";
+             TC2S = "";
+             TC3S = "";
+             TC4S = "";
+             TC5S = "";
+             TC6S = "";
+             TC7S = "";
+             TC8S = "";
+             TC9S = "";
+             TC10S = "";
+             TC1Num = 0;
+             TC2Num = 0;
+             TC3Num = 0;
+             TC4Num = 0;
+             TC5Num = 0;
+             TC6Num = 0;
+             TC7Num = 0;
+             TC8Num = 0;
+             TC9Num = 0;
+             TC10Num = 0;
 
 
             i = false;
@@ -164,7 +195,7 @@ namespace AppleSoftware.Forms
            
             txtSetTemp2.Clear();
 
-            SelectTittle.Text = "";
+            SelectTittle.Text = "Not selected";
             lbStatus.Text = "-----";
             lbStatus.ForeColor = Color.Red;
 
@@ -197,21 +228,6 @@ namespace AppleSoftware.Forms
 
         }
 
-        //private void CambiarTrackbar()
-        //{
-        //    if (TrackbarTemp.Minimum == 5 && TrackbarTemp.Maximum == 40)
-        //    {
-        //        lbl_P_90.Visible = false;
-
-        //    }
-        //    else
-        //    {
-        //        lbl_P_90.Visible = true;
-        //        lbl_P_90.Location = 383, 95;
-
-        //    }      
-        
-        //}
 
 
 
@@ -254,6 +270,7 @@ namespace AppleSoftware.Forms
                 if (cbSelect.SelectedIndex == 1)
                 {
                     FormatCadena = "Chiller";
+                    ChillerRangeOn();
                     //TrackbarTemp.Minimum = 5;
                     //TrackbarTemp.Maximum = 40;
                     //TrackbarTemp.Size = new System.Drawing.Size(32, 231);
@@ -288,6 +305,8 @@ namespace AppleSoftware.Forms
                 else if (cbSelect.SelectedIndex == 0)
                 {
                     FormatCadena = "Heater";
+                    ChillerRangeOff();
+
 
                     SelectTittle.Text = "Heating";
                     txtSetTemp2.Text = "5";
@@ -328,6 +347,14 @@ namespace AppleSoftware.Forms
             if (CualTemperatura == 2)
             {
                 txtSetTemp2.Text = TrackbarTemp.Value.ToString();
+            }
+            if (TrackbarTemp.Value < 5)
+            {
+                TrackbarTemp.Value = 5;
+            }
+            if (TrackbarTemp.Value > 80)
+            {
+                TrackbarTemp.Value = 80;
             }
         }
 
@@ -393,12 +420,44 @@ namespace AppleSoftware.Forms
                 {
                     System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtSetTemp1.Clear();
-                    TrackbarTemp.Value = 0;
+                    TrackbarTemp.Value = 25;
                     return;
                 }
-                TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                if (FormatCadena == "Chiller")
+                {
+                    int validate =  Convert.ToInt32(txtSetTemp1.Text.Trim());
+                    if (validate >= 5 && validate <= 40)
+                    {
+                        TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtSetTemp1.Clear();
+                        TrackbarTemp.Value = 5;
+                        return;
+                    }
+                }
+               
             }
             
+        }
+
+       
+        private void ChillerRangeOn()
+        {
+                Chiller1.Visible = true;
+                Chiller2.Visible = true;
+                Chiller3.Visible = true;
+                Chiller4Label.Visible = true;
+                Chiller4Label.Text = "R\na\nn\ng\ne\n\nC\nh\ni\nl\nl\ne\nr";
+        }
+        private void ChillerRangeOff()
+        {
+            Chiller1.Visible = false;
+            Chiller2.Visible = false;
+            Chiller3.Visible = false;
+            Chiller4Label.Visible = false;
         }
 
         private void txtSetTemp2_TextChanged(object sender, EventArgs e)
@@ -597,7 +656,7 @@ namespace AppleSoftware.Forms
                     // cCHANGER
                     TimerDataTCS.Start();
                     ResetearChart();
-                   // timerForTC.Start();
+                    timerForTC.Start();
 
                     PicTC1.Image.Dispose();
                     PicTC1.Image = Properties.Resources.tc1on;
@@ -974,7 +1033,6 @@ namespace AppleSoftware.Forms
 
             string ComandoFinal = ":0106000B" + TemperaturaComand + Temperatura;
 
-            txtTest.Text = ComandoFinal;
 
             serialPort1.DiscardOutBuffer();
             serialPort1.WriteLine(ComandoFinal + Environment.NewLine);
@@ -1076,15 +1134,17 @@ namespace AppleSoftware.Forms
                     {
                         try
                         {
-                            Thread.Sleep(1000);
-                            if (!string.IsNullOrEmpty(serialPort1.ReadExisting()))
+                            Thread.Sleep(2000);
+                            string DataIn = serialPort1.ReadExisting();
+                            if (DataIn != null && DataIn != String.Empty)
                             {
-                                ReadData(serialPort1.ReadExisting());
+                                ReadData(DataIn);
+                                serialPort1.DiscardInBuffer();
                             }
                         }
                         catch (Exception)
                         {
-                            throw;
+                           
                         }
                     }
                 
@@ -1183,6 +1243,7 @@ namespace AppleSoftware.Forms
             {
                 // Paso 1 Quitar cualquier espacio
                 string tcs = data.Trim();
+                tcs = tcs.Replace("\r",string.Empty);
                 //Paso 2 quitar el >+ inicial
                 tcs = tcs.Substring(2);
                 //Paso 3 separar por +
@@ -1248,7 +1309,7 @@ namespace AppleSoftware.Forms
 
         private void GraficarDatosTxt()
         {
-            txtTC1.Text = TC1S;
+            txtTC1.Text = TC9S;
             txtTC2.Text = TC2S;
             txtTC3.Text = TC3S;
             txtTC4.Text = TC4S;
@@ -1263,6 +1324,18 @@ namespace AppleSoftware.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnMaxi_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

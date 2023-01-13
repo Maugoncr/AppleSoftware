@@ -146,8 +146,6 @@
             this.txtTemporizador2 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.SelectTittle = new System.Windows.Forms.Label();
-            this.txtTest = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
             this.btnSetTemp = new FontAwesome.Sharp.IconButton();
             this.picGREEN = new System.Windows.Forms.PictureBox();
             this.picYELLOW = new System.Windows.Forms.PictureBox();
@@ -173,6 +171,11 @@
             this.btnEMO = new System.Windows.Forms.PictureBox();
             this.btnON = new FontAwesome.Sharp.IconButton();
             this.TimerDataTCS = new System.Windows.Forms.Timer(this.components);
+            this.Chiller1 = new System.Windows.Forms.Panel();
+            this.Chiller2 = new System.Windows.Forms.Panel();
+            this.Chiller3 = new System.Windows.Forms.Panel();
+            this.Chiller4Label = new System.Windows.Forms.Label();
+            this.btnMaxi = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -196,6 +199,7 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelTop.Controls.Add(this.btnMaxi);
             this.panelTop.Controls.Add(this.pictureBox1);
             this.panelTop.Controls.Add(this.label33);
             this.panelTop.Controls.Add(this.label6);
@@ -248,7 +252,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
             this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 30;
             this.btnClose.Location = new System.Drawing.Point(1252, 0);
             this.btnClose.Name = "btnClose";
@@ -652,6 +656,7 @@
             this.checkOnlyOne.TabIndex = 63;
             this.checkOnlyOne.Text = "Only one";
             this.checkOnlyOne.UseVisualStyleBackColor = false;
+            this.checkOnlyOne.Visible = false;
             this.checkOnlyOne.CheckedChanged += new System.EventHandler(this.checkOnlyOne_CheckedChanged);
             // 
             // checkByRanges
@@ -665,6 +670,7 @@
             this.checkByRanges.TabIndex = 64;
             this.checkByRanges.Text = "By Ranges";
             this.checkByRanges.UseVisualStyleBackColor = false;
+            this.checkByRanges.Visible = false;
             this.checkByRanges.CheckedChanged += new System.EventHandler(this.checkByRanges_CheckedChanged);
             // 
             // lbSetTemp2
@@ -715,7 +721,7 @@
             // txtActualTempTCGeneral
             // 
             this.txtActualTempTCGeneral.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(250, 439);
+            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(89, 406);
             this.txtActualTempTCGeneral.Name = "txtActualTempTCGeneral";
             this.txtActualTempTCGeneral.Size = new System.Drawing.Size(96, 29);
             this.txtActualTempTCGeneral.TabIndex = 70;
@@ -727,7 +733,7 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(192, 445);
+            this.label4.Location = new System.Drawing.Point(30, 412);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 18);
             this.label4.TabIndex = 71;
@@ -1194,13 +1200,14 @@
             // 
             this.TrackbarTemp.AutoSize = false;
             this.TrackbarTemp.BackColor = System.Drawing.Color.White;
-            this.TrackbarTemp.Location = new System.Drawing.Point(353, 88);
+            this.TrackbarTemp.Location = new System.Drawing.Point(348, 88);
             this.TrackbarTemp.Maximum = 90;
             this.TrackbarTemp.Name = "TrackbarTemp";
             this.TrackbarTemp.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.TrackbarTemp.Size = new System.Drawing.Size(32, 495);
             this.TrackbarTemp.TabIndex = 124;
             this.TrackbarTemp.TickFrequency = 5;
+            this.TrackbarTemp.Value = 40;
             this.TrackbarTemp.Scroll += new System.EventHandler(this.TrackbarTemp_Scroll);
             // 
             // panel5
@@ -1308,6 +1315,7 @@
             this.txtTemporizador2.TabIndex = 156;
             this.txtTemporizador2.Text = "00:00";
             this.txtTemporizador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTemporizador2.Visible = false;
             // 
             // label43
             // 
@@ -1333,27 +1341,6 @@
             this.SelectTittle.TabIndex = 62;
             this.SelectTittle.Text = "Choose";
             // 
-            // txtTest
-            // 
-            this.txtTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTest.Location = new System.Drawing.Point(180, 308);
-            this.txtTest.Multiline = true;
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(152, 61);
-            this.txtTest.TabIndex = 164;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.Black;
-            this.label44.Location = new System.Drawing.Point(292, 287);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(40, 18);
-            this.label44.TabIndex = 166;
-            this.label44.Text = "Sent";
-            // 
             // btnSetTemp
             // 
             this.btnSetTemp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1364,7 +1351,7 @@
             this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
             this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnSetTemp.IconSize = 25;
-            this.btnSetTemp.Location = new System.Drawing.Point(172, 270);
+            this.btnSetTemp.Location = new System.Drawing.Point(180, 304);
             this.btnSetTemp.Name = "btnSetTemp";
             this.btnSetTemp.Size = new System.Drawing.Size(34, 28);
             this.btnSetTemp.TabIndex = 165;
@@ -1417,6 +1404,7 @@
             this.btnReset2.Size = new System.Drawing.Size(26, 23);
             this.btnReset2.TabIndex = 159;
             this.btnReset2.UseVisualStyleBackColor = false;
+            this.btnReset2.Visible = false;
             this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
             // 
             // btnAddSeg2
@@ -1432,6 +1420,7 @@
             this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
             this.btnAddSeg2.TabIndex = 158;
             this.btnAddSeg2.UseVisualStyleBackColor = false;
+            this.btnAddSeg2.Visible = false;
             this.btnAddSeg2.Click += new System.EventHandler(this.btnAddSeg2_Click);
             // 
             // btnAddMin2
@@ -1447,6 +1436,7 @@
             this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
             this.btnAddMin2.TabIndex = 157;
             this.btnAddMin2.UseVisualStyleBackColor = false;
+            this.btnAddMin2.Visible = false;
             this.btnAddMin2.Click += new System.EventHandler(this.btnAddMin2_Click);
             // 
             // btnReset
@@ -1661,15 +1651,69 @@
             this.TimerDataTCS.Interval = 5000;
             this.TimerDataTCS.Tick += new System.EventHandler(this.TimerDataTCS_Tick);
             // 
+            // Chiller1
+            // 
+            this.Chiller1.BackColor = System.Drawing.Color.Lime;
+            this.Chiller1.Location = new System.Drawing.Point(325, 360);
+            this.Chiller1.Name = "Chiller1";
+            this.Chiller1.Size = new System.Drawing.Size(5, 188);
+            this.Chiller1.TabIndex = 166;
+            // 
+            // Chiller2
+            // 
+            this.Chiller2.BackColor = System.Drawing.Color.Lime;
+            this.Chiller2.Location = new System.Drawing.Point(330, 360);
+            this.Chiller2.Name = "Chiller2";
+            this.Chiller2.Size = new System.Drawing.Size(20, 5);
+            this.Chiller2.TabIndex = 167;
+            // 
+            // Chiller3
+            // 
+            this.Chiller3.BackColor = System.Drawing.Color.Lime;
+            this.Chiller3.Location = new System.Drawing.Point(330, 543);
+            this.Chiller3.Name = "Chiller3";
+            this.Chiller3.Size = new System.Drawing.Size(20, 5);
+            this.Chiller3.TabIndex = 168;
+            // 
+            // Chiller4Label
+            // 
+            this.Chiller4Label.AutoSize = true;
+            this.Chiller4Label.BackColor = System.Drawing.Color.White;
+            this.Chiller4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Chiller4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chiller4Label.Location = new System.Drawing.Point(307, 365);
+            this.Chiller4Label.Name = "Chiller4Label";
+            this.Chiller4Label.Size = new System.Drawing.Size(17, 13);
+            this.Chiller4Label.TabIndex = 169;
+            this.Chiller4Label.Text = "RC";
+            // 
+            // btnMaxi
+            // 
+            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaxi.FlatAppearance.BorderSize = 0;
+            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaxi.IconColor = System.Drawing.Color.White;
+            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaxi.IconSize = 25;
+            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
+            this.btnMaxi.Name = "btnMaxi";
+            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
+            this.btnMaxi.TabIndex = 99;
+            this.btnMaxi.UseVisualStyleBackColor = false;
+            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
-            this.Controls.Add(this.label44);
+            this.Controls.Add(this.Chiller4Label);
+            this.Controls.Add(this.Chiller3);
+            this.Controls.Add(this.Chiller2);
+            this.Controls.Add(this.Chiller1);
             this.Controls.Add(this.btnSetTemp);
-            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.SelectTittle);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.picGREEN);
@@ -1951,9 +1995,12 @@
         private System.Windows.Forms.PictureBox picRED;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label SelectTittle;
-        private System.Windows.Forms.TextBox txtTest;
         private FontAwesome.Sharp.IconButton btnSetTemp;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Timer TimerDataTCS;
+        private System.Windows.Forms.Panel Chiller1;
+        private System.Windows.Forms.Panel Chiller2;
+        private System.Windows.Forms.Panel Chiller3;
+        private System.Windows.Forms.Label Chiller4Label;
+        private FontAwesome.Sharp.IconButton btnMaxi;
     }
 }
