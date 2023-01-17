@@ -1,8 +1,10 @@
-﻿using System;
+﻿using EasyModbus;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -16,6 +18,9 @@ namespace AppleSoftware.Forms
     public partial class FrmChartTesting : Form
     {
 
+        ModbusClient modbusClient = new ModbusClient("COM3");
+
+
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -24,7 +29,6 @@ namespace AppleSoftware.Forms
         public FrmChartTesting()
         {
             InitializeComponent();
-
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
@@ -56,25 +60,45 @@ namespace AppleSoftware.Forms
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (serialPort1.IsOpen)
-            //    {
-            //        serialPort1.DiscardOutBuffer();
-            //        serialPort1.Write(txtSend.Text+"\r");
+            try
+            {
+                if (serialPort1.IsOpen)
+                {
+                    serialPort1.DiscardInBuffer();
+                    serialPort1.DiscardOutBuffer();
+                    // byte[] bytes = Encoding.ASCII.GetBytes(txtSend.Text);
+                    //Con este responde leer un dato
+                    // byte[] bytes = { 04, 03, 32 ,00,00,01,143,159 };
 
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
+                    // Con este setea a 20 set point
 
-            //    MessageBox.Show(ex.Message); ;
-            //}
 
-            ReadData(">+0022.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9+9999.9");
+                      byte[] bytes = { 4, 6, 33 ,3,0,200,114,53 };
+
+                  //  int holamundo = 20;
+                  //  byte[] bytes = { 4, 6, (byte)holamundo };
+
+
+                    serialPort1.Write(bytes, 0, bytes.Length);
+                 
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+         
+           
+
+
         }
 
-        private void btnReceive_Click(object sender, EventArgs e)
+      
+
+
+            private void btnReceive_Click(object sender, EventArgs e)
         {
             try
             {
@@ -253,7 +277,95 @@ namespace AppleSoftware.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            byte[] bytes = Encoding.ASCII.GetBytes(cadena1.Text);
+            ushort test = Modbus(bytes);
 
+            convertida.Text = test.ToString();
+
+            //string input = cadena1.Text;
+            //var bytes = HexToBytes(input);
+            //string hex = Crc16.ComputeChecksum(bytes).ToString("x2");
+            //convertida.Text = (hex); //c061
+        }
+
+        static byte[] HexToBytes(string input)
+        {
+            byte[] result = new byte[input.Length / 2];
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = Convert.ToByte(input.Substring(2 * i, 2), 16);
+            }
+            return result;
+        }
+
+        public static class Crc16
+        {
+            const ushort polynomial = 0xA001;
+            static readonly ushort[] table = new ushort[256];
+
+            public static ushort ComputeChecksum(byte[] bytes)
+            {
+                ushort crc = 0;
+                for (int i = 0; i < bytes.Length; ++i)
+                {
+                    byte index = (byte)(crc ^ bytes[i]);
+                    crc = (ushort)((crc >> 8) ^ table[index]);
+                }
+                return crc;
+            }
+
+            static Crc16()
+            {
+                ushort value;
+                ushort temp;
+                for (ushort i = 0; i < table.Length; ++i)
+                {
+                    value = 0;
+                    temp = i;
+                    for (byte j = 0; j < 8; ++j)
+                    {
+                        if (((value ^ temp) & 0x0001) != 0)
+                        {
+                            value = (ushort)((value >> 1) ^ polynomial);
+                        }
+                        else
+                        {
+                            value >>= 1;
+                        }
+                        temp >>= 1;
+                    }
+                    table[i] = value;
+                }
+            }
+        }
+
+        public static ushort Modbus(byte[] buf)
+        {
+            ushort crc = 0xFFFF;
+            int len = buf.Length;
+
+            for (int pos = 0; pos < len; pos++)
+            {
+                crc ^= buf[pos];
+
+                for (int i = 8; i != 0; i--)
+                {
+                    if ((crc & 0x0001) != 0)
+                    {
+                        crc >>= 1;
+                        crc ^= 0xA001;
+                    }
+                    else
+                        crc >>= 1;
+                }
+            }
+
+            // lo-hi
+            return crc;
+
+            // ..or
+            // hi-lo reordered
+           // return (ushort)((crc >> 8) | (crc << 8));
         }
 
         public static String decimalHexadecimal(int numero)
@@ -338,5 +450,17 @@ namespace AppleSoftware.Forms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            modbusClient.UnitIdentifier = 1;// Not necessary since default slaveID = 1;
+            modbusClient.Baudrate = 9600;	// Not necessary since default baudrate = 9600
+            modbusClient.Parity = System.IO.Ports.Parity.Even;
+            modbusClient.StopBits = System.IO.Ports.StopBits.One;
+            modbusClient.ConnectionTimeout = 500;
+            modbusClient.Connect();
+        }
+
+       
     }
 }
