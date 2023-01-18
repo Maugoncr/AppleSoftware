@@ -278,12 +278,9 @@ namespace AppleSoftware.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen)
+            for (int i = 0; i < 101; i++)
             {
-
-                byte[] bytes = { 4, 6, 33, 3, 0, 200, 114, 53 };
-
-                serialPort1.Write(bytes, 0, bytes.Length);
+                txtReceive.Text += "case "+'"' + i.ToString() + '"'+":\n\nbreak;";
 
 
             }
