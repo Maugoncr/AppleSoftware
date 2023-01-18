@@ -1364,7 +1364,7 @@ namespace AppleSoftware.Forms
                                 Thread.Sleep(1000);
                                 serialPort1.DiscardOutBuffer();
                                 //TODO Cambiar las cadenas
-                                byte[] bytes52 = { 4, 6, 33, 3, 2, 8, 73, 5 };
+                                byte[] bytes52 = { 4, 6, 33, 3, 2, 8, 115, 5 };
                                 serialPort1.Write(bytes52, 0, bytes52.Length);
                                 BanderaRespuestaParaTCS = false;
                                 Thread.Sleep(1000);
@@ -1754,7 +1754,7 @@ namespace AppleSoftware.Forms
                                 Thread.Sleep(1000);
                                 serialPort1.DiscardOutBuffer();
                                 //TODO Cambiar las cadenas
-                                byte[] bytes82 = { 4, 6, 33, 3, 3, 52, 114, 183 };
+                                byte[] bytes82 = { 4, 6, 33, 3, 3, 52, 114, 132 };
                                 serialPort1.Write(bytes82, 0, bytes82.Length);
                                 BanderaRespuestaParaTCS = false;
                                 Thread.Sleep(1000);
