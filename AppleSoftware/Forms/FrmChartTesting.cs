@@ -1,5 +1,6 @@
 ﻿using EasyModbus;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,7 +74,7 @@ namespace AppleSoftware.Forms
                     // Con este setea a 20 set point
 
 
-                      byte[] bytes = { 4, 6, 33 ,3,0,200,114,53 };
+                    byte[] bytes = { 4, 6, 33, 3, 1, 254, 243, 179 };
 
                   //  int holamundo = 20;
                   //  byte[] bytes = { 4, 6, (byte)holamundo };
@@ -277,16 +278,19 @@ namespace AppleSoftware.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(cadena1.Text);
-            ushort test = Modbus(bytes);
+            if (serialPort1.IsOpen)
+            {
 
-            convertida.Text = test.ToString();
+                byte[] bytes = { 4, 6, 33, 3, 0, 200, 114, 53 };
 
-            //string input = cadena1.Text;
-            //var bytes = HexToBytes(input);
-            //string hex = Crc16.ComputeChecksum(bytes).ToString("x2");
-            //convertida.Text = (hex); //c061
+                serialPort1.Write(bytes, 0, bytes.Length);
+
+
+            }
+
         }
+
+      
 
         static byte[] HexToBytes(string input)
         {
@@ -298,75 +302,7 @@ namespace AppleSoftware.Forms
             return result;
         }
 
-        public static class Crc16
-        {
-            const ushort polynomial = 0xA001;
-            static readonly ushort[] table = new ushort[256];
-
-            public static ushort ComputeChecksum(byte[] bytes)
-            {
-                ushort crc = 0;
-                for (int i = 0; i < bytes.Length; ++i)
-                {
-                    byte index = (byte)(crc ^ bytes[i]);
-                    crc = (ushort)((crc >> 8) ^ table[index]);
-                }
-                return crc;
-            }
-
-            static Crc16()
-            {
-                ushort value;
-                ushort temp;
-                for (ushort i = 0; i < table.Length; ++i)
-                {
-                    value = 0;
-                    temp = i;
-                    for (byte j = 0; j < 8; ++j)
-                    {
-                        if (((value ^ temp) & 0x0001) != 0)
-                        {
-                            value = (ushort)((value >> 1) ^ polynomial);
-                        }
-                        else
-                        {
-                            value >>= 1;
-                        }
-                        temp >>= 1;
-                    }
-                    table[i] = value;
-                }
-            }
-        }
-
-        public static ushort Modbus(byte[] buf)
-        {
-            ushort crc = 0xFFFF;
-            int len = buf.Length;
-
-            for (int pos = 0; pos < len; pos++)
-            {
-                crc ^= buf[pos];
-
-                for (int i = 8; i != 0; i--)
-                {
-                    if ((crc & 0x0001) != 0)
-                    {
-                        crc >>= 1;
-                        crc ^= 0xA001;
-                    }
-                    else
-                        crc >>= 1;
-                }
-            }
-
-            // lo-hi
-            return crc;
-
-            // ..or
-            // hi-lo reordered
-           // return (ushort)((crc >> 8) | (crc << 8));
-        }
+            
 
         public static String decimalHexadecimal(int numero)
         {

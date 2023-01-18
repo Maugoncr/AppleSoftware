@@ -561,6 +561,11 @@ namespace AppleSoftware.Forms
                     SetConfigSerialPortForTCS();
                 }
 
+                if (FormatCadena == )
+                {
+
+                }
+
             }
         }
 
