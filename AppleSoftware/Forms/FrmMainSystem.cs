@@ -1183,6 +1183,16 @@ namespace AppleSoftware.Forms
 
                                 break;
                             case "50":
+                                SetConfigSerialPortForHeater();
+                                Thread.Sleep(1000);
+                                serialPort1.DiscardOutBuffer();
+                                //TODO Cambiar las cadenas
+                                byte[] bytes50 = { 4, 6, 33, 3, 1, 244, 115, 180 };
+                                serialPort1.Write(bytes50, 0, bytes50.Length);
+                                BanderaRespuestaParaTCS = false;
+                                Thread.Sleep(1000);
+                                SetConfigSerialPortForTCS();
+                               // Check ☻
 
                                 break;
                             case "51":
