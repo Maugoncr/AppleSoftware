@@ -1462,6 +1462,7 @@ namespace AppleSoftware.Forms
                 checkTemp2.Enabled = true;
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
                 Temporizador.Stop();
+                txtActualSetPoint.Clear();
 
                 //Apagar Chiller
 

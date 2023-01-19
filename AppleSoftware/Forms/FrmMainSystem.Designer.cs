@@ -41,8 +41,11 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainSystem));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.btnMaxi = new FontAwesome.Sharp.IconButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lbHora = new System.Windows.Forms.Label();
             this.cbSelect = new System.Windows.Forms.ComboBox();
@@ -178,12 +181,10 @@
             this.btnConnect = new FontAwesome.Sharp.IconButton();
             this.btnEMO = new System.Windows.Forms.PictureBox();
             this.btnON = new FontAwesome.Sharp.IconButton();
-            this.btnMaxi = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.txtActualSetPoint = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -201,7 +202,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -220,6 +220,32 @@
             this.panelTop.Size = new System.Drawing.Size(1300, 68);
             this.panelTop.TabIndex = 0;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
+            // 
+            // btnMaxi
+            // 
+            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaxi.FlatAppearance.BorderSize = 0;
+            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaxi.IconColor = System.Drawing.Color.White;
+            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaxi.IconSize = 25;
+            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
+            this.btnMaxi.Name = "btnMaxi";
+            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
+            this.btnMaxi.TabIndex = 99;
+            this.btnMaxi.UseVisualStyleBackColor = false;
+            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.MIDORI_OFICIAL3;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 95;
+            this.pictureBox1.TabStop = false;
             // 
             // label33
             // 
@@ -242,6 +268,22 @@
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 93;
             this.label6.Text = "1.001.1";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
+            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 30;
+            this.btnClose.Location = new System.Drawing.Point(1252, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(48, 44);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lbFecha
             // 
@@ -1420,7 +1462,7 @@
             this.BtnRefreshCOM.IconColor = System.Drawing.Color.Black;
             this.BtnRefreshCOM.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.BtnRefreshCOM.IconSize = 30;
-            this.BtnRefreshCOM.Location = new System.Drawing.Point(158, 88);
+            this.BtnRefreshCOM.Location = new System.Drawing.Point(250, 125);
             this.BtnRefreshCOM.Name = "BtnRefreshCOM";
             this.BtnRefreshCOM.Size = new System.Drawing.Size(34, 33);
             this.BtnRefreshCOM.TabIndex = 174;
@@ -1702,7 +1744,7 @@
             this.btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
             this.btnConnect.IconColor = System.Drawing.Color.Black;
             this.btnConnect.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnConnect.Location = new System.Drawing.Point(250, 126);
+            this.btnConnect.Location = new System.Drawing.Point(201, 92);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(48, 33);
             this.btnConnect.TabIndex = 107;
@@ -1738,48 +1780,6 @@
             this.btnON.TabIndex = 0;
             this.btnON.UseVisualStyleBackColor = false;
             this.btnON.Click += new System.EventHandler(this.btnON_Click);
-            // 
-            // btnMaxi
-            // 
-            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaxi.FlatAppearance.BorderSize = 0;
-            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaxi.IconColor = System.Drawing.Color.White;
-            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMaxi.IconSize = 25;
-            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
-            this.btnMaxi.Name = "btnMaxi";
-            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
-            this.btnMaxi.TabIndex = 99;
-            this.btnMaxi.UseVisualStyleBackColor = false;
-            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.MIDORI_OFICIAL3;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 95;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(1252, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(48, 44);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // txtActualSetPoint
             // 
@@ -1950,6 +1950,7 @@
             this.Load += new System.EventHandler(this.FrmMainSystem_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1967,7 +1968,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
