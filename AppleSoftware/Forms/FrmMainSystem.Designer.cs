@@ -41,11 +41,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainSystem));
             this.panelTop = new System.Windows.Forms.Panel();
-            this.btnMaxi = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lbHora = new System.Windows.Forms.Label();
             this.cbSelect = new System.Windows.Forms.ComboBox();
@@ -110,7 +107,6 @@
             this.lbl_P_40 = new System.Windows.Forms.Label();
             this.lbl_P_70 = new System.Windows.Forms.Label();
             this.lbl_P_20 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lbC2 = new System.Windows.Forms.Label();
             this.TimerHoraFecha = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -147,6 +143,17 @@
             this.txtTemporizador2 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.SelectTittle = new System.Windows.Forms.Label();
+            this.TimerDataTCS = new System.Windows.Forms.Timer(this.components);
+            this.Chiller1 = new System.Windows.Forms.Panel();
+            this.Chiller2 = new System.Windows.Forms.Panel();
+            this.Chiller3 = new System.Windows.Forms.Panel();
+            this.Chiller4Label = new System.Windows.Forms.Label();
+            this.Heat1 = new System.Windows.Forms.Panel();
+            this.Heat3 = new System.Windows.Forms.Panel();
+            this.Heat2 = new System.Windows.Forms.Panel();
+            this.Heat4Label = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.BtnRefreshCOM = new FontAwesome.Sharp.IconButton();
             this.btnSetTemp = new FontAwesome.Sharp.IconButton();
             this.picGREEN = new System.Windows.Forms.PictureBox();
             this.picYELLOW = new System.Windows.Forms.PictureBox();
@@ -171,15 +178,15 @@
             this.btnConnect = new FontAwesome.Sharp.IconButton();
             this.btnEMO = new System.Windows.Forms.PictureBox();
             this.btnON = new FontAwesome.Sharp.IconButton();
-            this.TimerDataTCS = new System.Windows.Forms.Timer(this.components);
-            this.Chiller1 = new System.Windows.Forms.Panel();
-            this.Chiller2 = new System.Windows.Forms.Panel();
-            this.Chiller3 = new System.Windows.Forms.Panel();
-            this.Chiller4Label = new System.Windows.Forms.Label();
+            this.btnMaxi = new FontAwesome.Sharp.IconButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.txtActualSetPoint = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGREEN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYELLOW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRED)).BeginInit();
@@ -194,6 +201,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -212,32 +220,6 @@
             this.panelTop.Size = new System.Drawing.Size(1300, 68);
             this.panelTop.TabIndex = 0;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
-            // 
-            // btnMaxi
-            // 
-            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaxi.FlatAppearance.BorderSize = 0;
-            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaxi.IconColor = System.Drawing.Color.White;
-            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMaxi.IconSize = 25;
-            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
-            this.btnMaxi.Name = "btnMaxi";
-            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
-            this.btnMaxi.TabIndex = 99;
-            this.btnMaxi.UseVisualStyleBackColor = false;
-            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.MIDORI_OFICIAL3;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 95;
-            this.pictureBox1.TabStop = false;
             // 
             // label33
             // 
@@ -260,22 +242,6 @@
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 93;
             this.label6.Text = "1.001.1";
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(1252, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(48, 44);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lbFecha
             // 
@@ -417,6 +383,7 @@
             this.txtTC1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC1.Location = new System.Drawing.Point(37, 704);
             this.txtTC1.Name = "txtTC1";
+            this.txtTC1.ReadOnly = true;
             this.txtTC1.Size = new System.Drawing.Size(109, 35);
             this.txtTC1.TabIndex = 38;
             this.txtTC1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -426,6 +393,7 @@
             this.txtTC2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC2.Location = new System.Drawing.Point(191, 704);
             this.txtTC2.Name = "txtTC2";
+            this.txtTC2.ReadOnly = true;
             this.txtTC2.Size = new System.Drawing.Size(109, 35);
             this.txtTC2.TabIndex = 41;
             this.txtTC2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -457,6 +425,7 @@
             this.txtTC3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC3.Location = new System.Drawing.Point(353, 704);
             this.txtTC3.Name = "txtTC3";
+            this.txtTC3.ReadOnly = true;
             this.txtTC3.Size = new System.Drawing.Size(109, 35);
             this.txtTC3.TabIndex = 44;
             this.txtTC3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -488,6 +457,7 @@
             this.txtTC4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC4.Location = new System.Drawing.Point(514, 704);
             this.txtTC4.Name = "txtTC4";
+            this.txtTC4.ReadOnly = true;
             this.txtTC4.Size = new System.Drawing.Size(109, 35);
             this.txtTC4.TabIndex = 47;
             this.txtTC4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -519,6 +489,7 @@
             this.txtTC5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC5.Location = new System.Drawing.Point(678, 704);
             this.txtTC5.Name = "txtTC5";
+            this.txtTC5.ReadOnly = true;
             this.txtTC5.Size = new System.Drawing.Size(109, 35);
             this.txtTC5.TabIndex = 50;
             this.txtTC5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -550,6 +521,7 @@
             this.txtTC6.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC6.Location = new System.Drawing.Point(840, 704);
             this.txtTC6.Name = "txtTC6";
+            this.txtTC6.ReadOnly = true;
             this.txtTC6.Size = new System.Drawing.Size(109, 35);
             this.txtTC6.TabIndex = 53;
             this.txtTC6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -581,6 +553,7 @@
             this.txtTC7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC7.Location = new System.Drawing.Point(1006, 704);
             this.txtTC7.Name = "txtTC7";
+            this.txtTC7.ReadOnly = true;
             this.txtTC7.Size = new System.Drawing.Size(109, 35);
             this.txtTC7.TabIndex = 56;
             this.txtTC7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -612,6 +585,7 @@
             this.txtTC8.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTC8.Location = new System.Drawing.Point(1164, 704);
             this.txtTC8.Name = "txtTC8";
+            this.txtTC8.ReadOnly = true;
             this.txtTC8.Size = new System.Drawing.Size(109, 35);
             this.txtTC8.TabIndex = 59;
             this.txtTC8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -643,7 +617,8 @@
             this.txtSetTemp1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetTemp1.Location = new System.Drawing.Point(60, 304);
             this.txtSetTemp1.Name = "txtSetTemp1";
-            this.txtSetTemp1.Size = new System.Drawing.Size(77, 29);
+            this.txtSetTemp1.ShortcutsEnabled = false;
+            this.txtSetTemp1.Size = new System.Drawing.Size(98, 29);
             this.txtSetTemp1.TabIndex = 61;
             this.txtSetTemp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSetTemp1.TextChanged += new System.EventHandler(this.txtSetTemp1_TextChanged);
@@ -655,7 +630,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(30, 276);
+            this.label3.Location = new System.Drawing.Point(20, 275);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 62;
@@ -666,7 +641,7 @@
             this.checkOnlyOne.AutoSize = true;
             this.checkOnlyOne.BackColor = System.Drawing.Color.White;
             this.checkOnlyOne.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkOnlyOne.Location = new System.Drawing.Point(198, 533);
+            this.checkOnlyOne.Location = new System.Drawing.Point(1107, 561);
             this.checkOnlyOne.Name = "checkOnlyOne";
             this.checkOnlyOne.Size = new System.Drawing.Size(87, 22);
             this.checkOnlyOne.TabIndex = 63;
@@ -680,7 +655,7 @@
             this.checkByRanges.AutoSize = true;
             this.checkByRanges.BackColor = System.Drawing.Color.White;
             this.checkByRanges.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkByRanges.Location = new System.Drawing.Point(89, 533);
+            this.checkByRanges.Location = new System.Drawing.Point(1107, 595);
             this.checkByRanges.Name = "checkByRanges";
             this.checkByRanges.Size = new System.Drawing.Size(103, 22);
             this.checkByRanges.TabIndex = 64;
@@ -695,7 +670,7 @@
             this.lbSetTemp2.BackColor = System.Drawing.Color.White;
             this.lbSetTemp2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSetTemp2.ForeColor = System.Drawing.Color.Black;
-            this.lbSetTemp2.Location = new System.Drawing.Point(35, 450);
+            this.lbSetTemp2.Location = new System.Drawing.Point(1137, 543);
             this.lbSetTemp2.Name = "lbSetTemp2";
             this.lbSetTemp2.Size = new System.Drawing.Size(132, 18);
             this.lbSetTemp2.TabIndex = 66;
@@ -704,7 +679,7 @@
             // txtSetTemp2
             // 
             this.txtSetTemp2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetTemp2.Location = new System.Drawing.Point(60, 477);
+            this.txtSetTemp2.Location = new System.Drawing.Point(1211, 554);
             this.txtSetTemp2.Name = "txtSetTemp2";
             this.txtSetTemp2.Size = new System.Drawing.Size(77, 29);
             this.txtSetTemp2.TabIndex = 65;
@@ -727,7 +702,7 @@
             // 
             this.checkTemp2.BackColor = System.Drawing.Color.White;
             this.checkTemp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkTemp2.Location = new System.Drawing.Point(38, 477);
+            this.checkTemp2.Location = new System.Drawing.Point(1200, 557);
             this.checkTemp2.Name = "checkTemp2";
             this.checkTemp2.Size = new System.Drawing.Size(18, 28);
             this.checkTemp2.TabIndex = 68;
@@ -737,9 +712,11 @@
             // txtActualTempTCGeneral
             // 
             this.txtActualTempTCGeneral.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(89, 406);
+            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(33, 448);
             this.txtActualTempTCGeneral.Name = "txtActualTempTCGeneral";
-            this.txtActualTempTCGeneral.Size = new System.Drawing.Size(96, 29);
+            this.txtActualTempTCGeneral.ReadOnly = true;
+            this.txtActualTempTCGeneral.ShortcutsEnabled = false;
+            this.txtActualTempTCGeneral.Size = new System.Drawing.Size(211, 29);
             this.txtActualTempTCGeneral.TabIndex = 70;
             this.txtActualTempTCGeneral.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -749,18 +726,18 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(30, 412);
+            this.label4.Location = new System.Drawing.Point(57, 427);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.Size = new System.Drawing.Size(166, 18);
             this.label4.TabIndex = 71;
-            this.label4.Text = "Status:";
+            this.label4.Text = "General Thermocouple";
             // 
             // lbl_P_90
             // 
             this.lbl_P_90.AutoSize = true;
             this.lbl_P_90.BackColor = System.Drawing.Color.White;
             this.lbl_P_90.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_90.Location = new System.Drawing.Point(383, 95);
+            this.lbl_P_90.Location = new System.Drawing.Point(388, 95);
             this.lbl_P_90.Name = "lbl_P_90";
             this.lbl_P_90.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_90.TabIndex = 92;
@@ -771,7 +748,7 @@
             this.lbl_P_5.AutoSize = true;
             this.lbl_P_5.BackColor = System.Drawing.Color.White;
             this.lbl_P_5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_5.Location = new System.Drawing.Point(388, 537);
+            this.lbl_P_5.Location = new System.Drawing.Point(392, 537);
             this.lbl_P_5.Name = "lbl_P_5";
             this.lbl_P_5.Size = new System.Drawing.Size(19, 15);
             this.lbl_P_5.TabIndex = 83;
@@ -782,7 +759,7 @@
             this.lbl_P_75.AutoSize = true;
             this.lbl_P_75.BackColor = System.Drawing.Color.White;
             this.lbl_P_75.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_75.Location = new System.Drawing.Point(385, 173);
+            this.lbl_P_75.Location = new System.Drawing.Point(389, 173);
             this.lbl_P_75.Name = "lbl_P_75";
             this.lbl_P_75.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_75.TabIndex = 91;
@@ -793,7 +770,7 @@
             this.lbl_P_25.AutoSize = true;
             this.lbl_P_25.BackColor = System.Drawing.Color.White;
             this.lbl_P_25.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_25.Location = new System.Drawing.Point(386, 432);
+            this.lbl_P_25.Location = new System.Drawing.Point(389, 432);
             this.lbl_P_25.Name = "lbl_P_25";
             this.lbl_P_25.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_25.TabIndex = 84;
@@ -804,7 +781,7 @@
             this.lbl_P_85.AutoSize = true;
             this.lbl_P_85.BackColor = System.Drawing.Color.White;
             this.lbl_P_85.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_85.Location = new System.Drawing.Point(383, 122);
+            this.lbl_P_85.Location = new System.Drawing.Point(389, 122);
             this.lbl_P_85.Name = "lbl_P_85";
             this.lbl_P_85.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_85.TabIndex = 90;
@@ -815,7 +792,7 @@
             this.lbl_P_15.AutoSize = true;
             this.lbl_P_15.BackColor = System.Drawing.Color.White;
             this.lbl_P_15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_15.Location = new System.Drawing.Point(387, 486);
+            this.lbl_P_15.Location = new System.Drawing.Point(389, 486);
             this.lbl_P_15.Name = "lbl_P_15";
             this.lbl_P_15.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_15.TabIndex = 85;
@@ -826,7 +803,7 @@
             this.lbl_P_65.AutoSize = true;
             this.lbl_P_65.BackColor = System.Drawing.Color.White;
             this.lbl_P_65.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_65.Location = new System.Drawing.Point(383, 222);
+            this.lbl_P_65.Location = new System.Drawing.Point(389, 222);
             this.lbl_P_65.Name = "lbl_P_65";
             this.lbl_P_65.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_65.TabIndex = 89;
@@ -837,7 +814,7 @@
             this.lbl_P_35.AutoSize = true;
             this.lbl_P_35.BackColor = System.Drawing.Color.White;
             this.lbl_P_35.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_35.Location = new System.Drawing.Point(385, 377);
+            this.lbl_P_35.Location = new System.Drawing.Point(389, 377);
             this.lbl_P_35.Name = "lbl_P_35";
             this.lbl_P_35.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_35.TabIndex = 86;
@@ -848,7 +825,7 @@
             this.lbl_P_45.AutoSize = true;
             this.lbl_P_45.BackColor = System.Drawing.Color.White;
             this.lbl_P_45.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_45.Location = new System.Drawing.Point(383, 327);
+            this.lbl_P_45.Location = new System.Drawing.Point(389, 327);
             this.lbl_P_45.Name = "lbl_P_45";
             this.lbl_P_45.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_45.TabIndex = 88;
@@ -858,7 +835,7 @@
             // 
             this.lbl_P_55.BackColor = System.Drawing.Color.White;
             this.lbl_P_55.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_55.Location = new System.Drawing.Point(383, 275);
+            this.lbl_P_55.Location = new System.Drawing.Point(389, 275);
             this.lbl_P_55.Name = "lbl_P_55";
             this.lbl_P_55.Size = new System.Drawing.Size(23, 25);
             this.lbl_P_55.TabIndex = 87;
@@ -869,7 +846,7 @@
             this.lbl_P_0.AutoSize = true;
             this.lbl_P_0.BackColor = System.Drawing.Color.White;
             this.lbl_P_0.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_0.Location = new System.Drawing.Point(388, 557);
+            this.lbl_P_0.Location = new System.Drawing.Point(392, 557);
             this.lbl_P_0.Name = "lbl_P_0";
             this.lbl_P_0.Size = new System.Drawing.Size(22, 17);
             this.lbl_P_0.TabIndex = 74;
@@ -880,7 +857,7 @@
             this.lbl_P_10.AutoSize = true;
             this.lbl_P_10.BackColor = System.Drawing.Color.White;
             this.lbl_P_10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_10.Location = new System.Drawing.Point(385, 510);
+            this.lbl_P_10.Location = new System.Drawing.Point(388, 510);
             this.lbl_P_10.Name = "lbl_P_10";
             this.lbl_P_10.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_10.TabIndex = 75;
@@ -891,7 +868,7 @@
             this.lbl_P_60.AutoSize = true;
             this.lbl_P_60.BackColor = System.Drawing.Color.White;
             this.lbl_P_60.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_60.Location = new System.Drawing.Point(381, 250);
+            this.lbl_P_60.Location = new System.Drawing.Point(388, 250);
             this.lbl_P_60.Name = "lbl_P_60";
             this.lbl_P_60.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_60.TabIndex = 79;
@@ -902,7 +879,7 @@
             this.lbl_P_80.AutoSize = true;
             this.lbl_P_80.BackColor = System.Drawing.Color.White;
             this.lbl_P_80.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_80.Location = new System.Drawing.Point(383, 146);
+            this.lbl_P_80.Location = new System.Drawing.Point(388, 146);
             this.lbl_P_80.Name = "lbl_P_80";
             this.lbl_P_80.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_80.TabIndex = 82;
@@ -913,7 +890,7 @@
             this.lbl_P_50.AutoSize = true;
             this.lbl_P_50.BackColor = System.Drawing.Color.White;
             this.lbl_P_50.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_50.Location = new System.Drawing.Point(383, 301);
+            this.lbl_P_50.Location = new System.Drawing.Point(388, 301);
             this.lbl_P_50.Name = "lbl_P_50";
             this.lbl_P_50.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_50.TabIndex = 80;
@@ -924,7 +901,7 @@
             this.lbl_P_30.AutoSize = true;
             this.lbl_P_30.BackColor = System.Drawing.Color.White;
             this.lbl_P_30.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_30.Location = new System.Drawing.Point(385, 402);
+            this.lbl_P_30.Location = new System.Drawing.Point(388, 402);
             this.lbl_P_30.Name = "lbl_P_30";
             this.lbl_P_30.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_30.TabIndex = 76;
@@ -935,7 +912,7 @@
             this.lbl_P_40.AutoSize = true;
             this.lbl_P_40.BackColor = System.Drawing.Color.White;
             this.lbl_P_40.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_40.Location = new System.Drawing.Point(383, 352);
+            this.lbl_P_40.Location = new System.Drawing.Point(388, 352);
             this.lbl_P_40.Name = "lbl_P_40";
             this.lbl_P_40.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_40.TabIndex = 78;
@@ -946,7 +923,7 @@
             this.lbl_P_70.AutoSize = true;
             this.lbl_P_70.BackColor = System.Drawing.Color.White;
             this.lbl_P_70.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_70.Location = new System.Drawing.Point(381, 198);
+            this.lbl_P_70.Location = new System.Drawing.Point(388, 198);
             this.lbl_P_70.Name = "lbl_P_70";
             this.lbl_P_70.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_70.TabIndex = 81;
@@ -957,23 +934,11 @@
             this.lbl_P_20.AutoSize = true;
             this.lbl_P_20.BackColor = System.Drawing.Color.White;
             this.lbl_P_20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_20.Location = new System.Drawing.Point(386, 460);
+            this.lbl_P_20.Location = new System.Drawing.Point(388, 460);
             this.lbl_P_20.Name = "lbl_P_20";
             this.lbl_P_20.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_20.TabIndex = 77;
             this.lbl_P_20.Text = "20°";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(142, 308);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 22);
-            this.label8.TabIndex = 95;
-            this.label8.Text = "°C";
             // 
             // lbC2
             // 
@@ -981,7 +946,7 @@
             this.lbC2.BackColor = System.Drawing.Color.White;
             this.lbC2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbC2.ForeColor = System.Drawing.Color.Black;
-            this.lbC2.Location = new System.Drawing.Point(138, 480);
+            this.lbC2.Location = new System.Drawing.Point(1259, 531);
             this.lbC2.Name = "lbC2";
             this.lbC2.Size = new System.Drawing.Size(32, 22);
             this.lbC2.TabIndex = 96;
@@ -1187,13 +1152,14 @@
             // 
             this.txtTemporizador.BackColor = System.Drawing.Color.White;
             this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador.Location = new System.Drawing.Point(60, 340);
+            this.txtTemporizador.Location = new System.Drawing.Point(1141, 584);
             this.txtTemporizador.Name = "txtTemporizador";
             this.txtTemporizador.ReadOnly = true;
             this.txtTemporizador.Size = new System.Drawing.Size(77, 29);
             this.txtTemporizador.TabIndex = 120;
             this.txtTemporizador.Text = "00:00";
             this.txtTemporizador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTemporizador.Visible = false;
             // 
             // panel4
             // 
@@ -1216,6 +1182,7 @@
             // 
             this.TrackbarTemp.AutoSize = false;
             this.TrackbarTemp.BackColor = System.Drawing.Color.White;
+            this.TrackbarTemp.LargeChange = 1;
             this.TrackbarTemp.Location = new System.Drawing.Point(348, 88);
             this.TrackbarTemp.Maximum = 90;
             this.TrackbarTemp.Name = "TrackbarTemp";
@@ -1223,7 +1190,6 @@
             this.TrackbarTemp.Size = new System.Drawing.Size(32, 495);
             this.TrackbarTemp.TabIndex = 124;
             this.TrackbarTemp.TickFrequency = 5;
-            this.TrackbarTemp.Value = 40;
             this.TrackbarTemp.Scroll += new System.EventHandler(this.TrackbarTemp_Scroll);
             // 
             // panel5
@@ -1324,7 +1290,7 @@
             // 
             this.txtTemporizador2.BackColor = System.Drawing.Color.White;
             this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador2.Location = new System.Drawing.Point(179, 477);
+            this.txtTemporizador2.Location = new System.Drawing.Point(1141, 615);
             this.txtTemporizador2.Name = "txtTemporizador2";
             this.txtTemporizador2.ReadOnly = true;
             this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
@@ -1351,26 +1317,134 @@
             this.SelectTittle.BackColor = System.Drawing.Color.White;
             this.SelectTittle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectTittle.ForeColor = System.Drawing.Color.Black;
-            this.SelectTittle.Location = new System.Drawing.Point(103, 276);
+            this.SelectTittle.Location = new System.Drawing.Point(95, 275);
             this.SelectTittle.Name = "SelectTittle";
             this.SelectTittle.Size = new System.Drawing.Size(63, 18);
             this.SelectTittle.TabIndex = 62;
             this.SelectTittle.Text = "Choose";
+            // 
+            // TimerDataTCS
+            // 
+            this.TimerDataTCS.Interval = 5000;
+            this.TimerDataTCS.Tick += new System.EventHandler(this.TimerDataTCS_Tick);
+            // 
+            // Chiller1
+            // 
+            this.Chiller1.BackColor = System.Drawing.Color.Cyan;
+            this.Chiller1.Location = new System.Drawing.Point(325, 360);
+            this.Chiller1.Name = "Chiller1";
+            this.Chiller1.Size = new System.Drawing.Size(5, 188);
+            this.Chiller1.TabIndex = 166;
+            // 
+            // Chiller2
+            // 
+            this.Chiller2.BackColor = System.Drawing.Color.Cyan;
+            this.Chiller2.Location = new System.Drawing.Point(330, 360);
+            this.Chiller2.Name = "Chiller2";
+            this.Chiller2.Size = new System.Drawing.Size(20, 5);
+            this.Chiller2.TabIndex = 167;
+            // 
+            // Chiller3
+            // 
+            this.Chiller3.BackColor = System.Drawing.Color.Cyan;
+            this.Chiller3.Location = new System.Drawing.Point(330, 543);
+            this.Chiller3.Name = "Chiller3";
+            this.Chiller3.Size = new System.Drawing.Size(20, 5);
+            this.Chiller3.TabIndex = 168;
+            // 
+            // Chiller4Label
+            // 
+            this.Chiller4Label.AutoSize = true;
+            this.Chiller4Label.BackColor = System.Drawing.Color.White;
+            this.Chiller4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Chiller4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chiller4Label.Location = new System.Drawing.Point(307, 365);
+            this.Chiller4Label.Name = "Chiller4Label";
+            this.Chiller4Label.Size = new System.Drawing.Size(17, 13);
+            this.Chiller4Label.TabIndex = 169;
+            this.Chiller4Label.Text = "RC";
+            // 
+            // Heat1
+            // 
+            this.Heat1.BackColor = System.Drawing.Color.Crimson;
+            this.Heat1.Location = new System.Drawing.Point(327, 126);
+            this.Heat1.Name = "Heat1";
+            this.Heat1.Size = new System.Drawing.Size(5, 187);
+            this.Heat1.TabIndex = 170;
+            // 
+            // Heat3
+            // 
+            this.Heat3.BackColor = System.Drawing.Color.Crimson;
+            this.Heat3.Location = new System.Drawing.Point(330, 308);
+            this.Heat3.Name = "Heat3";
+            this.Heat3.Size = new System.Drawing.Size(20, 5);
+            this.Heat3.TabIndex = 171;
+            // 
+            // Heat2
+            // 
+            this.Heat2.BackColor = System.Drawing.Color.Crimson;
+            this.Heat2.Location = new System.Drawing.Point(330, 126);
+            this.Heat2.Name = "Heat2";
+            this.Heat2.Size = new System.Drawing.Size(20, 5);
+            this.Heat2.TabIndex = 172;
+            // 
+            // Heat4Label
+            // 
+            this.Heat4Label.AutoSize = true;
+            this.Heat4Label.BackColor = System.Drawing.Color.White;
+            this.Heat4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Heat4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Heat4Label.Location = new System.Drawing.Point(307, 146);
+            this.Heat4Label.Name = "Heat4Label";
+            this.Heat4Label.Size = new System.Drawing.Size(17, 13);
+            this.Heat4Label.TabIndex = 173;
+            this.Heat4Label.Text = "RH";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = global::AppleSoftware.Properties.Resources.PngItem_2261483;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 297);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 36);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 175;
+            this.pictureBox2.TabStop = false;
+            // 
+            // BtnRefreshCOM
+            // 
+            this.BtnRefreshCOM.BackColor = System.Drawing.Color.White;
+            this.BtnRefreshCOM.FlatAppearance.BorderSize = 0;
+            this.BtnRefreshCOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRefreshCOM.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            this.BtnRefreshCOM.IconColor = System.Drawing.Color.Black;
+            this.BtnRefreshCOM.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.BtnRefreshCOM.IconSize = 30;
+            this.BtnRefreshCOM.Location = new System.Drawing.Point(158, 88);
+            this.BtnRefreshCOM.Name = "BtnRefreshCOM";
+            this.BtnRefreshCOM.Size = new System.Drawing.Size(34, 33);
+            this.BtnRefreshCOM.TabIndex = 174;
+            this.BtnRefreshCOM.UseVisualStyleBackColor = false;
+            this.BtnRefreshCOM.Click += new System.EventHandler(this.BtnRefreshCOM_Click);
             // 
             // btnSetTemp
             // 
             this.btnSetTemp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSetTemp.FlatAppearance.BorderSize = 0;
             this.btnSetTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetTemp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetTemp.ForeColor = System.Drawing.Color.White;
             this.btnSetTemp.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.btnSetTemp.IconColor = System.Drawing.Color.Lime;
             this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnSetTemp.IconSize = 25;
-            this.btnSetTemp.Location = new System.Drawing.Point(180, 304);
+            this.btnSetTemp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetTemp.Location = new System.Drawing.Point(164, 304);
             this.btnSetTemp.Name = "btnSetTemp";
-            this.btnSetTemp.Size = new System.Drawing.Size(34, 28);
+            this.btnSetTemp.Size = new System.Drawing.Size(80, 29);
             this.btnSetTemp.TabIndex = 165;
+            this.btnSetTemp.Text = "       Set";
+            this.btnSetTemp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSetTemp.UseVisualStyleBackColor = false;
             this.btnSetTemp.Click += new System.EventHandler(this.btnSetTemp_Click);
             // 
@@ -1415,7 +1489,7 @@
             this.btnReset2.IconColor = System.Drawing.Color.Black;
             this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset2.IconSize = 15;
-            this.btnReset2.Location = new System.Drawing.Point(262, 477);
+            this.btnReset2.Location = new System.Drawing.Point(1265, 616);
             this.btnReset2.Name = "btnReset2";
             this.btnReset2.Size = new System.Drawing.Size(26, 23);
             this.btnReset2.TabIndex = 159;
@@ -1431,7 +1505,7 @@
             this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg2.IconSize = 10;
-            this.btnAddSeg2.Location = new System.Drawing.Point(223, 512);
+            this.btnAddSeg2.Location = new System.Drawing.Point(1242, 623);
             this.btnAddSeg2.Name = "btnAddSeg2";
             this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
             this.btnAddSeg2.TabIndex = 158;
@@ -1447,7 +1521,7 @@
             this.btnAddMin2.IconColor = System.Drawing.Color.Black;
             this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin2.IconSize = 10;
-            this.btnAddMin2.Location = new System.Drawing.Point(194, 512);
+            this.btnAddMin2.Location = new System.Drawing.Point(1224, 624);
             this.btnAddMin2.Name = "btnAddMin2";
             this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
             this.btnAddMin2.TabIndex = 157;
@@ -1463,11 +1537,12 @@
             this.btnReset.IconColor = System.Drawing.Color.Black;
             this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(145, 342);
+            this.btnReset.Location = new System.Drawing.Point(1265, 590);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(26, 23);
             this.btnReset.TabIndex = 155;
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Visible = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnAddSeg
@@ -1478,11 +1553,12 @@
             this.btnAddSeg.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(106, 375);
+            this.btnAddSeg.Location = new System.Drawing.Point(1248, 599);
             this.btnAddSeg.Name = "btnAddSeg";
             this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
             this.btnAddSeg.TabIndex = 154;
             this.btnAddSeg.UseVisualStyleBackColor = false;
+            this.btnAddSeg.Visible = false;
             this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
             // 
             // btnAddMin
@@ -1493,11 +1569,12 @@
             this.btnAddMin.IconColor = System.Drawing.Color.Black;
             this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(77, 375);
+            this.btnAddMin.Location = new System.Drawing.Point(1224, 599);
             this.btnAddMin.Name = "btnAddMin";
             this.btnAddMin.Size = new System.Drawing.Size(18, 18);
             this.btnAddMin.TabIndex = 153;
             this.btnAddMin.UseVisualStyleBackColor = false;
+            this.btnAddMin.Visible = false;
             this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
             // 
             // PicTC8
@@ -1662,46 +1739,70 @@
             this.btnON.UseVisualStyleBackColor = false;
             this.btnON.Click += new System.EventHandler(this.btnON_Click);
             // 
-            // TimerDataTCS
+            // btnMaxi
             // 
-            this.TimerDataTCS.Interval = 5000;
-            this.TimerDataTCS.Tick += new System.EventHandler(this.TimerDataTCS_Tick);
+            this.btnMaxi.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaxi.FlatAppearance.BorderSize = 0;
+            this.btnMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxi.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaxi.IconColor = System.Drawing.Color.White;
+            this.btnMaxi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaxi.IconSize = 25;
+            this.btnMaxi.Location = new System.Drawing.Point(1201, 0);
+            this.btnMaxi.Name = "btnMaxi";
+            this.btnMaxi.Size = new System.Drawing.Size(48, 44);
+            this.btnMaxi.TabIndex = 99;
+            this.btnMaxi.UseVisualStyleBackColor = false;
+            this.btnMaxi.Click += new System.EventHandler(this.btnMaxi_Click);
             // 
-            // Chiller1
+            // pictureBox1
             // 
-            this.Chiller1.BackColor = System.Drawing.Color.Lime;
-            this.Chiller1.Location = new System.Drawing.Point(325, 360);
-            this.Chiller1.Name = "Chiller1";
-            this.Chiller1.Size = new System.Drawing.Size(5, 188);
-            this.Chiller1.TabIndex = 166;
+            this.pictureBox1.Image = global::AppleSoftware.Properties.Resources.MIDORI_OFICIAL3;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 95;
+            this.pictureBox1.TabStop = false;
             // 
-            // Chiller2
+            // btnClose
             // 
-            this.Chiller2.BackColor = System.Drawing.Color.Lime;
-            this.Chiller2.Location = new System.Drawing.Point(330, 360);
-            this.Chiller2.Name = "Chiller2";
-            this.Chiller2.Size = new System.Drawing.Size(20, 5);
-            this.Chiller2.TabIndex = 167;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
+            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 30;
+            this.btnClose.Location = new System.Drawing.Point(1252, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(48, 44);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // Chiller3
+            // txtActualSetPoint
             // 
-            this.Chiller3.BackColor = System.Drawing.Color.Lime;
-            this.Chiller3.Location = new System.Drawing.Point(330, 543);
-            this.Chiller3.Name = "Chiller3";
-            this.Chiller3.Size = new System.Drawing.Size(20, 5);
-            this.Chiller3.TabIndex = 168;
+            this.txtActualSetPoint.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtActualSetPoint.Location = new System.Drawing.Point(33, 377);
+            this.txtActualSetPoint.Name = "txtActualSetPoint";
+            this.txtActualSetPoint.ReadOnly = true;
+            this.txtActualSetPoint.ShortcutsEnabled = false;
+            this.txtActualSetPoint.Size = new System.Drawing.Size(211, 29);
+            this.txtActualSetPoint.TabIndex = 176;
+            this.txtActualSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Chiller4Label
+            // label8
             // 
-            this.Chiller4Label.AutoSize = true;
-            this.Chiller4Label.BackColor = System.Drawing.Color.White;
-            this.Chiller4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Chiller4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chiller4Label.Location = new System.Drawing.Point(307, 365);
-            this.Chiller4Label.Name = "Chiller4Label";
-            this.Chiller4Label.Size = new System.Drawing.Size(17, 13);
-            this.Chiller4Label.TabIndex = 169;
-            this.Chiller4Label.Text = "RC";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(57, 356);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 18);
+            this.label8.TabIndex = 177;
+            this.label8.Text = "Temperature Setpoint";
             // 
             // FrmMainSystem
             // 
@@ -1709,6 +1810,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtActualSetPoint);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.BtnRefreshCOM);
+            this.Controls.Add(this.Heat4Label);
+            this.Controls.Add(this.Heat2);
+            this.Controls.Add(this.Heat3);
+            this.Controls.Add(this.Heat1);
             this.Controls.Add(this.Chiller4Label);
             this.Controls.Add(this.Chiller3);
             this.Controls.Add(this.Chiller2);
@@ -1767,7 +1876,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.lbC2);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnEMO);
             this.Controls.Add(this.lbl_P_90);
             this.Controls.Add(this.lbl_P_5);
@@ -1842,9 +1950,9 @@
             this.Load += new System.EventHandler(this.FrmMainSystem_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackbarTemp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGREEN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYELLOW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRED)).EndInit();
@@ -1859,6 +1967,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1935,7 +2044,6 @@
         private System.Windows.Forms.Label lbl_P_20;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox btnEMO;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbC2;
         private System.Windows.Forms.Label lbHora;
         private System.Windows.Forms.Label lbFecha;
@@ -2002,5 +2110,13 @@
         private System.Windows.Forms.Panel Chiller3;
         private System.Windows.Forms.Label Chiller4Label;
         private FontAwesome.Sharp.IconButton btnMaxi;
+        private System.Windows.Forms.Panel Heat1;
+        private System.Windows.Forms.Panel Heat3;
+        private System.Windows.Forms.Panel Heat2;
+        private System.Windows.Forms.Label Heat4Label;
+        private FontAwesome.Sharp.IconButton BtnRefreshCOM;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtActualSetPoint;
+        private System.Windows.Forms.Label label8;
     }
 }

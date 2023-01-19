@@ -28,7 +28,17 @@ namespace AppleSoftware.Forms
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
+            EstilizacionInicial();
+        }
 
+        private void EstilizacionInicial()
+        {
+            txtTC1.BackColor = Color.White; txtTC2.BackColor = Color.White; 
+            txtTC3.BackColor = Color.White; txtTC4.BackColor = Color.White;
+            txtTC5.BackColor = Color.White; txtTC6.BackColor= Color.White;
+            txtTC7.BackColor = Color.White; txtTC8.BackColor = Color.White;
+            txtActualSetPoint.BackColor = Color.White;
+            txtActualTempTCGeneral.BackColor = Color.White;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -92,8 +102,10 @@ namespace AppleSoftware.Forms
             CualTemperatura = 1;
             FormatCadena = "Ninguno";
             ChillerRangeOff();
+            HeaterRangeOff();
 
             // CONECTAR COM
+            BtnRefreshCOM.Visible = true;
             btnConnect.Enabled = false;
 
             cbCOMSelect.Enabled = true;
@@ -192,7 +204,7 @@ namespace AppleSoftware.Forms
 
 
             txtSetTemp1.Clear();
-           
+            txtActualSetPoint.Clear();
             txtSetTemp2.Clear();
 
             SelectTittle.Text = "Not selected";
@@ -203,7 +215,7 @@ namespace AppleSoftware.Forms
 
             cbSelect.Enabled = false;
 
-            TrackbarTemp.Value = 5;
+            TrackbarTemp.Value = 0;
           
 
             btnON.BackColor = Color.FromArgb(64, 64, 64);
@@ -269,16 +281,12 @@ namespace AppleSoftware.Forms
                 // Cooling
                 if (cbSelect.SelectedIndex == 1)
                 {
+                    txtActualSetPoint.Clear();
                     FormatCadena = "Chiller";
                     ChillerRangeOn();
-                    //TrackbarTemp.Minimum = 5;
-                    //TrackbarTemp.Maximum = 40;
-                    //TrackbarTemp.Size = new System.Drawing.Size(32, 231);
-                    //TrackbarTemp.Location = new System.Drawing.Point(353, 88);
-
+                    HeaterRangeOff();
                     SelectTittle.Text = "Cooling";
-                    txtSetTemp2.Text = "5";
-                    txtSetTemp1.Text = "40";
+                    txtSetTemp1.Text = "5";
                    
 
                     led1.Image.Dispose();
@@ -304,14 +312,13 @@ namespace AppleSoftware.Forms
                 // Heating
                 else if (cbSelect.SelectedIndex == 0)
                 {
+                    txtActualSetPoint.Clear();
                     FormatCadena = "Heater";
                     ChillerRangeOff();
-
-
+                    HeaterRangeOn();
+                    
                     SelectTittle.Text = "Heating";
-                    txtSetTemp2.Text = "5";
-                    txtSetTemp1.Text = "80";
-                   
+                    txtSetTemp1.Text = "50";
 
                     led1.Image.Dispose();
                     led2.Image.Dispose();
@@ -330,9 +337,6 @@ namespace AppleSoftware.Forms
                     btnAddSeg2.Enabled = false;
                     btnReset.Enabled = true;
                     btnReset2.Enabled = false;
-
-                    
-
                 }
 
             }
@@ -348,14 +352,7 @@ namespace AppleSoftware.Forms
             {
                 txtSetTemp2.Text = TrackbarTemp.Value.ToString();
             }
-            if (TrackbarTemp.Value < 5)
-            {
-                TrackbarTemp.Value = 5;
-            }
-            if (TrackbarTemp.Value > 80)
-            {
-                TrackbarTemp.Value = 80;
-            }
+          
         }
 
         private void checkByRanges_CheckedChanged(object sender, EventArgs e)
@@ -414,32 +411,50 @@ namespace AppleSoftware.Forms
 
         private void txtSetTemp1_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
+
+            if (FormatCadena == "Chiller")
             {
-                if (Convert.ToInt32(txtSetTemp1.Text.Trim()) > 100)
+                if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                 {
-                    System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtSetTemp1.Clear();
-                    TrackbarTemp.Value = 25;
-                    return;
-                }
-                if (FormatCadena == "Chiller")
-                {
-                    int validate =  Convert.ToInt32(txtSetTemp1.Text.Trim());
+                    int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
                     if (validate >= 5 && validate <= 40)
                     {
                         TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("Out of range", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱C° to 𝟰𝟬C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtSetTemp1.Clear();
                         TrackbarTemp.Value = 5;
                         return;
                     }
                 }
-               
             }
+            else if (FormatCadena == "Heater")
+            {
+                if (txtSetTemp1.Text.Length > 1)
+                {
+                    if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
+                    {
+                        int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                        if (validate >= 50 && validate <= 85)
+                        {
+                            TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtSetTemp1.Clear();
+                            TrackbarTemp.Value = 50;
+                            return;
+                        }
+                    }
+                }
+
+            }
+
+
+           
             
         }
 
@@ -451,6 +466,15 @@ namespace AppleSoftware.Forms
                 Chiller3.Visible = true;
                 Chiller4Label.Visible = true;
                 Chiller4Label.Text = "R\na\nn\ng\ne\n\nC\nh\ni\nl\nl\ne\nr";
+        }  
+
+        private void HeaterRangeOn()
+        {
+                Heat1.Visible = true;
+                Heat2.Visible = true;
+                Heat3.Visible = true;
+                Heat4Label.Visible = true;
+                Heat4Label.Text = "R\na\nn\ng\ne\n\nH\ne\na\nt\ne\nr";
         }
         private void ChillerRangeOff()
         {
@@ -458,6 +482,14 @@ namespace AppleSoftware.Forms
             Chiller2.Visible = false;
             Chiller3.Visible = false;
             Chiller4Label.Visible = false;
+        }  
+
+        private void HeaterRangeOff()
+        {
+            Heat1.Visible = false;
+            Heat2.Visible = false;
+            Heat3.Visible = false;
+            Heat4Label.Visible = false;
         }
 
         private void txtSetTemp2_TextChanged(object sender, EventArgs e)
@@ -495,11 +527,30 @@ namespace AppleSoftware.Forms
             }
         }
 
+        private void EncenderHeaterFromSetTemp()
+        {
+            btnClose.Enabled = false;
+            btnConnect.Enabled = false;
+            lbStatus.Text = "ON";
+            lbStatus.ForeColor = Color.FromArgb(0, 143, 57);
+            cbSelect.Enabled = false;
+            TrackbarTemp.Enabled = false;
+            txtSetTemp1.Enabled = false;
+            txtSetTemp2.Enabled = false;
+            checkOnlyOne.Enabled = false;
+            checkByRanges.Enabled = false;
+            checkTemp1.Enabled = false;
+            checkTemp2.Enabled = false;
+            btnON.BackColor = Color.FromArgb(183, 43, 41);
+        }
+
         private void btnON_Click(object sender, EventArgs e)
         {
 
             if (lbStatus.Text == "OFF" && ValidadEncender())
             {
+                btnClose.Enabled = false;
+                btnConnect.Enabled = false;
                 lbStatus.Text = "ON";
                 lbStatus.ForeColor = Color.FromArgb(0, 143, 57);
                 cbSelect.Enabled = false;
@@ -511,7 +562,7 @@ namespace AppleSoftware.Forms
                 checkTemp1.Enabled = false;
                 checkTemp2.Enabled = false;
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
-                Temporizador.Start();
+                //Temporizador.Start();
 
                 //Comando iniciar Chiller
 
@@ -543,7 +594,6 @@ namespace AppleSoftware.Forms
                        // byte[] bytes = { 4, 6, 33, 3, 0, 0, 115, 163 };
                        // serialPort1.Write(bytes, 0, bytes.Length);
 
-
                         BanderaRespuestaParaTCS = false;
                         Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
@@ -554,6 +604,8 @@ namespace AppleSoftware.Forms
             }
             else if (lbStatus.Text == "ON")
             {
+                btnClose.Enabled = true;
+                btnConnect.Enabled = true;
                 lbStatus.Text = "OFF";
                 lbStatus.ForeColor = Color.FromArgb(183, 43, 41);
                 cbSelect.Enabled = true;
@@ -689,6 +741,8 @@ namespace AppleSoftware.Forms
                     cbCOMSelect.Enabled = false;
                     btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
                     lbConnectedStatus.Text = "Connected";
+                    BtnRefreshCOM.Visible = false;
+
                     lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
 
                     // cCHANGER
@@ -731,6 +785,7 @@ namespace AppleSoftware.Forms
                 LimpiarArranque();
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
                 lbConnectedStatus.Text = "Disconnected";
+                BtnRefreshCOM.Visible = true;
                 lbConnectedStatus.ForeColor = Color.Red;
 
                 TimerDataTCS.Stop();
@@ -995,7 +1050,69 @@ namespace AppleSoftware.Forms
 
         private void btnEMO_Click(object sender, EventArgs e)
         {
+            // APAGAR HEATER Y CHILLER.
+            if (FormatCadena == "Chiller")
+            {
+                SetConfigSerialPortForChiller();
+                Thread.Sleep(1000);
+                serialPort1.DiscardOutBuffer();
+                serialPort1.WriteLine(":0106000C0000ED" + Environment.NewLine);
+                BanderaRespuestaParaTCS = false;
+                Thread.Sleep(1000);
+                SetConfigSerialPortForTCS();
+            }
 
+            if (FormatCadena == "Heater")
+            {
+                if (serialPort1.IsOpen)
+                {
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    byte[] bytes = { 4, 6, 33, 3, 0, 0, 115, 163 };
+                    serialPort1.Write(bytes, 0, bytes.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                }
+            }
+
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+            LimpiarArranque();
+            btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            lbConnectedStatus.Text = "Disconnected";
+            BtnRefreshCOM.Visible = true;
+            lbConnectedStatus.ForeColor = Color.Red;
+
+            TimerDataTCS.Stop();
+            timerForTC.Stop();
+            ResetearChart();
+
+            PicTC1.Image.Dispose();
+            PicTC1.Image = Properties.Resources.tc1off;
+            PicTC2.Image.Dispose();
+            PicTC2.Image = Properties.Resources.tc2off;
+            PicTC3.Image.Dispose();
+            PicTC3.Image = Properties.Resources.tc3off;
+            PicTC4.Image.Dispose();
+            PicTC4.Image = Properties.Resources.tc4off;
+            PicTC5.Image.Dispose();
+            PicTC5.Image = Properties.Resources.tc5off;
+            PicTC6.Image.Dispose();
+            PicTC6.Image = Properties.Resources.tc6off;
+            PicTC7.Image.Dispose();
+            PicTC7.Image = Properties.Resources.tc7off;
+            PicTC8.Image.Dispose();
+            PicTC8.Image = Properties.Resources.tc8off;
+
+            picGREEN.Image.Dispose();
+            picGREEN.Image = Properties.Resources.tc8off;
+            picRED.Image.Dispose();
+            picRED.Image = Properties.Resources.tc1on;
+            
         }
 
         private void btnSetTemp_Click(object sender, EventArgs e)
@@ -1010,11 +1127,10 @@ namespace AppleSoftware.Forms
                         SetTemperatureChiller(txtSetTemp1.Text);
                         Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
+                        txtActualSetPoint.Text = txtSetTemp1.Text +" C°";
                         break;
                     case "Heater":
-                        //TODO
-
-
+                        // TODO Realmente solo se van usar desde 50 a 85.
                         switch (txtSetTemp1.Text)
                         {
                             case "1":
@@ -1848,15 +1964,13 @@ namespace AppleSoftware.Forms
                                 break;
 
                         }
-
-
+                        txtActualSetPoint.Text = txtSetTemp1.Text+" C°";
+                        EncenderHeaterFromSetTemp();
                         break;
                     case "Ninguno":
                         
                         break;
                 }
-
-
             }
             
         }
@@ -2217,6 +2331,24 @@ namespace AppleSoftware.Forms
                 WindowState = FormWindowState.Normal;
             }
         }
+
+        private void BtnRefreshCOM_Click(object sender, EventArgs e)
+        {
+            if (lbConnectedStatus.Text == "Disconnected")
+            {
+                btnConnect.Enabled = false;
+
+                cbCOMSelect.Enabled = true;
+                string[] ports = SerialPort.GetPortNames();
+                cbCOMSelect.Items.Clear();
+                cbCOMSelect.Items.AddRange(ports);
+
+                SetConfigSerialPortForTCS();
+                BanderaRespuestaParaTCS = false;
+            }
+        }
+
+     
     }
 }
 
