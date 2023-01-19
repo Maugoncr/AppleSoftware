@@ -272,16 +272,16 @@
             this.cbSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSelect.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSelect.FormattingEnabled = true;
-            this.cbSelect.Location = new System.Drawing.Point(29, 186);
+            this.cbSelect.Location = new System.Drawing.Point(27, 186);
             this.cbSelect.Name = "cbSelect";
-            this.cbSelect.Size = new System.Drawing.Size(215, 30);
+            this.cbSelect.Size = new System.Drawing.Size(217, 30);
             this.cbSelect.TabIndex = 7;
             this.cbSelect.SelectionChangeCommitted += new System.EventHandler(this.cbSelect_SelectionChangeCommitted);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Location = new System.Drawing.Point(103, 567);
+            this.panel1.Location = new System.Drawing.Point(27, 562);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2, 60);
             this.panel1.TabIndex = 8;
@@ -289,7 +289,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Location = new System.Drawing.Point(330, 566);
+            this.panel2.Location = new System.Drawing.Point(254, 561);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 61);
             this.panel2.TabIndex = 9;
@@ -297,7 +297,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Location = new System.Drawing.Point(103, 566);
+            this.panel3.Location = new System.Drawing.Point(27, 561);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(229, 2);
             this.panel3.TabIndex = 10;
@@ -338,7 +338,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(186, 585);
+            this.label11.Location = new System.Drawing.Point(110, 580);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 22);
             this.label11.TabIndex = 34;
@@ -350,7 +350,7 @@
             this.lbStatus.BackColor = System.Drawing.Color.White;
             this.lbStatus.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatus.ForeColor = System.Drawing.Color.Red;
-            this.lbStatus.Location = new System.Drawing.Point(260, 585);
+            this.lbStatus.Location = new System.Drawing.Point(184, 580);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(49, 22);
             this.lbStatus.TabIndex = 35;
@@ -1164,7 +1164,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.Location = new System.Drawing.Point(103, 625);
+            this.panel4.Location = new System.Drawing.Point(27, 620);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(229, 2);
             this.panel4.TabIndex = 122;
@@ -1713,7 +1713,7 @@
             // 
             this.btnEMO.BackColor = System.Drawing.Color.White;
             this.btnEMO.Image = global::AppleSoftware.Properties.Resources.EMO2;
-            this.btnEMO.Location = new System.Drawing.Point(27, 566);
+            this.btnEMO.Location = new System.Drawing.Point(265, 561);
             this.btnEMO.Name = "btnEMO";
             this.btnEMO.Size = new System.Drawing.Size(59, 61);
             this.btnEMO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1732,7 +1732,7 @@
             this.btnON.IconColor = System.Drawing.Color.White;
             this.btnON.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnON.IconSize = 35;
-            this.btnON.Location = new System.Drawing.Point(113, 579);
+            this.btnON.Location = new System.Drawing.Point(37, 574);
             this.btnON.Name = "btnON";
             this.btnON.Size = new System.Drawing.Size(56, 34);
             this.btnON.TabIndex = 0;
