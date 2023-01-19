@@ -1421,10 +1421,26 @@ namespace AppleSoftware.Forms
 
                 if (FormatCadena == "Heater")
                 {
-                    if (serialPort1.IsOpen)
+                    if (!string.IsNullOrEmpty(txtSetTemp1.Text))
                     {
-                        SendSetTempHeaterAndTurnItOn();
-                        txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
+                        if (txtSetTemp1.Text.Length == 2)
+                        {
+                            if (serialPort1.IsOpen)
+                            {
+                                SendSetTempHeaterAndTurnItOn();
+                                txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
+                            }
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtSetTemp1.Clear();
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("You must set a temperature before.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtSetTemp1.Clear();
                     }
                 }
 
