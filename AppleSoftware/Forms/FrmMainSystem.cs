@@ -2596,6 +2596,7 @@ namespace AppleSoftware.Forms
 
         private void Cycle()
         {
+            serialPort1.DiscardInBuffer();
             serialPort1.DiscardOutBuffer();
             serialPort1.Write("#03" + "\r");
             BanderaRespuestaParaTCS = true;
