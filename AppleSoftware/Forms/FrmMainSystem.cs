@@ -2325,6 +2325,7 @@ namespace AppleSoftware.Forms
                                 SendSetTempHeaterAndTurnItOn();
                                 txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
                                 EncenderHeaterFromSetTemp();
+                                btnSetTemp.Enabled = false;
                             }
                             else
                             {
