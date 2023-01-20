@@ -1398,6 +1398,7 @@ namespace AppleSoftware.Forms
                 checkByRanges.Enabled = false;
                 checkTemp1.Enabled = false;
                 checkTemp2.Enabled = false;
+                btnSetTemp.Enabled = false;
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
                 //Temporizador.Start();
 
@@ -1460,6 +1461,7 @@ namespace AppleSoftware.Forms
                 checkByRanges.Enabled = true;
                 checkTemp1.Enabled = true;
                 checkTemp2.Enabled = true;
+                btnSetTemp.Enabled = true;
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
                 Temporizador.Stop();
                 txtActualSetPoint.Clear();
@@ -1967,18 +1969,41 @@ namespace AppleSoftware.Forms
                 switch (FormatCadena)
                 {
                     case "Chiller":
-                        SetConfigSerialPortForChiller();
-                        Thread.Sleep(1000);
-                        SetTemperatureChiller(txtSetTemp1.Text);
-                        Thread.Sleep(1000);
-                        SetConfigSerialPortForTCS();
-                        txtActualSetPoint.Text = txtSetTemp1.Text +" C°";
+                        if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
+                        {
+                            SetConfigSerialPortForChiller();
+                            Thread.Sleep(1000);
+                            SetTemperatureChiller(txtSetTemp1.Text);
+                            Thread.Sleep(1000);
+                            SetConfigSerialPortForTCS();
+                            txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("SetPoint must not be Empty", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                         break;
                     case "Heater":
-                        // TODO Realmente solo se van usar desde 50 a 85.
-                        SendSetTempHeaterAndTurnItOn();
-                        txtActualSetPoint.Text = txtSetTemp1.Text+" C°";
-                        EncenderHeaterFromSetTemp();
+
+                        if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
+                        {
+                            if (Convert.ToInt32(txtSetTemp1.Text)>= 50 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
+                            {
+                                SendSetTempHeaterAndTurnItOn();
+                                txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
+                                EncenderHeaterFromSetTemp();
+                            }
+                            else
+                            {
+                                System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                txtSetTemp1.Clear();
+                                TrackbarTemp.Value = 50;
+                            }
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("SetPoint must not be Empty", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                         break;
                     case "Ninguno":
                         
