@@ -180,7 +180,6 @@
             this.checkByRanges = new System.Windows.Forms.CheckBox();
             this.checkOnlyOne = new System.Windows.Forms.CheckBox();
             this.txtTemporizador = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
@@ -1771,23 +1770,12 @@
             this.txtTemporizador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTemporizador.Visible = false;
             // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(442, 250);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(45, 16);
-            this.label44.TabIndex = 178;
-            this.label44.Text = "Temps";
-            // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.BackColor = System.Drawing.Color.White;
             this.label45.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(442, 268);
+            this.label45.Location = new System.Drawing.Point(435, 326);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(35, 16);
             this.label45.TabIndex = 179;
@@ -1812,7 +1800,6 @@
             this.ClientSize = new System.Drawing.Size(1300, 751);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label45);
-            this.Controls.Add(this.label44);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtActualSetPoint);
@@ -2115,7 +2102,6 @@
         private System.Windows.Forms.CheckBox checkByRanges;
         private System.Windows.Forms.CheckBox checkOnlyOne;
         private System.Windows.Forms.TextBox txtTemporizador;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label31;
     }

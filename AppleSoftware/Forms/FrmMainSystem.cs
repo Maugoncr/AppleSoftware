@@ -2004,14 +2004,14 @@ namespace AppleSoftware.Forms
             tiempo = tiempo + 100;
             double temp = tiempo / 1000;
 
-            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC1Num.ToString());
-            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC2Num.ToString());
-            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC3Num.ToString());
-            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC4Num.ToString());
-            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC5Num.ToString());
-            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC6Num.ToString());
-            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC7Num.ToString());
-            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC8Num.ToString());
+            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC8Num.ToString());
+            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC7Num.ToString());
+            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC6Num.ToString());
+            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC5Num.ToString());
+            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC4Num.ToString());
+            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC3Num.ToString());
+            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC2Num.ToString());
+            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC1Num.ToString());
 
             chart1.ChartAreas[0].RecalculateAxesScale();
 
@@ -2608,86 +2608,85 @@ namespace AppleSoftware.Forms
             if (data!= null && data != string.Empty)
             {
                 // Paso 1 Quitar cualquier espacio
-                
                 string tcs = data.Trim();
-                //
-                System.Windows.Forms.MessageBox.Show(tcs.Length.ToString());
-
-                tcs = tcs.Replace("\r",string.Empty);
-                //Paso 2 quitar el >+ inicial
-                tcs = tcs.Substring(2);
-                //Paso 3 separar por +
-                string[] TC = tcs.Split('+');
-
-                //Paso 4 asignar cada TC
-                if (TC.Length == 10)
+                if (tcs.Length == 71)
                 {
-                    TC1S = TC[0];
-                    TC2S = TC[1];
-                    TC3S = TC[2];
-                    TC4S = TC[3];
-                    TC5S = TC[4];
-                    TC6S = TC[5];
-                    TC7S = TC[6];
-                    TC8S = TC[7];
-                    TC9S = TC[8];
-                    TC10S = TC[9];
+                    tcs = tcs.Replace("\r", string.Empty);
+                    //Paso 2 quitar el >+ inicial
+                    tcs = tcs.Substring(2);
+                    //Paso 3 separar por +
+                    string[] TC = tcs.Split('+');
+
+                    //Paso 4 asignar cada TC
+                    if (TC.Length == 10)
+                    {
+                        TC1S = TC[0];
+                        TC2S = TC[1];
+                        TC3S = TC[2];
+                        TC4S = TC[3];
+                        TC5S = TC[4];
+                        TC6S = TC[5];
+                        TC7S = TC[6];
+                        TC8S = TC[7];
+                        TC9S = TC[8];
+                        TC10S = TC[9];
+                    }
+
+                    // Paso 5 reasignar valores
+
+                    TC1S = TC1S.Substring(2);
+                    TC2S = TC2S.Substring(2);
+                    TC3S = TC3S.Substring(2);
+                    TC4S = TC4S.Substring(2);
+                    TC5S = TC5S.Substring(2);
+                    TC6S = TC6S.Substring(2);
+                    TC7S = TC7S.Substring(2);
+                    TC8S = TC8S.Substring(2);
+                    TC9S = TC9S.Substring(2);
+                    TC10S = TC10S.Substring(2);
+
+                    // Paso 6 Separar a las con numeros a las con C°
+
+                    TC1Num = Convert.ToDouble(TC1S);
+                    TC2Num = Convert.ToDouble(TC2S);
+                    TC3Num = Convert.ToDouble(TC3S);
+                    TC4Num = Convert.ToDouble(TC4S);
+                    TC5Num = Convert.ToDouble(TC5S);
+                    TC6Num = Convert.ToDouble(TC6S);
+                    TC7Num = Convert.ToDouble(TC7S);
+                    TC8Num = Convert.ToDouble(TC8S);
+                    TC9Num = Convert.ToDouble(TC9S);
+                    TC10Num = Convert.ToDouble(TC10S);
+
+                    // Paso Final
+                    TC1S = TC1S + " C°";
+                    TC2S = TC2S + " C°";
+                    TC3S = TC3S + " C°";
+                    TC4S = TC4S + " C°";
+                    TC5S = TC5S + " C°";
+                    TC6S = TC6S + " C°";
+                    TC7S = TC7S + " C°";
+                    TC8S = TC8S + " C°";
+                    TC9S = TC9S + " C°";
+                    TC10S = TC10S + " C°";
+
+                    //TODO GRAFICAR.
+                    GraficarDatosTxt();
                 }
-
-                // Paso 5 reasignar valores
-
-                TC1S = TC1S.Substring(2);
-                TC2S = TC2S.Substring(2);
-                TC3S = TC3S.Substring(2);
-                TC4S = TC4S.Substring(2);
-                TC5S = TC5S.Substring(2);
-                TC6S = TC6S.Substring(2);
-                TC7S = TC7S.Substring(2);
-                TC8S = TC8S.Substring(2);
-                TC9S = TC9S.Substring(2);
-                TC10S = TC10S.Substring(2);
-
-                // Paso 6 Separar a las con numeros a las con C°
-
-                TC1Num = Convert.ToDouble(TC1S);
-                TC2Num = Convert.ToDouble(TC2S);
-                TC3Num = Convert.ToDouble(TC3S);
-                TC4Num = Convert.ToDouble(TC4S);
-                TC5Num = Convert.ToDouble(TC5S);
-                TC6Num = Convert.ToDouble(TC6S);
-                TC7Num = Convert.ToDouble(TC7S);
-                TC8Num = Convert.ToDouble(TC8S);
-                TC9Num = Convert.ToDouble(TC9S);
-                TC10Num = Convert.ToDouble(TC10S);
-
-                // Paso Final
-                TC1S = TC1S + " C°";
-                TC2S = TC2S + " C°";
-                TC3S = TC3S + " C°";
-                TC4S = TC4S + " C°";
-                TC5S = TC5S + " C°";
-                TC6S = TC6S + " C°";
-                TC7S = TC7S + " C°";
-                TC8S = TC8S + " C°";
-                TC9S = TC9S + " C°";
-                TC10S = TC10S + " C°";
-
-                //TODO GRAFICAR.
-                GraficarDatosTxt();
             }
         }
 
         private void GraficarDatosTxt()
         {
-            txtTC1.Text = TC9S;
-            txtTC2.Text = TC2S;
-            txtTC3.Text = TC3S;
-            txtTC4.Text = TC4S;
-            txtTC5.Text = TC5S;
-            txtTC6.Text = TC6S;
-            txtTC7.Text = TC7S;
-            txtTC8.Text = TC8S;
-            txtActualTempTCGeneral.Text = TC1S;
+            txtTC1.Text = TC8S;
+            txtTC2.Text = TC7S;
+            txtTC3.Text = TC6S;
+            txtTC4.Text = TC5S;
+            txtTC5.Text = TC4S;
+            txtTC6.Text = TC3S;
+            txtTC7.Text = TC2S;
+            txtTC8.Text = TC1S;
+            txtActualTempTCGeneral.Text = TC4S;
         }
 
         private void panelTop_MouseDown(object sender, MouseEventArgs e)
