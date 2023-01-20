@@ -437,7 +437,7 @@ namespace AppleSoftware.Forms
                     if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                     {
                         int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
-                        if (validate >= 50 && validate <= 85)
+                        if (validate >= 25 && validate <= 85)
                         {
                             TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
                         }
@@ -2307,7 +2307,7 @@ namespace AppleSoftware.Forms
 
                         if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                         {
-                            if (Convert.ToInt32(txtSetTemp1.Text)>= 50 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
+                            if (Convert.ToInt32(txtSetTemp1.Text)>= 25 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
                             {
                                 SendSetTempHeaterAndTurnItOn();
                                 txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
