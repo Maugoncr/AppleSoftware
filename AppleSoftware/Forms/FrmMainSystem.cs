@@ -194,7 +194,7 @@ namespace AppleSoftware.Forms
             txtSetTemp1.Enabled = false;
             checkOnlyOne.Enabled = false;
             checkByRanges.Enabled = false;
-            
+            btnSetTemp.Enabled = false;
             btnAddMin.Enabled = false;
             btnAddMin2.Enabled = false;
             btnAddSeg.Enabled = false;
@@ -272,6 +272,7 @@ namespace AppleSoftware.Forms
                 btnON.Enabled = true;
                 TrackbarTemp.Enabled = true;
                 txtSetTemp1.Enabled = true;
+                btnSetTemp.Enabled = true;
                 //checkOnlyOne.Enabled = true;
                 checkByRanges.Enabled = true;
                 lbStatus.Text = "OFF";
@@ -318,7 +319,7 @@ namespace AppleSoftware.Forms
                     HeaterRangeOn();
                     
                     SelectTittle.Text = "Heating";
-                    txtSetTemp1.Text = "50";
+                    txtSetTemp1.Text = "25";
 
                     led1.Image.Dispose();
                     led2.Image.Dispose();
@@ -443,7 +444,7 @@ namespace AppleSoftware.Forms
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟮𝟱C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtSetTemp1.Clear();
                             TrackbarTemp.Value = 50;
                             return;
@@ -1728,14 +1729,26 @@ namespace AppleSoftware.Forms
                 {
                     if (serialPort1.IsOpen)
                     {
-                        SetConfigSerialPortForChiller();
-                        Thread.Sleep(1000);
-                        serialPort1.DiscardOutBuffer();
-                        serialPort1.WriteLine(":0106000C0001EC" + Environment.NewLine);
-                        BanderaRespuestaParaTCS = false;
-                        Thread.Sleep(1000);
-                        SetConfigSerialPortForTCS();
+                        if (true)
+                        {
+                            if (!string.IsNullOrEmpty(txtActualSetPoint.Text))
+                            {
+                                SetConfigSerialPortForChiller();
+                                Thread.Sleep(1000);
+                                serialPort1.DiscardOutBuffer();
+                                serialPort1.WriteLine(":0106000C0001EC" + Environment.NewLine);
+                                BanderaRespuestaParaTCS = false;
+                                Thread.Sleep(1000);
+                                SetConfigSerialPortForTCS();
 
+                            }
+                            else
+                            {
+                                System.Windows.Forms.MessageBox.Show("You must set a temperature before.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                txtSetTemp1.Clear();
+                            }
+                        }
+                        
                     }
                    
                 }
@@ -1754,7 +1767,7 @@ namespace AppleSoftware.Forms
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟮𝟱C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtSetTemp1.Clear();
                         }
                     }
@@ -2315,9 +2328,9 @@ namespace AppleSoftware.Forms
                             }
                             else
                             {
-                                System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱𝟬C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟮𝟱C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 txtSetTemp1.Clear();
-                                TrackbarTemp.Value = 50;
+                                TrackbarTemp.Value = 25;
                             }
                         }
                         else
@@ -2594,7 +2607,11 @@ namespace AppleSoftware.Forms
             if (data!= null && data != string.Empty)
             {
                 // Paso 1 Quitar cualquier espacio
+                
                 string tcs = data.Trim();
+                //
+                System.Windows.Forms.MessageBox.Show(tcs.Length.ToString());
+
                 tcs = tcs.Replace("\r",string.Empty);
                 //Paso 2 quitar el >+ inicial
                 tcs = tcs.Substring(2);

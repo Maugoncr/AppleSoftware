@@ -83,10 +83,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.txtSetTemp1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkOnlyOne = new System.Windows.Forms.CheckBox();
-            this.checkByRanges = new System.Windows.Forms.CheckBox();
-            this.lbSetTemp2 = new System.Windows.Forms.Label();
-            this.txtSetTemp2 = new System.Windows.Forms.TextBox();
             this.checkTemp1 = new System.Windows.Forms.CheckBox();
             this.checkTemp2 = new System.Windows.Forms.CheckBox();
             this.txtActualTempTCGeneral = new System.Windows.Forms.TextBox();
@@ -110,7 +106,6 @@
             this.lbl_P_40 = new System.Windows.Forms.Label();
             this.lbl_P_70 = new System.Windows.Forms.Label();
             this.lbl_P_20 = new System.Windows.Forms.Label();
-            this.lbC2 = new System.Windows.Forms.Label();
             this.TimerHoraFecha = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label10 = new System.Windows.Forms.Label();
@@ -124,10 +119,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timerForTC = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtTemporizador = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.TrackbarTemp = new System.Windows.Forms.TrackBar();
@@ -143,7 +134,6 @@
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.Temporizador = new System.Windows.Forms.Timer(this.components);
-            this.txtTemporizador2 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.SelectTittle = new System.Windows.Forms.Label();
             this.TimerDataTCS = new System.Windows.Forms.Timer(this.components);
@@ -161,12 +151,6 @@
             this.picGREEN = new System.Windows.Forms.PictureBox();
             this.picYELLOW = new System.Windows.Forms.PictureBox();
             this.picRED = new System.Windows.Forms.PictureBox();
-            this.btnReset2 = new FontAwesome.Sharp.IconButton();
-            this.btnAddSeg2 = new FontAwesome.Sharp.IconButton();
-            this.btnAddMin2 = new FontAwesome.Sharp.IconButton();
-            this.btnReset = new FontAwesome.Sharp.IconButton();
-            this.btnAddSeg = new FontAwesome.Sharp.IconButton();
-            this.btnAddMin = new FontAwesome.Sharp.IconButton();
             this.PicTC8 = new System.Windows.Forms.PictureBox();
             this.PicTC7 = new System.Windows.Forms.PictureBox();
             this.PicTC6 = new System.Windows.Forms.PictureBox();
@@ -183,6 +167,22 @@
             this.btnON = new FontAwesome.Sharp.IconButton();
             this.txtActualSetPoint = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.lbC2 = new System.Windows.Forms.Label();
+            this.lbSetTemp2 = new System.Windows.Forms.Label();
+            this.txtSetTemp2 = new System.Windows.Forms.TextBox();
+            this.btnAddMin = new FontAwesome.Sharp.IconButton();
+            this.btnReset2 = new FontAwesome.Sharp.IconButton();
+            this.btnReset = new FontAwesome.Sharp.IconButton();
+            this.btnAddSeg = new FontAwesome.Sharp.IconButton();
+            this.btnAddSeg2 = new FontAwesome.Sharp.IconButton();
+            this.btnAddMin2 = new FontAwesome.Sharp.IconButton();
+            this.txtTemporizador2 = new System.Windows.Forms.TextBox();
+            this.checkByRanges = new System.Windows.Forms.CheckBox();
+            this.checkOnlyOne = new System.Windows.Forms.CheckBox();
+            this.txtTemporizador = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -254,9 +254,9 @@
             this.label33.ForeColor = System.Drawing.Color.White;
             this.label33.Location = new System.Drawing.Point(590, 9);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(162, 25);
+            this.label33.Size = new System.Drawing.Size(174, 25);
             this.label33.TabIndex = 94;
-            this.label33.Text = "FRU-SOFTWARE";
+            this.label33.Text = "ELEN-SOFTWARE";
             // 
             // label6
             // 
@@ -267,7 +267,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 93;
-            this.label6.Text = "1.001.1";
+            this.label6.Text = "1.000.0";
             // 
             // btnClose
             // 
@@ -678,57 +678,6 @@
             this.label3.TabIndex = 62;
             this.label3.Text = "Set Temp";
             // 
-            // checkOnlyOne
-            // 
-            this.checkOnlyOne.AutoSize = true;
-            this.checkOnlyOne.BackColor = System.Drawing.Color.White;
-            this.checkOnlyOne.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkOnlyOne.Location = new System.Drawing.Point(1107, 561);
-            this.checkOnlyOne.Name = "checkOnlyOne";
-            this.checkOnlyOne.Size = new System.Drawing.Size(87, 22);
-            this.checkOnlyOne.TabIndex = 63;
-            this.checkOnlyOne.Text = "Only one";
-            this.checkOnlyOne.UseVisualStyleBackColor = false;
-            this.checkOnlyOne.Visible = false;
-            this.checkOnlyOne.CheckedChanged += new System.EventHandler(this.checkOnlyOne_CheckedChanged);
-            // 
-            // checkByRanges
-            // 
-            this.checkByRanges.AutoSize = true;
-            this.checkByRanges.BackColor = System.Drawing.Color.White;
-            this.checkByRanges.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkByRanges.Location = new System.Drawing.Point(1107, 595);
-            this.checkByRanges.Name = "checkByRanges";
-            this.checkByRanges.Size = new System.Drawing.Size(103, 22);
-            this.checkByRanges.TabIndex = 64;
-            this.checkByRanges.Text = "By Ranges";
-            this.checkByRanges.UseVisualStyleBackColor = false;
-            this.checkByRanges.Visible = false;
-            this.checkByRanges.CheckedChanged += new System.EventHandler(this.checkByRanges_CheckedChanged);
-            // 
-            // lbSetTemp2
-            // 
-            this.lbSetTemp2.AutoSize = true;
-            this.lbSetTemp2.BackColor = System.Drawing.Color.White;
-            this.lbSetTemp2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSetTemp2.ForeColor = System.Drawing.Color.Black;
-            this.lbSetTemp2.Location = new System.Drawing.Point(1137, 543);
-            this.lbSetTemp2.Name = "lbSetTemp2";
-            this.lbSetTemp2.Size = new System.Drawing.Size(132, 18);
-            this.lbSetTemp2.TabIndex = 66;
-            this.lbSetTemp2.Text = "Set Temp Cooling";
-            // 
-            // txtSetTemp2
-            // 
-            this.txtSetTemp2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetTemp2.Location = new System.Drawing.Point(1211, 554);
-            this.txtSetTemp2.Name = "txtSetTemp2";
-            this.txtSetTemp2.Size = new System.Drawing.Size(77, 29);
-            this.txtSetTemp2.TabIndex = 65;
-            this.txtSetTemp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSetTemp2.TextChanged += new System.EventHandler(this.txtSetTemp2_TextChanged);
-            this.txtSetTemp2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetTemp2_KeyPress);
-            // 
             // checkTemp1
             // 
             this.checkTemp1.BackColor = System.Drawing.Color.White;
@@ -982,18 +931,6 @@
             this.lbl_P_20.TabIndex = 77;
             this.lbl_P_20.Text = "20°";
             // 
-            // lbC2
-            // 
-            this.lbC2.AutoSize = true;
-            this.lbC2.BackColor = System.Drawing.Color.White;
-            this.lbC2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbC2.ForeColor = System.Drawing.Color.Black;
-            this.lbC2.Location = new System.Drawing.Point(1259, 531);
-            this.lbC2.Name = "lbC2";
-            this.lbC2.Size = new System.Drawing.Size(32, 22);
-            this.lbC2.TabIndex = 96;
-            this.lbC2.Text = "°C";
-            // 
             // TimerHoraFecha
             // 
             this.TimerHoraFecha.Tick += new System.EventHandler(this.TimerHoraFecha_Tick);
@@ -1047,7 +984,7 @@
             this.chart1.Series.Add(series6);
             this.chart1.Series.Add(series7);
             this.chart1.Series.Add(series8);
-            this.chart1.Size = new System.Drawing.Size(681, 565);
+            this.chart1.Size = new System.Drawing.Size(857, 565);
             this.chart1.TabIndex = 99;
             this.chart1.Text = "chart1";
             // 
@@ -1156,52 +1093,6 @@
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.White;
-            this.label30.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(752, 623);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(35, 16);
-            this.label30.TabIndex = 115;
-            this.label30.Text = "Time";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.White;
-            this.label31.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(439, 317);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(45, 16);
-            this.label31.TabIndex = 116;
-            this.label31.Text = "Temps";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.White;
-            this.label32.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(439, 333);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(35, 16);
-            this.label32.TabIndex = 117;
-            this.label32.Text = "in °C";
-            // 
-            // txtTemporizador
-            // 
-            this.txtTemporizador.BackColor = System.Drawing.Color.White;
-            this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador.Location = new System.Drawing.Point(1141, 584);
-            this.txtTemporizador.Name = "txtTemporizador";
-            this.txtTemporizador.ReadOnly = true;
-            this.txtTemporizador.Size = new System.Drawing.Size(77, 29);
-            this.txtTemporizador.TabIndex = 120;
-            this.txtTemporizador.Text = "00:00";
-            this.txtTemporizador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTemporizador.Visible = false;
             // 
             // panel4
             // 
@@ -1328,19 +1219,6 @@
             this.Temporizador.Interval = 1000;
             this.Temporizador.Tick += new System.EventHandler(this.timerTempo_Tick);
             // 
-            // txtTemporizador2
-            // 
-            this.txtTemporizador2.BackColor = System.Drawing.Color.White;
-            this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador2.Location = new System.Drawing.Point(1141, 615);
-            this.txtTemporizador2.Name = "txtTemporizador2";
-            this.txtTemporizador2.ReadOnly = true;
-            this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
-            this.txtTemporizador2.TabIndex = 156;
-            this.txtTemporizador2.Text = "00:00";
-            this.txtTemporizador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTemporizador2.Visible = false;
-            // 
             // label43
             // 
             this.label43.AutoSize = true;
@@ -1411,13 +1289,13 @@
             this.Heat1.BackColor = System.Drawing.Color.Crimson;
             this.Heat1.Location = new System.Drawing.Point(327, 126);
             this.Heat1.Name = "Heat1";
-            this.Heat1.Size = new System.Drawing.Size(5, 187);
+            this.Heat1.Size = new System.Drawing.Size(5, 319);
             this.Heat1.TabIndex = 170;
             // 
             // Heat3
             // 
             this.Heat3.BackColor = System.Drawing.Color.Crimson;
-            this.Heat3.Location = new System.Drawing.Point(330, 308);
+            this.Heat3.Location = new System.Drawing.Point(330, 440);
             this.Heat3.Name = "Heat3";
             this.Heat3.Size = new System.Drawing.Size(20, 5);
             this.Heat3.TabIndex = 171;
@@ -1522,102 +1400,6 @@
             this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRED.TabIndex = 160;
             this.picRED.TabStop = false;
-            // 
-            // btnReset2
-            // 
-            this.btnReset2.BackColor = System.Drawing.Color.White;
-            this.btnReset2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset2.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            this.btnReset2.IconColor = System.Drawing.Color.Black;
-            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnReset2.IconSize = 15;
-            this.btnReset2.Location = new System.Drawing.Point(1265, 616);
-            this.btnReset2.Name = "btnReset2";
-            this.btnReset2.Size = new System.Drawing.Size(26, 23);
-            this.btnReset2.TabIndex = 159;
-            this.btnReset2.UseVisualStyleBackColor = false;
-            this.btnReset2.Visible = false;
-            this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
-            // 
-            // btnAddSeg2
-            // 
-            this.btnAddSeg2.BackColor = System.Drawing.Color.White;
-            this.btnAddSeg2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSeg2.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
-            this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddSeg2.IconSize = 10;
-            this.btnAddSeg2.Location = new System.Drawing.Point(1242, 623);
-            this.btnAddSeg2.Name = "btnAddSeg2";
-            this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
-            this.btnAddSeg2.TabIndex = 158;
-            this.btnAddSeg2.UseVisualStyleBackColor = false;
-            this.btnAddSeg2.Visible = false;
-            this.btnAddSeg2.Click += new System.EventHandler(this.btnAddSeg2_Click);
-            // 
-            // btnAddMin2
-            // 
-            this.btnAddMin2.BackColor = System.Drawing.Color.White;
-            this.btnAddMin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddMin2.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddMin2.IconColor = System.Drawing.Color.Black;
-            this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddMin2.IconSize = 10;
-            this.btnAddMin2.Location = new System.Drawing.Point(1224, 624);
-            this.btnAddMin2.Name = "btnAddMin2";
-            this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
-            this.btnAddMin2.TabIndex = 157;
-            this.btnAddMin2.UseVisualStyleBackColor = false;
-            this.btnAddMin2.Visible = false;
-            this.btnAddMin2.Click += new System.EventHandler(this.btnAddMin2_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.White;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            this.btnReset.IconColor = System.Drawing.Color.Black;
-            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(1265, 590);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(26, 23);
-            this.btnReset.TabIndex = 155;
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Visible = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnAddSeg
-            // 
-            this.btnAddSeg.BackColor = System.Drawing.Color.White;
-            this.btnAddSeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSeg.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddSeg.IconColor = System.Drawing.Color.Black;
-            this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(1248, 599);
-            this.btnAddSeg.Name = "btnAddSeg";
-            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
-            this.btnAddSeg.TabIndex = 154;
-            this.btnAddSeg.UseVisualStyleBackColor = false;
-            this.btnAddSeg.Visible = false;
-            this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
-            // 
-            // btnAddMin
-            // 
-            this.btnAddMin.BackColor = System.Drawing.Color.White;
-            this.btnAddMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddMin.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddMin.IconColor = System.Drawing.Color.Black;
-            this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(1224, 599);
-            this.btnAddMin.Name = "btnAddMin";
-            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
-            this.btnAddMin.TabIndex = 153;
-            this.btnAddMin.UseVisualStyleBackColor = false;
-            this.btnAddMin.Visible = false;
-            this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
             // 
             // PicTC8
             // 
@@ -1804,12 +1586,234 @@
             this.label8.TabIndex = 177;
             this.label8.Text = "Temperature Setpoint";
             // 
+            // lbC2
+            // 
+            this.lbC2.AutoSize = true;
+            this.lbC2.BackColor = System.Drawing.Color.White;
+            this.lbC2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbC2.ForeColor = System.Drawing.Color.Black;
+            this.lbC2.Location = new System.Drawing.Point(1259, 531);
+            this.lbC2.Name = "lbC2";
+            this.lbC2.Size = new System.Drawing.Size(32, 22);
+            this.lbC2.TabIndex = 96;
+            this.lbC2.Text = "°C";
+            // 
+            // lbSetTemp2
+            // 
+            this.lbSetTemp2.AutoSize = true;
+            this.lbSetTemp2.BackColor = System.Drawing.Color.White;
+            this.lbSetTemp2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSetTemp2.ForeColor = System.Drawing.Color.Black;
+            this.lbSetTemp2.Location = new System.Drawing.Point(1137, 543);
+            this.lbSetTemp2.Name = "lbSetTemp2";
+            this.lbSetTemp2.Size = new System.Drawing.Size(132, 18);
+            this.lbSetTemp2.TabIndex = 66;
+            this.lbSetTemp2.Text = "Set Temp Cooling";
+            // 
+            // txtSetTemp2
+            // 
+            this.txtSetTemp2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetTemp2.Location = new System.Drawing.Point(1211, 554);
+            this.txtSetTemp2.Name = "txtSetTemp2";
+            this.txtSetTemp2.Size = new System.Drawing.Size(77, 29);
+            this.txtSetTemp2.TabIndex = 65;
+            this.txtSetTemp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSetTemp2.TextChanged += new System.EventHandler(this.txtSetTemp2_TextChanged);
+            this.txtSetTemp2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetTemp2_KeyPress);
+            // 
+            // btnAddMin
+            // 
+            this.btnAddMin.BackColor = System.Drawing.Color.White;
+            this.btnAddMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMin.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddMin.IconColor = System.Drawing.Color.Black;
+            this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddMin.IconSize = 10;
+            this.btnAddMin.Location = new System.Drawing.Point(1224, 599);
+            this.btnAddMin.Name = "btnAddMin";
+            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin.TabIndex = 153;
+            this.btnAddMin.UseVisualStyleBackColor = false;
+            this.btnAddMin.Visible = false;
+            this.btnAddMin.Click += new System.EventHandler(this.btnAddMin_Click);
+            // 
+            // btnReset2
+            // 
+            this.btnReset2.BackColor = System.Drawing.Color.White;
+            this.btnReset2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset2.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            this.btnReset2.IconColor = System.Drawing.Color.Black;
+            this.btnReset2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnReset2.IconSize = 15;
+            this.btnReset2.Location = new System.Drawing.Point(1265, 616);
+            this.btnReset2.Name = "btnReset2";
+            this.btnReset2.Size = new System.Drawing.Size(26, 23);
+            this.btnReset2.TabIndex = 159;
+            this.btnReset2.UseVisualStyleBackColor = false;
+            this.btnReset2.Visible = false;
+            this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.White;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            this.btnReset.IconColor = System.Drawing.Color.Black;
+            this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnReset.IconSize = 15;
+            this.btnReset.Location = new System.Drawing.Point(1265, 590);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(26, 23);
+            this.btnReset.TabIndex = 155;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Visible = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnAddSeg
+            // 
+            this.btnAddSeg.BackColor = System.Drawing.Color.White;
+            this.btnAddSeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSeg.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddSeg.IconColor = System.Drawing.Color.Black;
+            this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSeg.IconSize = 10;
+            this.btnAddSeg.Location = new System.Drawing.Point(1248, 599);
+            this.btnAddSeg.Name = "btnAddSeg";
+            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg.TabIndex = 154;
+            this.btnAddSeg.UseVisualStyleBackColor = false;
+            this.btnAddSeg.Visible = false;
+            this.btnAddSeg.Click += new System.EventHandler(this.btnAddSeg_Click);
+            // 
+            // btnAddSeg2
+            // 
+            this.btnAddSeg2.BackColor = System.Drawing.Color.White;
+            this.btnAddSeg2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSeg2.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddSeg2.IconColor = System.Drawing.Color.Black;
+            this.btnAddSeg2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddSeg2.IconSize = 10;
+            this.btnAddSeg2.Location = new System.Drawing.Point(1242, 623);
+            this.btnAddSeg2.Name = "btnAddSeg2";
+            this.btnAddSeg2.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg2.TabIndex = 158;
+            this.btnAddSeg2.UseVisualStyleBackColor = false;
+            this.btnAddSeg2.Visible = false;
+            this.btnAddSeg2.Click += new System.EventHandler(this.btnAddSeg2_Click);
+            // 
+            // btnAddMin2
+            // 
+            this.btnAddMin2.BackColor = System.Drawing.Color.White;
+            this.btnAddMin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMin2.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAddMin2.IconColor = System.Drawing.Color.Black;
+            this.btnAddMin2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddMin2.IconSize = 10;
+            this.btnAddMin2.Location = new System.Drawing.Point(1224, 624);
+            this.btnAddMin2.Name = "btnAddMin2";
+            this.btnAddMin2.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin2.TabIndex = 157;
+            this.btnAddMin2.UseVisualStyleBackColor = false;
+            this.btnAddMin2.Visible = false;
+            this.btnAddMin2.Click += new System.EventHandler(this.btnAddMin2_Click);
+            // 
+            // txtTemporizador2
+            // 
+            this.txtTemporizador2.BackColor = System.Drawing.Color.White;
+            this.txtTemporizador2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTemporizador2.Location = new System.Drawing.Point(1141, 615);
+            this.txtTemporizador2.Name = "txtTemporizador2";
+            this.txtTemporizador2.ReadOnly = true;
+            this.txtTemporizador2.Size = new System.Drawing.Size(77, 29);
+            this.txtTemporizador2.TabIndex = 156;
+            this.txtTemporizador2.Text = "00:00";
+            this.txtTemporizador2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTemporizador2.Visible = false;
+            // 
+            // checkByRanges
+            // 
+            this.checkByRanges.AutoSize = true;
+            this.checkByRanges.BackColor = System.Drawing.Color.White;
+            this.checkByRanges.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkByRanges.Location = new System.Drawing.Point(1107, 595);
+            this.checkByRanges.Name = "checkByRanges";
+            this.checkByRanges.Size = new System.Drawing.Size(103, 22);
+            this.checkByRanges.TabIndex = 64;
+            this.checkByRanges.Text = "By Ranges";
+            this.checkByRanges.UseVisualStyleBackColor = false;
+            this.checkByRanges.Visible = false;
+            this.checkByRanges.CheckedChanged += new System.EventHandler(this.checkByRanges_CheckedChanged);
+            // 
+            // checkOnlyOne
+            // 
+            this.checkOnlyOne.AutoSize = true;
+            this.checkOnlyOne.BackColor = System.Drawing.Color.White;
+            this.checkOnlyOne.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkOnlyOne.Location = new System.Drawing.Point(1107, 561);
+            this.checkOnlyOne.Name = "checkOnlyOne";
+            this.checkOnlyOne.Size = new System.Drawing.Size(87, 22);
+            this.checkOnlyOne.TabIndex = 63;
+            this.checkOnlyOne.Text = "Only one";
+            this.checkOnlyOne.UseVisualStyleBackColor = false;
+            this.checkOnlyOne.Visible = false;
+            this.checkOnlyOne.CheckedChanged += new System.EventHandler(this.checkOnlyOne_CheckedChanged);
+            // 
+            // txtTemporizador
+            // 
+            this.txtTemporizador.BackColor = System.Drawing.Color.White;
+            this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTemporizador.Location = new System.Drawing.Point(1141, 584);
+            this.txtTemporizador.Name = "txtTemporizador";
+            this.txtTemporizador.ReadOnly = true;
+            this.txtTemporizador.Size = new System.Drawing.Size(77, 29);
+            this.txtTemporizador.TabIndex = 120;
+            this.txtTemporizador.Text = "00:00";
+            this.txtTemporizador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTemporizador.Visible = false;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.White;
+            this.label44.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(442, 250);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(45, 16);
+            this.label44.TabIndex = 178;
+            this.label44.Text = "Temps";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.White;
+            this.label45.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(442, 268);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(35, 16);
+            this.label45.TabIndex = 179;
+            this.label45.Text = "in °C";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.White;
+            this.label31.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(832, 620);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(35, 16);
+            this.label31.TabIndex = 180;
+            this.label31.Text = "Time";
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.label45);
+            this.Controls.Add(this.label44);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtActualSetPoint);
             this.Controls.Add(this.pictureBox2);
@@ -1856,13 +1860,10 @@
             this.Controls.Add(this.TrackbarTemp);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txtTemporizador);
-            this.Controls.Add(this.label32);
-            this.Controls.Add(this.label31);
             this.Controls.Add(this.led2);
             this.Controls.Add(this.led1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label30);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.lbConnectedStatus);
@@ -1874,7 +1875,6 @@
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.lbC2);
             this.Controls.Add(this.btnEMO);
             this.Controls.Add(this.lbl_P_90);
@@ -2015,10 +2015,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtSetTemp1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkOnlyOne;
-        private System.Windows.Forms.CheckBox checkByRanges;
-        private System.Windows.Forms.Label lbSetTemp2;
-        private System.Windows.Forms.TextBox txtSetTemp2;
         private System.Windows.Forms.CheckBox checkTemp1;
         private System.Windows.Forms.CheckBox checkTemp2;
         private System.Windows.Forms.TextBox txtActualTempTCGeneral;
@@ -2044,7 +2040,6 @@
         private System.Windows.Forms.Label lbl_P_20;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox btnEMO;
-        private System.Windows.Forms.Label lbC2;
         private System.Windows.Forms.Label lbHora;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Timer TimerHoraFecha;
@@ -2062,12 +2057,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timerForTC;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtTemporizador;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TrackBar TrackbarTemp;
@@ -2090,14 +2081,7 @@
         private System.Windows.Forms.PictureBox PicTC6;
         private System.Windows.Forms.PictureBox PicTC7;
         private System.Windows.Forms.PictureBox PicTC8;
-        private FontAwesome.Sharp.IconButton btnAddMin;
-        private FontAwesome.Sharp.IconButton btnAddSeg;
-        private FontAwesome.Sharp.IconButton btnReset;
         private System.Windows.Forms.Timer Temporizador;
-        private System.Windows.Forms.TextBox txtTemporizador2;
-        private FontAwesome.Sharp.IconButton btnAddMin2;
-        private FontAwesome.Sharp.IconButton btnAddSeg2;
-        private FontAwesome.Sharp.IconButton btnReset2;
         private System.Windows.Forms.PictureBox picGREEN;
         private System.Windows.Forms.PictureBox picYELLOW;
         private System.Windows.Forms.PictureBox picRED;
@@ -2118,5 +2102,21 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtActualSetPoint;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbC2;
+        private System.Windows.Forms.Label lbSetTemp2;
+        private System.Windows.Forms.TextBox txtSetTemp2;
+        private FontAwesome.Sharp.IconButton btnAddMin;
+        private FontAwesome.Sharp.IconButton btnReset2;
+        private FontAwesome.Sharp.IconButton btnReset;
+        private FontAwesome.Sharp.IconButton btnAddSeg;
+        private FontAwesome.Sharp.IconButton btnAddSeg2;
+        private FontAwesome.Sharp.IconButton btnAddMin2;
+        private System.Windows.Forms.TextBox txtTemporizador2;
+        private System.Windows.Forms.CheckBox checkByRanges;
+        private System.Windows.Forms.CheckBox checkOnlyOne;
+        private System.Windows.Forms.TextBox txtTemporizador;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label31;
     }
 }
