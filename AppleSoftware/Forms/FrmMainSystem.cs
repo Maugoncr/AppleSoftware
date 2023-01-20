@@ -743,15 +743,55 @@ namespace AppleSoftware.Forms
 
                     break;
                 case "16":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes16 = { 4, 6, 33, 3, 0, 160, 115, 219 };
+                    serialPort1.Write(bytes16, 0, bytes16.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "17":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes17 = { 4, 6, 33, 3, 0, 170, 243, 220 };
+                    serialPort1.Write(bytes17, 0, bytes17.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "18":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes18 = { 4, 6, 33, 3, 0, 180, 115, 212 };
+                    serialPort1.Write(bytes18, 0, bytes18.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "19":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes19 = { 4, 6, 33, 3, 0, 190, 243, 211 };
+                    serialPort1.Write(bytes19, 0, bytes19.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "20":
@@ -781,87 +821,367 @@ namespace AppleSoftware.Forms
 
                     break;
                 case "22":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes22 = { 4, 6, 33, 3, 0, 220, 114, 58 };
+                    serialPort1.Write(bytes22, 0, bytes22.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "23":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes23 = { 4, 6, 33, 3, 0, 230, 242, 41 };
+                    serialPort1.Write(bytes23, 0, bytes23.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "24":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes24 = { 4, 6, 33, 3, 0, 240, 115, 231 };
+                    serialPort1.Write(bytes24, 0, bytes24.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "25":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes25 = { 4, 6, 33, 3, 0, 250, 243, 224 };
+                    serialPort1.Write(bytes25, 0, bytes25.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "26":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes26 = { 4, 6, 33, 3, 1, 4, 115, 240 };
+                    serialPort1.Write(bytes26, 0, bytes26.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "27":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes27 = { 4, 6, 33, 3, 1, 14, 243, 247 };
+                    serialPort1.Write(bytes27, 0, bytes27.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "28":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes28 = { 4, 6, 33, 3, 1, 24, 114, 57 };
+                    serialPort1.Write(bytes28, 0, bytes28.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "29":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes29 = { 4, 6, 33, 3, 1, 34, 242, 42 };
+                    serialPort1.Write(bytes29, 0, bytes29.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "30":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes30 = { 4, 6, 33, 3, 1, 44, 115, 238 };
+                    serialPort1.Write(bytes30, 0, bytes30.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "31":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes31 = { 4, 6, 33, 3, 1, 54, 242, 37 };
+                    serialPort1.Write(bytes31, 0, bytes31.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "32":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes32 = { 4, 6, 33, 3, 1, 64, 115, 195 };
+                    serialPort1.Write(bytes32, 0, bytes32.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "33":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes33 = { 4, 6, 33, 3, 1, 74, 243, 196 };
+                    serialPort1.Write(bytes33, 0, bytes33.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "34":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes34 = { 4, 6, 33, 3, 1, 84, 115, 204 };
+                    serialPort1.Write(bytes34, 0, bytes34.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "35":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes35 = { 4, 6, 33, 3, 1, 94, 243, 203 };
+                    serialPort1.Write(bytes35, 0, bytes35.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "36":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes36 = { 4, 6, 33, 3, 1, 104, 115, 221 };
+                    serialPort1.Write(bytes36, 0, bytes36.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "37":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes37 = { 4, 6, 33, 3, 1, 114, 242, 22 };
+                    serialPort1.Write(bytes37, 0, bytes37.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "38":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes38 = { 4, 6, 33, 3, 1, 124, 115, 210 };
+                    serialPort1.Write(bytes38, 0, bytes38.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "39":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes39 = { 4, 6, 33, 3, 1, 134, 243, 145 };
+                    serialPort1.Write(bytes39, 0, bytes39.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "40":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes40 = { 4, 6, 33, 3, 1, 144, 114, 95 };
+                    serialPort1.Write(bytes40, 0, bytes40.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "41":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes41 = { 4, 6, 33, 3, 1, 154, 242, 88 };
+                    serialPort1.Write(bytes41, 0, bytes41.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "42":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes42 = { 4, 6, 33, 3, 1, 164, 115, 136 };
+                    serialPort1.Write(bytes42, 0, bytes42.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "43":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes43 = { 4, 6, 33, 3, 1, 174, 243, 143 };
+                    serialPort1.Write(bytes43, 0, bytes43.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "44":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes44 = { 4, 6, 33, 3, 1, 184, 114, 65 };
+                    serialPort1.Write(bytes44, 0, bytes44.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "45":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes45 = { 4, 6, 33, 3, 1, 194, 243, 162 };
+                    serialPort1.Write(bytes45, 0, bytes45.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "46":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes46 = { 4, 6, 33, 3, 1, 204, 114, 102 };
+                    serialPort1.Write(bytes46, 0, bytes46.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "47":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes47 = { 4, 6, 33, 3, 1, 214, 243, 173 };
+                    serialPort1.Write(bytes47, 0, bytes47.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "48":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes48 = { 4, 6, 33, 3, 1, 224, 115, 187 };
+                    serialPort1.Write(bytes48, 0, bytes48.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "49":
+                    SetConfigSerialPortForHeater();
+                    Thread.Sleep(1000);
+                    serialPort1.DiscardOutBuffer();
+                    //TODO Cambiar las cadenas
+                    byte[] bytes49 = { 4, 6, 33, 3, 1, 234, 243, 188 };
+                    serialPort1.Write(bytes49, 0, bytes49.Length);
+                    BanderaRespuestaParaTCS = false;
+                    Thread.Sleep(1000);
+                    SetConfigSerialPortForTCS();
+                    // Check ☻
 
                     break;
                 case "50":
