@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleSoftware", "AppleSoftware\AppleSoftware.csproj", "{E0FB0AEF-0190-448C-8832-C74C591BF9AA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ELEN-1", "ELEN-1\ELEN-1.vdproj", "{915FEEDB-4144-41B4-9636-81FAB3E4819A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{E0FB0AEF-0190-448C-8832-C74C591BF9AA}.Release|x64.Build.0 = Release|Any CPU
 		{E0FB0AEF-0190-448C-8832-C74C591BF9AA}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0FB0AEF-0190-448C-8832-C74C591BF9AA}.Release|x86.Build.0 = Release|Any CPU
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Debug|Any CPU.ActiveCfg = Debug
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Debug|x64.ActiveCfg = Debug
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Debug|x86.ActiveCfg = Debug
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Release|Any CPU.ActiveCfg = Release
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Release|x64.ActiveCfg = Release
+		{915FEEDB-4144-41B4-9636-81FAB3E4819A}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -182,6 +182,7 @@
             this.txtTemporizador = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
+            this.TimerEMOActive = new System.Windows.Forms.Timer(this.components);
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -940,7 +941,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(434, 74);
+            this.chart1.Location = new System.Drawing.Point(434, 77);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.ChartArea = "ChartArea1";
@@ -1371,9 +1372,9 @@
             // 
             this.picGREEN.BackColor = System.Drawing.Color.White;
             this.picGREEN.Image = global::AppleSoftware.Properties.Resources.tc8off;
-            this.picGREEN.Location = new System.Drawing.Point(1201, 395);
+            this.picGREEN.Location = new System.Drawing.Point(1210, 301);
             this.picGREEN.Name = "picGREEN";
-            this.picGREEN.Size = new System.Drawing.Size(35, 35);
+            this.picGREEN.Size = new System.Drawing.Size(50, 50);
             this.picGREEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picGREEN.TabIndex = 162;
             this.picGREEN.TabStop = false;
@@ -1382,9 +1383,9 @@
             // 
             this.picYELLOW.BackColor = System.Drawing.Color.White;
             this.picYELLOW.Image = global::AppleSoftware.Properties.Resources.tc3off;
-            this.picYELLOW.Location = new System.Drawing.Point(1201, 450);
+            this.picYELLOW.Location = new System.Drawing.Point(1208, 369);
             this.picYELLOW.Name = "picYELLOW";
-            this.picYELLOW.Size = new System.Drawing.Size(35, 35);
+            this.picYELLOW.Size = new System.Drawing.Size(50, 50);
             this.picYELLOW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picYELLOW.TabIndex = 161;
             this.picYELLOW.TabStop = false;
@@ -1392,10 +1393,10 @@
             // picRED
             // 
             this.picRED.BackColor = System.Drawing.Color.White;
-            this.picRED.Image = global::AppleSoftware.Properties.Resources.tc1on;
-            this.picRED.Location = new System.Drawing.Point(1201, 500);
+            this.picRED.Image = global::AppleSoftware.Properties.Resources.tc1off;
+            this.picRED.Location = new System.Drawing.Point(1208, 440);
             this.picRED.Name = "picRED";
-            this.picRED.Size = new System.Drawing.Size(35, 35);
+            this.picRED.Size = new System.Drawing.Size(50, 50);
             this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRED.TabIndex = 160;
             this.picRED.TabStop = false;
@@ -1792,12 +1793,20 @@
             this.label31.TabIndex = 180;
             this.label31.Text = "Time";
             // 
+            // TimerEMOActive
+            // 
+            this.TimerEMOActive.Interval = 1000;
+            this.TimerEMOActive.Tick += new System.EventHandler(this.TimerEMOActive_Tick);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
+            this.Controls.Add(this.picRED);
+            this.Controls.Add(this.picYELLOW);
+            this.Controls.Add(this.picGREEN);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label45);
             this.Controls.Add(this.chart1);
@@ -1816,9 +1825,6 @@
             this.Controls.Add(this.btnSetTemp);
             this.Controls.Add(this.SelectTittle);
             this.Controls.Add(this.label43);
-            this.Controls.Add(this.picGREEN);
-            this.Controls.Add(this.picYELLOW);
-            this.Controls.Add(this.picRED);
             this.Controls.Add(this.btnReset2);
             this.Controls.Add(this.btnAddSeg2);
             this.Controls.Add(this.btnAddMin2);
@@ -2104,5 +2110,6 @@
         private System.Windows.Forms.TextBox txtTemporizador;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Timer TimerEMOActive;
     }
 }

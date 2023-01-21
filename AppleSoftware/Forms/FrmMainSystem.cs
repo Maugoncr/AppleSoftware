@@ -1722,14 +1722,28 @@ namespace AppleSoftware.Forms
                 btnSetTemp.Enabled = false;
                 btnON.BackColor = Color.FromArgb(183, 43, 41);
                 //Temporizador.Start();
-
                 //Comando iniciar Chiller
+
+                //Prende la VERDE
+                serialPort1.DiscardInBuffer();
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("#020001" + "\r");
+                BanderaRespuestaParaTCS = false;
+
+                picGREEN.Image.Dispose();
+                picRED.Image.Dispose();
+                picYELLOW.Image.Dispose();
+
+                picGREEN.Image = Properties.Resources.tc8on;
+                picYELLOW.Image = Properties.Resources.tc3off;
+                picRED.Image = Properties.Resources.tc1off;
+
 
                 if (FormatCadena == "Chiller")
                 {
                     if (serialPort1.IsOpen)
                     {
-                        if (true)
+                        if (TC5Num <= 55)
                         {
                             if (!string.IsNullOrEmpty(txtActualSetPoint.Text))
                             {
@@ -1740,13 +1754,16 @@ namespace AppleSoftware.Forms
                                 BanderaRespuestaParaTCS = false;
                                 Thread.Sleep(1000);
                                 SetConfigSerialPortForTCS();
-
                             }
                             else
                             {
                                 System.Windows.Forms.MessageBox.Show("You must set a temperature before.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 txtSetTemp1.Clear();
                             }
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Please wait a few minutes until the temperature is below 𝟱𝟱C°.\r\nLet's take care of the integrity of the equipment, thank you!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         
                     }
@@ -1798,6 +1815,20 @@ namespace AppleSoftware.Forms
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
                 Temporizador.Stop();
                 txtActualSetPoint.Clear();
+
+                picGREEN.Image.Dispose();
+                picRED.Image.Dispose();
+                picYELLOW.Image.Dispose();
+
+                picGREEN.Image = Properties.Resources.tc8off;
+                picYELLOW.Image = Properties.Resources.tc3off;
+                picRED.Image = Properties.Resources.tc1on;
+
+                serialPort1.DiscardInBuffer();
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("#020004" + "\r");
+                BanderaRespuestaParaTCS = false;
+
 
                 //Apagar Chiller
 
@@ -1917,6 +1948,8 @@ namespace AppleSoftware.Forms
             {
                 if (reconocerCOM(cbCOMSelect.SelectedItem.ToString()))
                 {
+                    TimerEMOActive.Stop();
+
                     cbSelect.Enabled = true;
                     cbCOMSelect.Enabled = false;
                     btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
@@ -1952,7 +1985,23 @@ namespace AppleSoftware.Forms
                     picRED.Image.Dispose();
                     picRED.Image = Properties.Resources.tc1off;
 
+                    // Poner led ROJO ON cuando no hay ningun proceso en movimiento.
+                    // ROJO ON
+                    //YELLOW OFF
+                    // GREEN OFF
 
+                    picGREEN.Image.Dispose();
+                    picRED.Image.Dispose();
+                    picYELLOW.Image.Dispose();
+
+                    picGREEN.Image = Properties.Resources.tc8off;
+                    picYELLOW.Image = Properties.Resources.tc3off;
+                    picRED.Image = Properties.Resources.tc1on;
+
+                    serialPort1.DiscardInBuffer();
+                    serialPort1.DiscardOutBuffer();
+                    serialPort1.Write("#020004" + "\r");
+                    BanderaRespuestaParaTCS = false;
                 }
 
             }
@@ -1960,8 +2009,21 @@ namespace AppleSoftware.Forms
             {
                 if (serialPort1.IsOpen)
                 {
+                    serialPort1.DiscardInBuffer();
+                    serialPort1.DiscardOutBuffer();
+                    serialPort1.Write("#020000" + "\r");
+                    BanderaRespuestaParaTCS = false;
                     serialPort1.Close();
                 }
+
+                picGREEN.Image.Dispose();
+                picRED.Image.Dispose();
+                picYELLOW.Image.Dispose();
+
+                picGREEN.Image = Properties.Resources.tc8off;
+                picYELLOW.Image = Properties.Resources.tc3off;
+                picRED.Image = Properties.Resources.tc1off;
+
                 LimpiarArranque();
                 btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
                 lbConnectedStatus.Text = "Disconnected";
@@ -1988,11 +2050,6 @@ namespace AppleSoftware.Forms
                 PicTC7.Image = Properties.Resources.tc7off;
                 PicTC8.Image.Dispose();
                 PicTC8.Image = Properties.Resources.tc8off;
-
-                picGREEN.Image.Dispose();
-                picGREEN.Image = Properties.Resources.tc8off;
-                picRED.Image.Dispose();
-                picRED.Image = Properties.Resources.tc1on;
 
             }
 
@@ -2288,11 +2345,16 @@ namespace AppleSoftware.Forms
             PicTC8.Image.Dispose();
             PicTC8.Image = Properties.Resources.tc8off;
 
-            picGREEN.Image.Dispose();
-            picGREEN.Image = Properties.Resources.tc8off;
-            picRED.Image.Dispose();
-            picRED.Image = Properties.Resources.tc1on;
+            // PRENDER Y APAGAR LOS 3.
+            // REAL DEJA ENCENDIDO LOS 3.
+            serialPort1.DiscardInBuffer();
+            serialPort1.DiscardOutBuffer();
+            serialPort1.Write("#020007" + "\r");
+            BanderaRespuestaParaTCS = false;
+
+            TimerEMOActive.Start();
             
+
         }
 
         private void btnSetTemp_Click(object sender, EventArgs e)
@@ -2687,7 +2749,7 @@ namespace AppleSoftware.Forms
             txtTC6.Text = TC3S;
             txtTC7.Text = TC2S;
             txtTC8.Text = TC1S;
-            txtActualTempTCGeneral.Text = TC4S;
+            txtActualTempTCGeneral.Text = TC5S;
         }
 
         private void panelTop_MouseDown(object sender, MouseEventArgs e)
@@ -2724,7 +2786,32 @@ namespace AppleSoftware.Forms
             }
         }
 
-     
+        bool PrendeApaga = true;
+        private void TimerEMOActive_Tick(object sender, EventArgs e)
+        {
+            if (PrendeApaga)
+            {
+                picGREEN.Image.Dispose();
+                picRED.Image.Dispose();
+                picYELLOW.Image.Dispose();
+
+                picGREEN.Image = Properties.Resources.tc8on;
+                picYELLOW.Image = Properties.Resources.tc3on;
+                picRED.Image = Properties.Resources.tc1on;
+                PrendeApaga = false;
+            }
+            else
+            {
+                picGREEN.Image.Dispose();
+                picRED.Image.Dispose();
+                picYELLOW.Image.Dispose();
+
+                picGREEN.Image = Properties.Resources.tc8off;
+                picYELLOW.Image = Properties.Resources.tc3off;
+                picRED.Image = Properties.Resources.tc1off;
+                PrendeApaga = true;
+            }
+        }
     }
 }
 
