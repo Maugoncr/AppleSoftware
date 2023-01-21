@@ -2316,6 +2316,11 @@ namespace AppleSoftware.Forms
 
             if (serialPort1.IsOpen)
             {
+                serialPort1.DiscardInBuffer();
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("#020007" + "\r");
+                BanderaRespuestaParaTCS = false;
+
                 serialPort1.Close();
             }
             LimpiarArranque();
@@ -2347,11 +2352,6 @@ namespace AppleSoftware.Forms
 
             // PRENDER Y APAGAR LOS 3.
             // REAL DEJA ENCENDIDO LOS 3.
-            serialPort1.DiscardInBuffer();
-            serialPort1.DiscardOutBuffer();
-            serialPort1.Write("#020007" + "\r");
-            BanderaRespuestaParaTCS = false;
-
             TimerEMOActive.Start();
             
 
@@ -2384,6 +2384,19 @@ namespace AppleSoftware.Forms
                         {
                             if (Convert.ToInt32(txtSetTemp1.Text)>= 25 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
                             {
+                                serialPort1.DiscardInBuffer();
+                                serialPort1.DiscardOutBuffer();
+                                serialPort1.Write("#020001" + "\r");
+                                BanderaRespuestaParaTCS = false;
+
+                                picGREEN.Image.Dispose();
+                                picRED.Image.Dispose();
+                                picYELLOW.Image.Dispose();
+
+                                picGREEN.Image = Properties.Resources.tc8on;
+                                picYELLOW.Image = Properties.Resources.tc3off;
+                                picRED.Image = Properties.Resources.tc1off;
+
                                 SendSetTempHeaterAndTurnItOn();
                                 txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
                                 EncenderHeaterFromSetTemp();
