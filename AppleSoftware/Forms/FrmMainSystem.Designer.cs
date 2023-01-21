@@ -253,9 +253,9 @@
             this.label33.ForeColor = System.Drawing.Color.White;
             this.label33.Location = new System.Drawing.Point(590, 9);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(174, 25);
+            this.label33.Size = new System.Drawing.Size(183, 25);
             this.label33.TabIndex = 94;
-            this.label33.Text = "ELEN-SOFTWARE";
+            this.label33.Text = "ELEN SOFTWARE I";
             // 
             // label6
             // 
@@ -264,9 +264,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(635, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 16);
+            this.label6.Size = new System.Drawing.Size(77, 16);
             this.label6.TabIndex = 93;
-            this.label6.Text = "1.000.0";
+            this.label6.Text = "Rev 1.000.0";
             // 
             // btnClose
             // 

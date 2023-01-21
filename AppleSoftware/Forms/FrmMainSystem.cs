@@ -45,6 +45,10 @@ namespace AppleSoftware.Forms
         {
             if (serialPort1.IsOpen)
             {
+                serialPort1.DiscardInBuffer();
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("#020000" + "\r");
+                BanderaRespuestaParaTCS = false;
                 serialPort1.Close();
             }
             Application.Exit();
@@ -2076,6 +2080,18 @@ namespace AppleSoftware.Forms
             chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC1Num.ToString());
 
             chart1.ChartAreas[0].RecalculateAxesScale();
+
+            if (chart1.Series["TC-1"].Points.Count == 349)
+            {
+                chart1.Series["TC-1"].Points.RemoveAt(0);
+                chart1.Series["TC-2"].Points.RemoveAt(0);
+                chart1.Series["TC-3"].Points.RemoveAt(0);
+                chart1.Series["TC-4"].Points.RemoveAt(0);
+                chart1.Series["TC-5"].Points.RemoveAt(0);
+                chart1.Series["TC-6"].Points.RemoveAt(0);
+                chart1.Series["TC-7"].Points.RemoveAt(0);
+                chart1.Series["TC-8"].Points.RemoveAt(0);
+            }
 
             GraficarDatosTxt();
 
