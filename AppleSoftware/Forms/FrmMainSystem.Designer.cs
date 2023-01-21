@@ -123,7 +123,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.TrackbarTemp = new System.Windows.Forms.TrackBar();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -1133,15 +1132,6 @@
             this.panel5.Size = new System.Drawing.Size(1300, 10);
             this.panel5.TabIndex = 125;
             // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(1124, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 565);
-            this.label5.TabIndex = 126;
-            // 
             // label34
             // 
             this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1933,7 +1923,6 @@
             this.Controls.Add(this.btnON);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label5);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2056,7 +2045,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TrackBar TrackbarTemp;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;

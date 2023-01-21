@@ -446,7 +446,7 @@ namespace AppleSoftware.Forms
                         {
                             System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟮𝟱C° to 𝟴𝟱C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtSetTemp1.Clear();
-                            TrackbarTemp.Value = 50;
+                            TrackbarTemp.Value = 25;
                             return;
                         }
                     }
@@ -1702,42 +1702,47 @@ namespace AppleSoftware.Forms
             }
         }
 
+        private void EncenderSistemaEstetica()
+        {
+
+            btnClose.Enabled = false;
+            btnConnect.Enabled = false;
+            lbStatus.Text = "ON";
+            lbStatus.ForeColor = Color.FromArgb(0, 143, 57);
+            cbSelect.Enabled = false;
+            TrackbarTemp.Enabled = false;
+            txtSetTemp1.Enabled = false;
+            txtSetTemp2.Enabled = false;
+            checkOnlyOne.Enabled = false;
+            checkByRanges.Enabled = false;
+            checkTemp1.Enabled = false;
+            checkTemp2.Enabled = false;
+            btnSetTemp.Enabled = false;
+            btnON.BackColor = Color.FromArgb(183, 43, 41);
+            //Temporizador.Start();
+            //Comando iniciar Chiller
+
+            //Prende la VERDE
+            serialPort1.DiscardInBuffer();
+            serialPort1.DiscardOutBuffer();
+            serialPort1.Write("#020001" + "\r");
+            BanderaRespuestaParaTCS = false;
+
+            picGREEN.Image.Dispose();
+            picRED.Image.Dispose();
+            picYELLOW.Image.Dispose();
+
+            picGREEN.Image = Properties.Resources.tc8on;
+            picYELLOW.Image = Properties.Resources.tc3off;
+            picRED.Image = Properties.Resources.tc1off;
+
+        }
+        
         private void btnON_Click(object sender, EventArgs e)
         {
 
             if (lbStatus.Text == "OFF" && ValidadEncender())
             {
-                btnClose.Enabled = false;
-                btnConnect.Enabled = false;
-                lbStatus.Text = "ON";
-                lbStatus.ForeColor = Color.FromArgb(0, 143, 57);
-                cbSelect.Enabled = false;
-                TrackbarTemp.Enabled = false;
-                txtSetTemp1.Enabled = false;
-                txtSetTemp2.Enabled = false;
-                checkOnlyOne.Enabled = false;
-                checkByRanges.Enabled = false;
-                checkTemp1.Enabled = false;
-                checkTemp2.Enabled = false;
-                btnSetTemp.Enabled = false;
-                btnON.BackColor = Color.FromArgb(183, 43, 41);
-                //Temporizador.Start();
-                //Comando iniciar Chiller
-
-                //Prende la VERDE
-                serialPort1.DiscardInBuffer();
-                serialPort1.DiscardOutBuffer();
-                serialPort1.Write("#020001" + "\r");
-                BanderaRespuestaParaTCS = false;
-
-                picGREEN.Image.Dispose();
-                picRED.Image.Dispose();
-                picYELLOW.Image.Dispose();
-
-                picGREEN.Image = Properties.Resources.tc8on;
-                picYELLOW.Image = Properties.Resources.tc3off;
-                picRED.Image = Properties.Resources.tc1off;
-
 
                 if (FormatCadena == "Chiller")
                 {
@@ -1747,6 +1752,7 @@ namespace AppleSoftware.Forms
                         {
                             if (!string.IsNullOrEmpty(txtActualSetPoint.Text))
                             {
+                                EncenderSistemaEstetica();
                                 SetConfigSerialPortForChiller();
                                 Thread.Sleep(1000);
                                 serialPort1.DiscardOutBuffer();
@@ -1778,6 +1784,7 @@ namespace AppleSoftware.Forms
                         {
                             if (serialPort1.IsOpen)
                             {
+                                EncenderSistemaEstetica();
                                 SendSetTempHeaterAndTurnItOn();
                                 txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
                             }
@@ -1828,7 +1835,6 @@ namespace AppleSoftware.Forms
                 serialPort1.DiscardOutBuffer();
                 serialPort1.Write("#020004" + "\r");
                 BanderaRespuestaParaTCS = false;
-
 
                 //Apagar Chiller
 
@@ -2050,7 +2056,6 @@ namespace AppleSoftware.Forms
                 PicTC7.Image = Properties.Resources.tc7off;
                 PicTC8.Image.Dispose();
                 PicTC8.Image = Properties.Resources.tc8off;
-
             }
 
         }
@@ -2353,7 +2358,6 @@ namespace AppleSoftware.Forms
             // PRENDER Y APAGAR LOS 3.
             // REAL DEJA ENCENDIDO LOS 3.
             TimerEMOActive.Start();
-            
 
         }
 
