@@ -666,6 +666,7 @@
             this.txtSetTemp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSetTemp1.TextChanged += new System.EventHandler(this.txtSetTemp1_TextChanged);
             this.txtSetTemp1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSetTemp1_KeyPress);
+            this.txtSetTemp1.Leave += new System.EventHandler(this.txtSetTemp1_Leave);
             // 
             // label3
             // 

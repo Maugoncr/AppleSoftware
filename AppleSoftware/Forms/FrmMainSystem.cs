@@ -84,7 +84,8 @@ namespace AppleSoftware.Forms
             Temporizador.Stop();
             minutos = 0;
             segundos = 0;
-            txtTemporizador.Visible = false;    
+            txtTemporizador.Visible = false;
+            txtTemporizador.Text = "00:00";
             btnPause.Visible = false;
             btnPlayTemp.Visible = false;
             btnReset.Visible = false;
@@ -311,7 +312,6 @@ namespace AppleSoftware.Forms
                     HeaterRangeOff();
                     SelectTittle.Text = "Cooling";
                     txtSetTemp1.Text = "5";
-                   
 
                     led1.Image.Dispose();
                     led2.Image.Dispose();
@@ -322,15 +322,6 @@ namespace AppleSoftware.Forms
                     panel2.BackColor = Color.FromArgb(24, 130, 198);
                     panel3.BackColor = Color.FromArgb(24, 130, 198);
                     panel4.BackColor = Color.FromArgb(24, 130, 198);
-
-                    btnAddMin.Enabled = false;
-                    btnAddMin2.Enabled = true;
-                    btnAddSeg.Enabled = false;
-                    btnAddSeg2.Enabled = true;
-                    btnReset.Enabled = false;
-                    btnReset2.Enabled = true;
-
-
 
                 }
                 // Heating
@@ -349,18 +340,11 @@ namespace AppleSoftware.Forms
                     led2.Image = Properties.Resources.led_on_green;
                     led1.Image = Properties.Resources.led_off;
 
-
                     panel1.BackColor = Color.FromArgb(183, 43, 41);
                     panel2.BackColor = Color.FromArgb(183, 43, 41);
                     panel3.BackColor = Color.FromArgb(183, 43, 41);
                     panel4.BackColor = Color.FromArgb(183, 43, 41);
-
-                    btnAddMin.Enabled = true;
-                    btnAddMin2.Enabled = false;
-                    btnAddSeg.Enabled = true;
-                    btnAddSeg2.Enabled = false;
-                    btnReset.Enabled = true;
-                    btnReset2.Enabled = false;
+                   
                 }
 
             }
@@ -441,7 +425,7 @@ namespace AppleSoftware.Forms
                 if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                 {
                     int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
-                    if (validate >= 5 && validate <= 40)
+                    if (validate >= 1 && validate <= 40)
                     {
                         TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
                     }
@@ -452,6 +436,8 @@ namespace AppleSoftware.Forms
                         TrackbarTemp.Value = 5;
                         return;
                     }
+
+
                 }
             }
             else if (FormatCadena == "Heater")
@@ -1771,7 +1757,7 @@ namespace AppleSoftware.Forms
                 {
                     if (serialPort1.IsOpen)
                     {
-                        if (TC5Num <= 55)
+                        if (TC5Num <= 70)
                         {
                             if (!string.IsNullOrEmpty(txtActualSetPoint.Text))
                             {
@@ -1793,7 +1779,7 @@ namespace AppleSoftware.Forms
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("Please wait a few minutes until the temperature is below 𝟱𝟱C°.\r\nLet's take care of the integrity of the equipment, thank you!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            System.Windows.Forms.MessageBox.Show("Please wait a few minutes\nuntil the temperature is below 𝟳𝟬C°.\r\nLet's take care of the integrity of the equipment, thank you!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         
                     }
@@ -2875,6 +2861,29 @@ namespace AppleSoftware.Forms
         private void btnPause_Click(object sender, EventArgs e)
         {
             Temporizador.Stop();
+        }
+
+        private void txtSetTemp1_Leave(object sender, EventArgs e)
+        {
+            if (FormatCadena == "Chiller")
+            {
+                if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
+                {
+                    int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                   
+                        if (validate >= 5 && validate <= 40)
+                        {
+                            TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱C° to 𝟰𝟬C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtSetTemp1.Clear();
+                            TrackbarTemp.Value = 5;
+                            return;
+                        }
+                }
+            }
         }
     }
 }
