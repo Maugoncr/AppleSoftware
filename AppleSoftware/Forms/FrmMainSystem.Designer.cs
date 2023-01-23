@@ -182,6 +182,8 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.TimerEMOActive = new System.Windows.Forms.Timer(this.components);
+            this.btnPlayTemp = new FontAwesome.Sharp.IconButton();
+            this.btnPause = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -940,7 +942,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(434, 77);
+            this.chart1.Location = new System.Drawing.Point(434, 76);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.ChartArea = "ChartArea1";
@@ -1619,9 +1621,9 @@
             this.btnAddMin.IconColor = System.Drawing.Color.Black;
             this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(1224, 599);
+            this.btnAddMin.Location = new System.Drawing.Point(85, 532);
             this.btnAddMin.Name = "btnAddMin";
-            this.btnAddMin.Size = new System.Drawing.Size(18, 18);
+            this.btnAddMin.Size = new System.Drawing.Size(20, 20);
             this.btnAddMin.TabIndex = 153;
             this.btnAddMin.UseVisualStyleBackColor = false;
             this.btnAddMin.Visible = false;
@@ -1647,13 +1649,13 @@
             // 
             this.btnReset.BackColor = System.Drawing.Color.White;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            this.btnReset.IconChar = FontAwesome.Sharp.IconChar.Stop;
             this.btnReset.IconColor = System.Drawing.Color.Black;
             this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(1265, 590);
+            this.btnReset.Location = new System.Drawing.Point(187, 498);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(26, 23);
+            this.btnReset.Size = new System.Drawing.Size(29, 29);
             this.btnReset.TabIndex = 155;
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Visible = false;
@@ -1667,9 +1669,9 @@
             this.btnAddSeg.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(1248, 599);
+            this.btnAddSeg.Location = new System.Drawing.Point(111, 532);
             this.btnAddSeg.Name = "btnAddSeg";
-            this.btnAddSeg.Size = new System.Drawing.Size(18, 18);
+            this.btnAddSeg.Size = new System.Drawing.Size(20, 20);
             this.btnAddSeg.TabIndex = 154;
             this.btnAddSeg.UseVisualStyleBackColor = false;
             this.btnAddSeg.Visible = false;
@@ -1752,9 +1754,10 @@
             // 
             this.txtTemporizador.BackColor = System.Drawing.Color.White;
             this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador.Location = new System.Drawing.Point(1141, 584);
+            this.txtTemporizador.Location = new System.Drawing.Point(69, 498);
             this.txtTemporizador.Name = "txtTemporizador";
             this.txtTemporizador.ReadOnly = true;
+            this.txtTemporizador.ShortcutsEnabled = false;
             this.txtTemporizador.Size = new System.Drawing.Size(77, 29);
             this.txtTemporizador.TabIndex = 120;
             this.txtTemporizador.Text = "00:00";
@@ -1788,12 +1791,46 @@
             this.TimerEMOActive.Interval = 1000;
             this.TimerEMOActive.Tick += new System.EventHandler(this.TimerEMOActive_Tick);
             // 
+            // btnPlayTemp
+            // 
+            this.btnPlayTemp.BackColor = System.Drawing.Color.White;
+            this.btnPlayTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlayTemp.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.btnPlayTemp.IconColor = System.Drawing.Color.Black;
+            this.btnPlayTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPlayTemp.IconSize = 15;
+            this.btnPlayTemp.Location = new System.Drawing.Point(33, 498);
+            this.btnPlayTemp.Name = "btnPlayTemp";
+            this.btnPlayTemp.Size = new System.Drawing.Size(29, 29);
+            this.btnPlayTemp.TabIndex = 181;
+            this.btnPlayTemp.UseVisualStyleBackColor = false;
+            this.btnPlayTemp.Visible = false;
+            this.btnPlayTemp.Click += new System.EventHandler(this.btnPlayTemp_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.BackColor = System.Drawing.Color.White;
+            this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPause.IconChar = FontAwesome.Sharp.IconChar.Pause;
+            this.btnPause.IconColor = System.Drawing.Color.Black;
+            this.btnPause.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPause.IconSize = 15;
+            this.btnPause.Location = new System.Drawing.Point(152, 498);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(29, 29);
+            this.btnPause.TabIndex = 182;
+            this.btnPause.UseVisualStyleBackColor = false;
+            this.btnPause.Visible = false;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
+            this.Controls.Add(this.btnPause);
+            this.Controls.Add(this.btnPlayTemp);
             this.Controls.Add(this.picRED);
             this.Controls.Add(this.picYELLOW);
             this.Controls.Add(this.picGREEN);
@@ -2099,5 +2136,7 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Timer TimerEMOActive;
+        private FontAwesome.Sharp.IconButton btnPlayTemp;
+        private FontAwesome.Sharp.IconButton btnPause;
     }
 }

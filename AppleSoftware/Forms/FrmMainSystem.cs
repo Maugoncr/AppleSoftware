@@ -39,6 +39,7 @@ namespace AppleSoftware.Forms
             txtTC7.BackColor = Color.White; txtTC8.BackColor = Color.White;
             txtActualSetPoint.BackColor = Color.White;
             txtActualTempTCGeneral.BackColor = Color.White;
+            txtTemporizador.BackColor = Color.White;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -66,9 +67,31 @@ namespace AppleSoftware.Forms
                 cbCOMSelect.SelectedIndex = 0;
                 btnConnect.Enabled = true;
             }
-
-
         }
+
+        private void VerTemporizador()
+        {
+            txtTemporizador.Visible = true;
+            btnPause.Visible = true;
+            btnPlayTemp.Visible = true;
+            btnReset.Visible = true;
+            btnAddMin.Visible = true;
+            btnAddSeg.Visible = true;
+        }
+
+        private void NoVerTemporizador() 
+        {
+            Temporizador.Stop();
+            minutos = 0;
+            segundos = 0;
+            txtTemporizador.Visible = false;    
+            btnPause.Visible = false;
+            btnPlayTemp.Visible = false;
+            btnReset.Visible = false;
+            btnAddMin.Visible = false;
+            btnAddSeg.Visible = false;
+        }
+
 
         private void CargarCombo()
         {
@@ -107,6 +130,9 @@ namespace AppleSoftware.Forms
             FormatCadena = "Ninguno";
             ChillerRangeOff();
             HeaterRangeOff();
+
+
+           
 
             // CONECTAR COM
             BtnRefreshCOM.Visible = true;
@@ -198,12 +224,16 @@ namespace AppleSoftware.Forms
             txtSetTemp1.Enabled = false;
             checkOnlyOne.Enabled = false;
             checkByRanges.Enabled = false;
+
             btnSetTemp.Enabled = false;
-            btnAddMin.Enabled = false;
+
+            //btnAddMin.Enabled = false;
             btnAddMin2.Enabled = false;
-            btnAddSeg.Enabled = false;
+
+            //btnAddSeg.Enabled = false;
             btnAddSeg2.Enabled = false;
-            btnReset.Enabled = false;
+
+            //btnReset.Enabled = false;
             btnReset2.Enabled = false;
 
 
@@ -218,30 +248,19 @@ namespace AppleSoftware.Forms
             //Desactivar hasta tener la conexion
 
             cbSelect.Enabled = false;
-
             TrackbarTemp.Value = 0;
-          
-
             btnON.BackColor = Color.FromArgb(64, 64, 64);
-
-          
-
             panel5.BackColor = Color.FromArgb(64, 64, 64);
-           
-
             panel1.BackColor = Color.FromArgb(64, 64,64);
             panel2.BackColor = Color.FromArgb(64, 64, 64);
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel4.BackColor = Color.FromArgb(64, 64, 64);
-
-         
-
             led1.Image.Dispose();
             led2.Image.Dispose();
-
             led1.Image = Properties.Resources.led_off;
             led2.Image = Properties.Resources.led_off;
 
+            NoVerTemporizador();
         }
 
 
@@ -280,8 +299,8 @@ namespace AppleSoftware.Forms
                 //checkOnlyOne.Enabled = true;
                 checkByRanges.Enabled = true;
                 lbStatus.Text = "OFF";
-
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
+                VerTemporizador();
 
                 // Cooling
                 if (cbSelect.SelectedIndex == 1)
@@ -1723,7 +1742,7 @@ namespace AppleSoftware.Forms
             checkTemp2.Enabled = false;
             btnSetTemp.Enabled = false;
             btnON.BackColor = Color.FromArgb(183, 43, 41);
-            //Temporizador.Start();
+           
             //Comando iniciar Chiller
 
             //Prende la VERDE
@@ -1764,6 +1783,7 @@ namespace AppleSoftware.Forms
                                 BanderaRespuestaParaTCS = false;
                                 Thread.Sleep(1000);
                                 SetConfigSerialPortForTCS();
+                                Temporizador.Start();
                             }
                             else
                             {
@@ -1791,6 +1811,7 @@ namespace AppleSoftware.Forms
                                 EncenderSistemaEstetica();
                                 SendSetTempHeaterAndTurnItOn();
                                 txtActualSetPoint.Text = txtSetTemp1.Text + " C°";
+                                Temporizador.Start();
                             }
                         }
                         else
@@ -1824,7 +1845,6 @@ namespace AppleSoftware.Forms
                 checkTemp2.Enabled = true;
                 btnSetTemp.Enabled = true;
                 btnON.BackColor = Color.FromArgb(0, 143, 57);
-                Temporizador.Stop();
                 txtActualSetPoint.Clear();
 
                 picGREEN.Image.Dispose();
@@ -1851,6 +1871,7 @@ namespace AppleSoftware.Forms
                     BanderaRespuestaParaTCS = false;
                     Thread.Sleep(1000);
                     SetConfigSerialPortForTCS();
+                    Temporizador.Stop();
                 }
 
                 if (FormatCadena == "Heater")
@@ -1865,9 +1886,9 @@ namespace AppleSoftware.Forms
                         BanderaRespuestaParaTCS = false;
                         Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
+                        Temporizador.Stop();
                     }
                 }
-
             }
         }
 
@@ -2844,6 +2865,16 @@ namespace AppleSoftware.Forms
                 picRED.Image = Properties.Resources.tc1off;
                 PrendeApaga = true;
             }
+        }
+
+        private void btnPlayTemp_Click(object sender, EventArgs e)
+        {
+            Temporizador.Start();
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            Temporizador.Stop();
         }
     }
 }

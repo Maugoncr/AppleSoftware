@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_04638E9A822A4CC9B51A7F1617D5A099"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0FA18DB0BA7DD86042334A820DE1DF7D"
         "OwnerKey" = "8:_25A39BAACEB14BC59E554AF0B51CF31B"
         "MsmSig" = "8:_UNDEFINED"
@@ -52,12 +58,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BD9C7BD848BA28B64A41C55C288645D7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_25A39BAACEB14BC59E554AF0B51CF31B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -79,6 +79,12 @@
         "OwnerKey" = "8:_0FA18DB0BA7DD86042334A820DE1DF7D"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BD9C7BD848BA28B64A41C55C288645D7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -97,6 +103,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -113,6 +127,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -142,6 +164,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04638E9A822A4CC9B51A7F1617D5A099"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\MIDORI\\MIDORI\\recursos\\MIDORI-OFICIAL-_1_.ico"
+            "TargetName" = "8:MIDORI-OFICIAL-_1_.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_7EBB3430B6F1414282E7D57A76A27C00"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0FA18DB0BA7DD86042334A820DE1DF7D"
             {
             "AssemblyRegister" = "3:1"
@@ -341,7 +383,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ELEN-1"
+        "ProductName" = "8:ELEN SOFTWARE I"
         "ProductCode" = "8:{899DD890-1529-4CC7-B39C-FCFDA63B85B6}"
         "PackageCode" = "8:{C1B07DEB-9F54-4A8D-8524-D797F920FE6D}"
         "UpgradeCode" = "8:{90860846-BF99-4D4E-914B-1CCBA91E5779}"
@@ -351,12 +393,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:maugoncrxkirax@gmail.com"
+        "Manufacturer" = "8:MIDORI"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:ELEN-1"
+        "Title" = "8:ELEN SOFTWARE I"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:maugoncrxkirax@gmail.com"
+        "ARPCONTACT" = "8:MIDORI"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -474,7 +516,7 @@
             "Target" = "8:_25A39BAACEB14BC59E554AF0B51CF31B"
             "Folder" = "8:_08CC45BC0C704420A0DAF5246D3DF715"
             "WorkingFolder" = "8:_7EBB3430B6F1414282E7D57A76A27C00"
-            "Icon" = "8:_6426A2AD3D794AF5BAC4C8F6EC134F42"
+            "Icon" = "8:_04638E9A822A4CC9B51A7F1617D5A099"
             "Feature" = "8:"
             }
         }
