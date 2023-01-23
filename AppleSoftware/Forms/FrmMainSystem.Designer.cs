@@ -1966,7 +1966,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMainSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmMainSystem";
+            this.Text = "ELEN SOFTWARE I";
             this.Load += new System.EventHandler(this.FrmMainSystem_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
