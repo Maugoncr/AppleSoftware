@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Linq;
 using Application = System.Windows.Forms.Application;
 
 namespace AppleSoftware.Forms
@@ -33,9 +34,9 @@ namespace AppleSoftware.Forms
 
         private void EstilizacionInicial()
         {
-            txtTC1.BackColor = Color.White; txtTC2.BackColor = Color.White; 
+            txtTC1.BackColor = Color.White; txtTC2.BackColor = Color.White;
             txtTC3.BackColor = Color.White; txtTC4.BackColor = Color.White;
-            txtTC5.BackColor = Color.White; txtTC6.BackColor= Color.White;
+            txtTC5.BackColor = Color.White; txtTC6.BackColor = Color.White;
             txtTC7.BackColor = Color.White; txtTC8.BackColor = Color.White;
             txtActualSetPoint.BackColor = Color.White;
             txtActualTempTCGeneral.BackColor = Color.White;
@@ -79,7 +80,7 @@ namespace AppleSoftware.Forms
             btnAddSeg.Visible = true;
         }
 
-        private void NoVerTemporizador() 
+        private void NoVerTemporizador()
         {
             Temporizador.Stop();
             minutos = 0;
@@ -102,25 +103,6 @@ namespace AppleSoftware.Forms
             cbSelect.Items.Add("Cooling");
         }
 
-        private void ResetearChart() 
-        {
-
-            chart1.Series["TC-1"].Points.Clear();
-            chart1.Series["TC-2"].Points.Clear();
-            chart1.Series["TC-3"].Points.Clear();
-            chart1.Series["TC-4"].Points.Clear();
-            chart1.Series["TC-5"].Points.Clear();
-            chart1.Series["TC-6"].Points.Clear();
-            chart1.Series["TC-7"].Points.Clear();
-            chart1.Series["TC-8"].Points.Clear();
-
-            ChartArea CA = chart1.ChartAreas[0];
-            CA.CursorX.AutoScroll = true;
-
-            i = false;
-
-        }
-
         private void LimpiarArranque()
         {
             cbSelect.SelectedIndex = -1;
@@ -132,8 +114,24 @@ namespace AppleSoftware.Forms
             ChillerRangeOff();
             HeaterRangeOff();
 
+            //Clear For Record
+            TIMES.Clear();
+            DATETIMES.Clear();
+            TC1A.Clear();
+            TC2A.Clear();
+            TC3A.Clear();
+            TC4A.Clear();
+            TC5A.Clear();
+            TC6A.Clear();
+            TC7A.Clear();
+            TC8A.Clear();
 
-           
+            btnRecordDataChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            Record = false;
+            end_record = DateTime.Now;
+            lbRecord.Text = "Record Data";
+            lbRecord.ForeColor = Color.White;
+
 
             // CONECTAR COM
             BtnRefreshCOM.Visible = true;
@@ -174,6 +172,19 @@ namespace AppleSoftware.Forms
             chart1.Series["TC-8"].Color = Color.Green;
             chart1.Series["TC-8"].BorderWidth = 3;
 
+            tiempo = 0;
+
+            FuncModeAntiguo();
+            ModeChartTimeSS();
+
+            btnTypeTime.Enabled = false;
+            btnClearChart.Enabled = false;
+            btnStartStopChart.Enabled = false;
+            btnChartMode.Enabled = false;
+            NumMinChart.Enabled = false;
+            btnRecordDataChart.Enabled = false;
+
+
             ChartArea CA = chart1.ChartAreas[0];
             CA.CursorX.AutoScroll = true;
 
@@ -194,27 +205,26 @@ namespace AppleSoftware.Forms
             txtTC7.Clear();
             txtTC8.Clear();
 
-             TC1S = "";
-             TC2S = "";
-             TC3S = "";
-             TC4S = "";
-             TC5S = "";
-             TC6S = "";
-             TC7S = "";
-             TC8S = "";
-             TC9S = "";
-             TC10S = "";
-             TC1Num = 0;
-             TC2Num = 0;
-             TC3Num = 0;
-             TC4Num = 0;
-             TC5Num = 0;
-             TC6Num = 0;
-             TC7Num = 0;
-             TC8Num = 0;
-             TC9Num = 0;
-             TC10Num = 0;
-
+            TC1S = "";
+            TC2S = "";
+            TC3S = "";
+            TC4S = "";
+            TC5S = "";
+            TC6S = "";
+            TC7S = "";
+            TC8S = "";
+            TC9S = "";
+            TC10S = "";
+            TC1Num = 0;
+            TC2Num = 0;
+            TC3Num = 0;
+            TC4Num = 0;
+            TC5Num = 0;
+            TC6Num = 0;
+            TC7Num = 0;
+            TC8Num = 0;
+            TC9Num = 0;
+            TC10Num = 0;
 
             i = false;
 
@@ -252,7 +262,7 @@ namespace AppleSoftware.Forms
             TrackbarTemp.Value = 0;
             btnON.BackColor = Color.FromArgb(64, 64, 64);
             panel5.BackColor = Color.FromArgb(64, 64, 64);
-            panel1.BackColor = Color.FromArgb(64, 64,64);
+            panel1.BackColor = Color.FromArgb(64, 64, 64);
             panel2.BackColor = Color.FromArgb(64, 64, 64);
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel4.BackColor = Color.FromArgb(64, 64, 64);
@@ -331,7 +341,7 @@ namespace AppleSoftware.Forms
                     FormatCadena = "Heater";
                     ChillerRangeOff();
                     HeaterRangeOn();
-                    
+
                     SelectTittle.Text = "Heating";
                     txtSetTemp1.Text = "25";
 
@@ -344,7 +354,7 @@ namespace AppleSoftware.Forms
                     panel2.BackColor = Color.FromArgb(183, 43, 41);
                     panel3.BackColor = Color.FromArgb(183, 43, 41);
                     panel4.BackColor = Color.FromArgb(183, 43, 41);
-                   
+
                 }
 
             }
@@ -360,7 +370,7 @@ namespace AppleSoftware.Forms
             {
                 txtSetTemp2.Text = TrackbarTemp.Value.ToString();
             }
-          
+
         }
 
         private void checkByRanges_CheckedChanged(object sender, EventArgs e)
@@ -411,7 +421,7 @@ namespace AppleSoftware.Forms
                 checkTemp2.Enabled = true;
                 checkTemp2.Checked = false;
                 txtSetTemp2.Enabled = false;
-                txtSetTemp1.Enabled = true;       
+                txtSetTemp1.Enabled = true;
 
                 CualTemperatura = 1;
             }
@@ -464,27 +474,27 @@ namespace AppleSoftware.Forms
             }
 
 
-           
-            
+
+
         }
 
-       
+
         private void ChillerRangeOn()
         {
-                Chiller1.Visible = true;
-                Chiller2.Visible = true;
-                Chiller3.Visible = true;
-                Chiller4Label.Visible = true;
-                Chiller4Label.Text = "R\na\nn\ng\ne\n\nC\nh\ni\nl\nl\ne\nr";
-        }  
+            Chiller1.Visible = true;
+            Chiller2.Visible = true;
+            Chiller3.Visible = true;
+            Chiller4Label.Visible = true;
+            Chiller4Label.Text = "R\na\nn\ng\ne\n\nC\nh\ni\nl\nl\ne\nr";
+        }
 
         private void HeaterRangeOn()
         {
-                Heat1.Visible = true;
-                Heat2.Visible = true;
-                Heat3.Visible = true;
-                Heat4Label.Visible = true;
-                Heat4Label.Text = "R\na\nn\ng\ne\n\nH\ne\na\nt\ne\nr";
+            Heat1.Visible = true;
+            Heat2.Visible = true;
+            Heat3.Visible = true;
+            Heat4Label.Visible = true;
+            Heat4Label.Text = "R\na\nn\ng\ne\n\nH\ne\na\nt\ne\nr";
         }
         private void ChillerRangeOff()
         {
@@ -492,7 +502,7 @@ namespace AppleSoftware.Forms
             Chiller2.Visible = false;
             Chiller3.Visible = false;
             Chiller4Label.Visible = false;
-        }  
+        }
 
         private void HeaterRangeOff()
         {
@@ -1728,7 +1738,7 @@ namespace AppleSoftware.Forms
             checkTemp2.Enabled = false;
             btnSetTemp.Enabled = false;
             btnON.BackColor = Color.FromArgb(183, 43, 41);
-           
+
             //Comando iniciar Chiller
 
             //Prende la VERDE
@@ -1746,7 +1756,7 @@ namespace AppleSoftware.Forms
             picRED.Image = Properties.Resources.tc1off;
 
         }
-        
+
         private void btnON_Click(object sender, EventArgs e)
         {
 
@@ -1781,9 +1791,9 @@ namespace AppleSoftware.Forms
                         {
                             System.Windows.Forms.MessageBox.Show("Please wait a few minutes\nuntil the temperature is below 𝟳𝟬C°.\r\nLet's take care of the integrity of the equipment, thank you!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                        
+
                     }
-                   
+
                 }
 
                 if (FormatCadena == "Heater")
@@ -1853,7 +1863,7 @@ namespace AppleSoftware.Forms
                     SetConfigSerialPortForChiller();
                     Thread.Sleep(1000);
                     serialPort1.DiscardOutBuffer();
-                    serialPort1.WriteLine(":0106000C0000ED"+Environment.NewLine);
+                    serialPort1.WriteLine(":0106000C0000ED" + Environment.NewLine);
                     BanderaRespuestaParaTCS = false;
                     Thread.Sleep(1000);
                     SetConfigSerialPortForTCS();
@@ -1868,7 +1878,7 @@ namespace AppleSoftware.Forms
                         Thread.Sleep(1000);
                         serialPort1.DiscardOutBuffer();
                         byte[] bytes = { 4, 6, 33, 3, 0, 0, 115, 163 };
-                        serialPort1.Write(bytes,0,bytes.Length);
+                        serialPort1.Write(bytes, 0, bytes.Length);
                         BanderaRespuestaParaTCS = false;
                         Thread.Sleep(1000);
                         SetConfigSerialPortForTCS();
@@ -1905,7 +1915,7 @@ namespace AppleSoftware.Forms
                         System.Windows.Forms.MessageBox.Show("Wrong ranges", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return R;
                     }
-                   
+
                 }
             }
             System.Windows.Forms.MessageBox.Show("There are empty spaces", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1972,13 +1982,17 @@ namespace AppleSoftware.Forms
                     btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
                     lbConnectedStatus.Text = "Connected";
                     BtnRefreshCOM.Visible = false;
-
                     lbConnectedStatus.ForeColor = Color.FromArgb(0, 143, 57);
-
-                    // cCHANGER
+                    // CHANGER
                     TimerDataTCS.Start();
-                    ResetearChart();
-                    timerForTC.Start();
+                    EncenderChart();
+
+                    btnTypeTime.Enabled = true;
+                    btnClearChart.Enabled = true;
+                    btnStartStopChart.Enabled = true;
+                    btnChartMode.Enabled = true;
+                    NumMinChart.Enabled = true;
+                    btnRecordDataChart.Enabled = true;
 
                     PicTC1.Image.Dispose();
                     PicTC1.Image = Properties.Resources.tc1on;
@@ -2048,8 +2062,8 @@ namespace AppleSoftware.Forms
                 lbConnectedStatus.ForeColor = Color.Red;
 
                 TimerDataTCS.Stop();
-                timerForTC.Stop();
-                ResetearChart();
+
+                ApagarChart();
 
                 PicTC1.Image.Dispose();
                 PicTC1.Image = Properties.Resources.tc1off;
@@ -2071,24 +2085,51 @@ namespace AppleSoftware.Forms
 
         }
 
-        double tiempo = 0;
-        private void timerForTC_Tick(object sender, EventArgs e)
+        private void GraficarChart()
         {
             tiempo = tiempo + 100;
-            double temp = tiempo / 1000;
 
-            chart1.Series["TC-1"].Points.AddXY(temp.ToString(),TC8Num.ToString());
-            chart1.Series["TC-2"].Points.AddXY(temp.ToString(),TC7Num.ToString());
-            chart1.Series["TC-3"].Points.AddXY(temp.ToString(),TC6Num.ToString());
-            chart1.Series["TC-4"].Points.AddXY(temp.ToString(),TC5Num.ToString());
-            chart1.Series["TC-5"].Points.AddXY(temp.ToString(),TC4Num.ToString());
-            chart1.Series["TC-6"].Points.AddXY(temp.ToString(),TC3Num.ToString());
-            chart1.Series["TC-7"].Points.AddXY(temp.ToString(),TC2Num.ToString());
-            chart1.Series["TC-8"].Points.AddXY(temp.ToString(),TC1Num.ToString());
+            if (TimeEnSegundosChart)
+            {
+                double temp = tiempo / 1000;
 
+                chart1.Series["TC-1"].Points.AddXY(temp.ToString(), TC8Num.ToString());
+                chart1.Series["TC-2"].Points.AddXY(temp.ToString(), TC7Num.ToString());
+                chart1.Series["TC-3"].Points.AddXY(temp.ToString(), TC6Num.ToString());
+                chart1.Series["TC-4"].Points.AddXY(temp.ToString(), TC5Num.ToString());
+                chart1.Series["TC-5"].Points.AddXY(temp.ToString(), TC4Num.ToString());
+                chart1.Series["TC-6"].Points.AddXY(temp.ToString(), TC3Num.ToString());
+                chart1.Series["TC-7"].Points.AddXY(temp.ToString(), TC2Num.ToString());
+                chart1.Series["TC-8"].Points.AddXY(temp.ToString(), TC1Num.ToString());
+            }
+            else
+            {
+                string HoraMinSeg = DateTime.Now.ToString("hh:mm:ss");
+
+                chart1.Series["TC-1"].Points.AddXY(HoraMinSeg, TC8Num.ToString());
+                chart1.Series["TC-2"].Points.AddXY(HoraMinSeg, TC7Num.ToString());
+                chart1.Series["TC-3"].Points.AddXY(HoraMinSeg, TC6Num.ToString());
+                chart1.Series["TC-4"].Points.AddXY(HoraMinSeg, TC5Num.ToString());
+                chart1.Series["TC-5"].Points.AddXY(HoraMinSeg, TC4Num.ToString());
+                chart1.Series["TC-6"].Points.AddXY(HoraMinSeg, TC3Num.ToString());
+                chart1.Series["TC-7"].Points.AddXY(HoraMinSeg, TC2Num.ToString());
+                chart1.Series["TC-8"].Points.AddXY(HoraMinSeg, TC1Num.ToString());
+            }
+        }
+
+
+        private void ChartModeAutoScrollLosingInfo()
+        {
+            GraficarChart();
+
+            chart1.ChartAreas[0].AxisX.Minimum = double.NaN;
+            chart1.ChartAreas[0].AxisX.Maximum = double.NaN;
+            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart1.ChartAreas[0].CursorX.AutoScroll = true;
+            chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             chart1.ChartAreas[0].RecalculateAxesScale();
 
-            if (chart1.Series["TC-1"].Points.Count == 349)
+            if (chart1.Series["TC-1"].Points.Count >= 349)
             {
                 chart1.Series["TC-1"].Points.RemoveAt(0);
                 chart1.Series["TC-2"].Points.RemoveAt(0);
@@ -2099,18 +2140,76 @@ namespace AppleSoftware.Forms
                 chart1.Series["TC-7"].Points.RemoveAt(0);
                 chart1.Series["TC-8"].Points.RemoveAt(0);
             }
+        }
+
+        private void ChartModeNewZoomWithLimits()
+        {
+            GraficarChart();
+
+            int Mins = (int)NumMinChart.Value;
+            int Segundos = Mins * 60;
+            Segundos = Segundos * 10;
+
+            chart1.ChartAreas[0].AxisX.Minimum = double.NaN;
+            chart1.ChartAreas[0].AxisX.Maximum = Segundos;
+            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart1.ChartAreas[0].CursorX.AutoScroll = true;
+            chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart1.ChartAreas[0].RecalculateAxesScale();
+        }
+
+        bool ModoAntiguo = true;
+        double tiempo = 0;
+        private void timerForTC_Tick(object sender, EventArgs e)
+        {
+
+            if (ModoAntiguo)
+            {
+                ChartModeAutoScrollLosingInfo();
+            }
+            else
+            {
+                ChartModeNewZoomWithLimits();
+            }
+
+            if (Record)
+            {
+                TIMES.Add((tiempo / 1000).ToString());
+                TC1A.Add(TC8Num.ToString());
+                TC2A.Add(TC7Num.ToString());
+                TC3A.Add(TC6Num.ToString());
+                TC4A.Add(TC5Num.ToString());
+                TC5A.Add(TC4Num.ToString());
+                TC6A.Add(TC3Num.ToString());
+                TC7A.Add(TC2Num.ToString());
+                TC8A.Add(TC1Num.ToString());
+                DATETIMES.Add(DateTime.Now.ToString("hh:mm:ss:ff tt"));
+            }
 
             GraficarDatosTxt();
+        }
 
+        private void ResetearChart()
+        {
+            chart1.Series["TC-1"].Points.Clear();
+            chart1.Series["TC-2"].Points.Clear();
+            chart1.Series["TC-3"].Points.Clear();
+            chart1.Series["TC-4"].Points.Clear();
+            chart1.Series["TC-5"].Points.Clear();
+            chart1.Series["TC-6"].Points.Clear();
+            chart1.Series["TC-7"].Points.Clear();
+            chart1.Series["TC-8"].Points.Clear();
+            ChartArea CA = chart1.ChartAreas[0];
+            CA.CursorX.AutoScroll = true;
+            i = false;
+            tiempo = 0;
         }
 
         // Variables para el temporizador
-
         int minutos = 0;
-        int segundos = 0; 
+        int segundos = 0;
         int minutos2 = 0;
         int segundos2 = 0;
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             txtTemporizador.Text = "00:00";
@@ -2125,33 +2224,33 @@ namespace AppleSoftware.Forms
             {
                 if (segundos != 0)
                 {
-                            segundos--;
-                            if (segundos < 10)
-                            {
-                                if (minutos < 10)
-                                {
-                                    txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
-                                }
-                                else
-                                {
-                                    txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
-                                }
-                            }
-                            else
-                            {
-                                if (minutos < 10)
-                                {
-                                    txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
-                                }
-                                else
-                                {
-                                    txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
-                                }
-                            }
+                    segundos--;
+                    if (segundos < 10)
+                    {
+                        if (minutos < 10)
+                        {
+                            txtTemporizador.Text = "0" + minutos.ToString() + ":0" + segundos.ToString();
+                        }
+                        else
+                        {
+                            txtTemporizador.Text = minutos.ToString() + ":0" + segundos.ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (minutos < 10)
+                        {
+                            txtTemporizador.Text = "0" + minutos.ToString() + ":" + segundos.ToString();
+                        }
+                        else
+                        {
+                            txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
+                        }
+                    }
                 }
                 else
                 {
-                    if (minutos!=0)
+                    if (minutos != 0)
                     {
                         minutos--;
                         segundos = 59;
@@ -2177,7 +2276,7 @@ namespace AppleSoftware.Forms
                                 txtTemporizador.Text = minutos.ToString() + ":" + segundos.ToString();
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -2409,7 +2508,7 @@ namespace AppleSoftware.Forms
 
                         if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                         {
-                            if (Convert.ToInt32(txtSetTemp1.Text)>= 25 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
+                            if (Convert.ToInt32(txtSetTemp1.Text) >= 25 && Convert.ToInt32(txtSetTemp1.Text) <= 85)
                             {
                                 serialPort1.DiscardInBuffer();
                                 serialPort1.DiscardOutBuffer();
@@ -2442,11 +2541,11 @@ namespace AppleSoftware.Forms
                         }
                         break;
                     case "Ninguno":
-                        
+
                         break;
                 }
             }
-            
+
         }
         private void SetConfigSerialPortForHeater()
         {
@@ -2464,7 +2563,7 @@ namespace AppleSoftware.Forms
         {
             serialPort1.DataBits = 8;
             serialPort1.Parity = Parity.None;
-        
+
         }
 
         private void SetTemperatureChiller(string TemperatureToSet)
@@ -2507,7 +2606,7 @@ namespace AppleSoftware.Forms
             BanderaRespuestaParaTCS = false;
         }
 
-        
+
         private void btnAddSeg_Click(object sender, EventArgs e)
         {
             if (segundos < 59)
@@ -2540,7 +2639,7 @@ namespace AppleSoftware.Forms
 
         private void btnAddMin_Click(object sender, EventArgs e)
         {
-            if (minutos<59)
+            if (minutos < 59)
             {
                 minutos++;
                 if (minutos < 10)
@@ -2598,30 +2697,30 @@ namespace AppleSoftware.Forms
                     i = true;
                 }
 
-                    if (BanderaRespuestaParaTCS)
+                if (BanderaRespuestaParaTCS)
+                {
+                    try
                     {
-                        try
+                        Thread.Sleep(2000);
+                        string DataIn = serialPort1.ReadExisting();
+                        if (DataIn != null && DataIn != String.Empty)
                         {
-                            Thread.Sleep(2000);
-                            string DataIn = serialPort1.ReadExisting();
-                            if (DataIn != null && DataIn != String.Empty)
-                            {
-                                ReadData(DataIn);
-                                serialPort1.DiscardInBuffer();
-                            }
-                        }
-                        catch (Exception)
-                        {
-                           
+                            ReadData(DataIn);
+                            serialPort1.DiscardInBuffer();
                         }
                     }
-                
+                    catch (Exception)
+                    {
+
+                    }
+                }
+
             }
-           
-          
+
+
 
         }
-        
+
 
         // Metodos para conversiones hexa a decimal y viceversa
 
@@ -2708,7 +2807,7 @@ namespace AppleSoftware.Forms
 
         private void ReadData(string data)
         {
-            if (data!= null && data != string.Empty)
+            if (data != null && data != string.Empty)
             {
                 // Paso 1 Quitar cualquier espacio
                 string tcs = data.Trim();
@@ -2870,21 +2969,198 @@ namespace AppleSoftware.Forms
                 if (!string.IsNullOrEmpty(txtSetTemp1.Text.Trim()))
                 {
                     int validate = Convert.ToInt32(txtSetTemp1.Text.Trim());
-                   
-                        if (validate >= 5 && validate <= 40)
-                        {
-                            TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
-                        }
-                        else
-                        {
-                            System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱C° to 𝟰𝟬C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtSetTemp1.Clear();
-                            TrackbarTemp.Value = 5;
-                            return;
-                        }
+
+                    if (validate >= 5 && validate <= 40)
+                    {
+                        TrackbarTemp.Value = Convert.ToInt32(txtSetTemp1.Text.Trim());
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Out of range\nRange from 𝟱C° to 𝟰𝟬C°", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtSetTemp1.Clear();
+                        TrackbarTemp.Value = 5;
+                        return;
+                    }
                 }
             }
         }
+
+        private void btnClearChart_Click(object sender, EventArgs e)
+        {
+            ApagarChart();
+        }
+
+        private void EncenderChart()
+        {
+            ResetearChart();
+            timerForTC.Start();
+            btnStartStopChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+        }
+
+        private void ApagarChart()
+        {
+            ResetearChart();
+            timerForTC.Stop();
+            btnStartStopChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+        }
+
+        private void ApagarChartSinBorrar()
+        {
+            timerForTC.Stop();
+            btnStartStopChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+        }
+
+        private void btnStartStopChart_Click(object sender, EventArgs e)
+        {
+            if (btnStartStopChart.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
+            {
+                EncenderChart();
+            }
+            else if (btnStartStopChart.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
+            {
+                ApagarChartSinBorrar();
+            }
+        }
+
+        private void FuncModeAntiguo()
+        {
+            lbCharMode.Text = "Chart Dinamic";
+            lbMinChartMode.Visible = false;
+            NumMinChart.Visible = false;
+            NumMinChart.Value = 2;
+            ModoAntiguo = true;
+            btnChartMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+        }
+        private void FuncModeNew()
+        {
+            lbCharMode.Text = "Chart Static";
+            lbMinChartMode.Visible = true;
+            NumMinChart.Visible = true;
+            ModoAntiguo = false;
+            btnChartMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+        }
+
+        private void btnChartMode_Click(object sender, EventArgs e)
+        {
+            if (btnChartMode.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
+            {
+                FuncModeNew();
+            }
+            else if (btnChartMode.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
+            {
+                FuncModeAntiguo();
+            }
+        }
+
+        bool Record;
+        DateTime star_record = new DateTime();
+        DateTime end_record = new DateTime();
+
+        private List<string> TC1A = new List<string>();
+        private List<string> TC2A = new List<string>();
+        private List<string> TC3A = new List<string>();
+        private List<string> TC4A = new List<string>();
+        private List<string> TC5A = new List<string>();
+        private List<string> TC6A = new List<string>();
+        private List<string> TC7A = new List<string>();
+        private List<string> TC8A = new List<string>();
+        private List<string> DATETIMES = new List<string>();
+        private List<string> TIMES = new List<string>();
+
+        private void btnRecordDataChart_Click(object sender, EventArgs e)
+        {
+            if (btnRecordDataChart.IconChar == FontAwesome.Sharp.IconChar.ToggleOff)
+            {
+                btnRecordDataChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+                Record = true;
+                star_record = DateTime.Now;
+                lbRecord.Text = "Recording...";
+                lbRecord.ForeColor = Color.Red;
+
+            }
+            else if (btnRecordDataChart.IconChar == FontAwesome.Sharp.IconChar.ToggleOn)
+            {
+                btnRecordDataChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+                Record = false;
+                end_record = DateTime.Now;
+                lbRecord.Text = "Record Data";
+                lbRecord.ForeColor = Color.White;
+
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+                saveFileDialog1.InitialDirectory = @"C:\";
+                saveFileDialog1.FileName = "ELEN RECORD  " + end_record.ToString("MM-dd-yyyy hh-mm-ss tt");
+                saveFileDialog1.ShowDialog();
+
+                if (saveFileDialog1.FileName != "")
+                {
+                    // Saves the Image via a FileStream created by the OpenFile method.
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"" + saveFileDialog1.FileName + ".txt"))
+                    {
+                        file.WriteLine("♦ 𝗘𝗟𝗘𝗡 𝗦𝗢𝗙𝗧𝗪𝗔𝗥𝗘 ♦");
+                        file.WriteLine("------------------------------------------------------------------");
+                        file.WriteLine("• 𝗦𝘁𝗮𝗿𝘁 𝘁𝗶𝗺𝗲: " + star_record.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                        file.WriteLine("• 𝗘𝗻𝗱 𝘁𝗶𝗺𝗲: " + end_record.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                        file.WriteLine("------------------------------------------------------------------");
+                        file.WriteLine("-|-  TC1  -|-  TC2  -|-  TC3  -|-  TC4  -|-  TC5  -|-  TC6  -|-  TC7  -|-  TC8  -|-  TIME  -|-  DATETIME");
+
+                        file.WriteLine("------------------------------------------------------------------");
+                        for (int i = 0; i < TIMES.Count; i++)
+                        {
+                            file.WriteLine(TC1A[i] + "," + TC2A[i] + "," + TC3A[i] + "," + TC4A[i] + "," + TC5A[i] + "," + TC6A[i] + "," + TC7A[i] + "," + TC8A[i] + "," + TIMES[i] + "," + DATETIMES[i]);
+                        }
+                        file.WriteLine("------------------------------------------------------------------");
+                    }
+                }
+
+                TIMES.Clear();
+                DATETIMES.Clear();
+                TC1A.Clear();
+                TC2A.Clear();
+                TC3A.Clear();
+                TC4A.Clear();
+                TC5A.Clear();
+                TC6A.Clear();
+                TC7A.Clear();
+                TC8A.Clear();
+            }
+        }
+
+        private void ModeChartTimeHHmmss()
+        {
+            btnTypeTime.IconChar = FontAwesome.Sharp.IconChar.Clock;
+            btnTypeTime.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            TimeEnSegundosChart = false;
+        }
+        private void ModeChartTimeSS()
+        {
+            btnTypeTime.IconChar = FontAwesome.Sharp.IconChar.Stopwatch;
+            btnTypeTime.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            TimeEnSegundosChart = true;
+        }
+
+
+
+        bool TimeEnSegundosChart = true;
+        private void btnTypeTime_Click(object sender, EventArgs e)
+        {
+            if (btnTypeTime.IconChar == FontAwesome.Sharp.IconChar.Stopwatch)
+            {
+                ModeChartTimeHHmmss();
+            }
+            else if (btnTypeTime.IconChar == FontAwesome.Sharp.IconChar.Clock)
+            {
+                ModeChartTimeSS();
+            }
+        }
+
+
+
+
+
+
     }
 }
 

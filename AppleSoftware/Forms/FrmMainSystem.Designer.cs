@@ -184,6 +184,17 @@
             this.TimerEMOActive = new System.Windows.Forms.Timer(this.components);
             this.btnPlayTemp = new FontAwesome.Sharp.IconButton();
             this.btnPause = new FontAwesome.Sharp.IconButton();
+            this.btnChartMode = new FontAwesome.Sharp.IconButton();
+            this.btnRecordDataChart = new FontAwesome.Sharp.IconButton();
+            this.btnStartStopChart = new FontAwesome.Sharp.IconButton();
+            this.btnClearChart = new FontAwesome.Sharp.IconButton();
+            this.lbCharMode = new System.Windows.Forms.Label();
+            this.lbRecord = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.NumMinChart = new System.Windows.Forms.NumericUpDown();
+            this.lbMinChartMode = new System.Windows.Forms.Label();
+            this.btnTypeTime = new FontAwesome.Sharp.IconButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -203,6 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumMinChart)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -268,7 +280,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 16);
             this.label6.TabIndex = 93;
-            this.label6.Text = "Rev 1.000.0";
+            this.label6.Text = "Rev 1.100.0";
             // 
             // btnClose
             // 
@@ -315,7 +327,7 @@
             this.cbSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSelect.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSelect.FormattingEnabled = true;
-            this.cbSelect.Location = new System.Drawing.Point(27, 186);
+            this.cbSelect.Location = new System.Drawing.Point(15, 288);
             this.cbSelect.Name = "cbSelect";
             this.cbSelect.Size = new System.Drawing.Size(217, 30);
             this.cbSelect.TabIndex = 7;
@@ -324,7 +336,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Location = new System.Drawing.Point(27, 562);
+            this.panel1.Location = new System.Drawing.Point(15, 563);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2, 60);
             this.panel1.TabIndex = 8;
@@ -332,7 +344,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Location = new System.Drawing.Point(254, 561);
+            this.panel2.Location = new System.Drawing.Point(242, 562);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 61);
             this.panel2.TabIndex = 9;
@@ -340,7 +352,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Location = new System.Drawing.Point(27, 561);
+            this.panel3.Location = new System.Drawing.Point(15, 562);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(229, 2);
             this.panel3.TabIndex = 10;
@@ -350,7 +362,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 231);
+            this.label1.Location = new System.Drawing.Point(18, 333);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 21;
@@ -361,7 +373,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(147, 231);
+            this.label2.Location = new System.Drawing.Point(135, 333);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 22;
@@ -370,7 +382,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel6.Location = new System.Drawing.Point(0, 645);
+            this.panel6.Location = new System.Drawing.Point(0, 65);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1300, 10);
             this.panel6.TabIndex = 25;
@@ -381,7 +393,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(110, 580);
+            this.label11.Location = new System.Drawing.Point(98, 581);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 22);
             this.label11.TabIndex = 34;
@@ -393,7 +405,7 @@
             this.lbStatus.BackColor = System.Drawing.Color.White;
             this.lbStatus.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatus.ForeColor = System.Drawing.Color.Red;
-            this.lbStatus.Location = new System.Drawing.Point(184, 580);
+            this.lbStatus.Location = new System.Drawing.Point(172, 581);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(49, 22);
             this.lbStatus.TabIndex = 35;
@@ -404,7 +416,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(37, 658);
+            this.label13.Location = new System.Drawing.Point(34, 77);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 18);
             this.label13.TabIndex = 36;
@@ -415,7 +427,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(24, 680);
+            this.label14.Location = new System.Drawing.Point(21, 99);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 18);
             this.label14.TabIndex = 37;
@@ -424,7 +436,7 @@
             // txtTC1
             // 
             this.txtTC1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC1.Location = new System.Drawing.Point(37, 704);
+            this.txtTC1.Location = new System.Drawing.Point(34, 123);
             this.txtTC1.Name = "txtTC1";
             this.txtTC1.ReadOnly = true;
             this.txtTC1.Size = new System.Drawing.Size(109, 35);
@@ -434,7 +446,7 @@
             // txtTC2
             // 
             this.txtTC2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC2.Location = new System.Drawing.Point(191, 704);
+            this.txtTC2.Location = new System.Drawing.Point(188, 123);
             this.txtTC2.Name = "txtTC2";
             this.txtTC2.ReadOnly = true;
             this.txtTC2.Size = new System.Drawing.Size(109, 35);
@@ -446,7 +458,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(186, 680);
+            this.label15.Location = new System.Drawing.Point(183, 99);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(81, 18);
             this.label15.TabIndex = 40;
@@ -457,7 +469,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(198, 658);
+            this.label16.Location = new System.Drawing.Point(195, 77);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 18);
             this.label16.TabIndex = 39;
@@ -466,7 +478,7 @@
             // txtTC3
             // 
             this.txtTC3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC3.Location = new System.Drawing.Point(353, 704);
+            this.txtTC3.Location = new System.Drawing.Point(350, 123);
             this.txtTC3.Name = "txtTC3";
             this.txtTC3.ReadOnly = true;
             this.txtTC3.Size = new System.Drawing.Size(109, 35);
@@ -478,7 +490,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(344, 680);
+            this.label17.Location = new System.Drawing.Point(341, 99);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 18);
             this.label17.TabIndex = 43;
@@ -489,7 +501,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(354, 658);
+            this.label18.Location = new System.Drawing.Point(351, 77);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(57, 18);
             this.label18.TabIndex = 42;
@@ -498,7 +510,7 @@
             // txtTC4
             // 
             this.txtTC4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC4.Location = new System.Drawing.Point(514, 704);
+            this.txtTC4.Location = new System.Drawing.Point(511, 123);
             this.txtTC4.Name = "txtTC4";
             this.txtTC4.ReadOnly = true;
             this.txtTC4.Size = new System.Drawing.Size(109, 35);
@@ -510,7 +522,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(502, 680);
+            this.label19.Location = new System.Drawing.Point(499, 99);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(81, 18);
             this.label19.TabIndex = 46;
@@ -521,7 +533,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(517, 658);
+            this.label20.Location = new System.Drawing.Point(514, 77);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(57, 18);
             this.label20.TabIndex = 45;
@@ -530,7 +542,7 @@
             // txtTC5
             // 
             this.txtTC5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC5.Location = new System.Drawing.Point(678, 704);
+            this.txtTC5.Location = new System.Drawing.Point(675, 123);
             this.txtTC5.Name = "txtTC5";
             this.txtTC5.ReadOnly = true;
             this.txtTC5.Size = new System.Drawing.Size(109, 35);
@@ -542,7 +554,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(670, 680);
+            this.label21.Location = new System.Drawing.Point(667, 99);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(81, 18);
             this.label21.TabIndex = 49;
@@ -553,7 +565,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(681, 658);
+            this.label22.Location = new System.Drawing.Point(678, 77);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(57, 18);
             this.label22.TabIndex = 48;
@@ -562,7 +574,7 @@
             // txtTC6
             // 
             this.txtTC6.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC6.Location = new System.Drawing.Point(840, 704);
+            this.txtTC6.Location = new System.Drawing.Point(837, 123);
             this.txtTC6.Name = "txtTC6";
             this.txtTC6.ReadOnly = true;
             this.txtTC6.Size = new System.Drawing.Size(109, 35);
@@ -574,7 +586,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(832, 680);
+            this.label23.Location = new System.Drawing.Point(829, 99);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(81, 18);
             this.label23.TabIndex = 52;
@@ -585,7 +597,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(845, 658);
+            this.label24.Location = new System.Drawing.Point(842, 77);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(57, 18);
             this.label24.TabIndex = 51;
@@ -594,7 +606,7 @@
             // txtTC7
             // 
             this.txtTC7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC7.Location = new System.Drawing.Point(1006, 704);
+            this.txtTC7.Location = new System.Drawing.Point(1003, 123);
             this.txtTC7.Name = "txtTC7";
             this.txtTC7.ReadOnly = true;
             this.txtTC7.Size = new System.Drawing.Size(109, 35);
@@ -606,7 +618,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(998, 680);
+            this.label25.Location = new System.Drawing.Point(995, 99);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(81, 18);
             this.label25.TabIndex = 55;
@@ -617,7 +629,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(1005, 658);
+            this.label26.Location = new System.Drawing.Point(1002, 77);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(57, 18);
             this.label26.TabIndex = 54;
@@ -626,7 +638,7 @@
             // txtTC8
             // 
             this.txtTC8.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTC8.Location = new System.Drawing.Point(1164, 704);
+            this.txtTC8.Location = new System.Drawing.Point(1161, 123);
             this.txtTC8.Name = "txtTC8";
             this.txtTC8.ReadOnly = true;
             this.txtTC8.Size = new System.Drawing.Size(109, 35);
@@ -638,7 +650,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(1155, 680);
+            this.label27.Location = new System.Drawing.Point(1152, 99);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(81, 18);
             this.label27.TabIndex = 58;
@@ -649,7 +661,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(1172, 658);
+            this.label28.Location = new System.Drawing.Point(1169, 77);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(57, 18);
             this.label28.TabIndex = 57;
@@ -658,7 +670,7 @@
             // txtSetTemp1
             // 
             this.txtSetTemp1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetTemp1.Location = new System.Drawing.Point(60, 304);
+            this.txtSetTemp1.Location = new System.Drawing.Point(48, 406);
             this.txtSetTemp1.Name = "txtSetTemp1";
             this.txtSetTemp1.ShortcutsEnabled = false;
             this.txtSetTemp1.Size = new System.Drawing.Size(98, 29);
@@ -674,7 +686,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(20, 275);
+            this.label3.Location = new System.Drawing.Point(8, 377);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 62;
@@ -684,7 +696,7 @@
             // 
             this.checkTemp1.BackColor = System.Drawing.Color.White;
             this.checkTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkTemp1.Location = new System.Drawing.Point(40, 304);
+            this.checkTemp1.Location = new System.Drawing.Point(270, 345);
             this.checkTemp1.Name = "checkTemp1";
             this.checkTemp1.Size = new System.Drawing.Size(18, 30);
             this.checkTemp1.TabIndex = 67;
@@ -705,7 +717,7 @@
             // txtActualTempTCGeneral
             // 
             this.txtActualTempTCGeneral.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(33, 448);
+            this.txtActualTempTCGeneral.Location = new System.Drawing.Point(15, 492);
             this.txtActualTempTCGeneral.Name = "txtActualTempTCGeneral";
             this.txtActualTempTCGeneral.ReadOnly = true;
             this.txtActualTempTCGeneral.ShortcutsEnabled = false;
@@ -719,7 +731,7 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(57, 427);
+            this.label4.Location = new System.Drawing.Point(39, 471);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 18);
             this.label4.TabIndex = 71;
@@ -730,7 +742,7 @@
             this.lbl_P_90.AutoSize = true;
             this.lbl_P_90.BackColor = System.Drawing.Color.White;
             this.lbl_P_90.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_90.Location = new System.Drawing.Point(388, 95);
+            this.lbl_P_90.Location = new System.Drawing.Point(376, 197);
             this.lbl_P_90.Name = "lbl_P_90";
             this.lbl_P_90.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_90.TabIndex = 92;
@@ -741,7 +753,7 @@
             this.lbl_P_5.AutoSize = true;
             this.lbl_P_5.BackColor = System.Drawing.Color.White;
             this.lbl_P_5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_5.Location = new System.Drawing.Point(392, 537);
+            this.lbl_P_5.Location = new System.Drawing.Point(380, 639);
             this.lbl_P_5.Name = "lbl_P_5";
             this.lbl_P_5.Size = new System.Drawing.Size(19, 15);
             this.lbl_P_5.TabIndex = 83;
@@ -752,7 +764,7 @@
             this.lbl_P_75.AutoSize = true;
             this.lbl_P_75.BackColor = System.Drawing.Color.White;
             this.lbl_P_75.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_75.Location = new System.Drawing.Point(389, 173);
+            this.lbl_P_75.Location = new System.Drawing.Point(377, 275);
             this.lbl_P_75.Name = "lbl_P_75";
             this.lbl_P_75.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_75.TabIndex = 91;
@@ -763,7 +775,7 @@
             this.lbl_P_25.AutoSize = true;
             this.lbl_P_25.BackColor = System.Drawing.Color.White;
             this.lbl_P_25.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_25.Location = new System.Drawing.Point(389, 432);
+            this.lbl_P_25.Location = new System.Drawing.Point(377, 534);
             this.lbl_P_25.Name = "lbl_P_25";
             this.lbl_P_25.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_25.TabIndex = 84;
@@ -774,7 +786,7 @@
             this.lbl_P_85.AutoSize = true;
             this.lbl_P_85.BackColor = System.Drawing.Color.White;
             this.lbl_P_85.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_85.Location = new System.Drawing.Point(389, 122);
+            this.lbl_P_85.Location = new System.Drawing.Point(377, 224);
             this.lbl_P_85.Name = "lbl_P_85";
             this.lbl_P_85.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_85.TabIndex = 90;
@@ -785,7 +797,7 @@
             this.lbl_P_15.AutoSize = true;
             this.lbl_P_15.BackColor = System.Drawing.Color.White;
             this.lbl_P_15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_15.Location = new System.Drawing.Point(389, 486);
+            this.lbl_P_15.Location = new System.Drawing.Point(377, 588);
             this.lbl_P_15.Name = "lbl_P_15";
             this.lbl_P_15.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_15.TabIndex = 85;
@@ -796,7 +808,7 @@
             this.lbl_P_65.AutoSize = true;
             this.lbl_P_65.BackColor = System.Drawing.Color.White;
             this.lbl_P_65.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_65.Location = new System.Drawing.Point(389, 222);
+            this.lbl_P_65.Location = new System.Drawing.Point(377, 324);
             this.lbl_P_65.Name = "lbl_P_65";
             this.lbl_P_65.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_65.TabIndex = 89;
@@ -807,7 +819,7 @@
             this.lbl_P_35.AutoSize = true;
             this.lbl_P_35.BackColor = System.Drawing.Color.White;
             this.lbl_P_35.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_35.Location = new System.Drawing.Point(389, 377);
+            this.lbl_P_35.Location = new System.Drawing.Point(377, 479);
             this.lbl_P_35.Name = "lbl_P_35";
             this.lbl_P_35.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_35.TabIndex = 86;
@@ -818,7 +830,7 @@
             this.lbl_P_45.AutoSize = true;
             this.lbl_P_45.BackColor = System.Drawing.Color.White;
             this.lbl_P_45.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_45.Location = new System.Drawing.Point(389, 327);
+            this.lbl_P_45.Location = new System.Drawing.Point(377, 429);
             this.lbl_P_45.Name = "lbl_P_45";
             this.lbl_P_45.Size = new System.Drawing.Size(26, 15);
             this.lbl_P_45.TabIndex = 88;
@@ -828,7 +840,7 @@
             // 
             this.lbl_P_55.BackColor = System.Drawing.Color.White;
             this.lbl_P_55.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_55.Location = new System.Drawing.Point(389, 275);
+            this.lbl_P_55.Location = new System.Drawing.Point(377, 377);
             this.lbl_P_55.Name = "lbl_P_55";
             this.lbl_P_55.Size = new System.Drawing.Size(23, 25);
             this.lbl_P_55.TabIndex = 87;
@@ -839,7 +851,7 @@
             this.lbl_P_0.AutoSize = true;
             this.lbl_P_0.BackColor = System.Drawing.Color.White;
             this.lbl_P_0.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_0.Location = new System.Drawing.Point(392, 557);
+            this.lbl_P_0.Location = new System.Drawing.Point(380, 659);
             this.lbl_P_0.Name = "lbl_P_0";
             this.lbl_P_0.Size = new System.Drawing.Size(22, 17);
             this.lbl_P_0.TabIndex = 74;
@@ -850,7 +862,7 @@
             this.lbl_P_10.AutoSize = true;
             this.lbl_P_10.BackColor = System.Drawing.Color.White;
             this.lbl_P_10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_10.Location = new System.Drawing.Point(388, 510);
+            this.lbl_P_10.Location = new System.Drawing.Point(376, 612);
             this.lbl_P_10.Name = "lbl_P_10";
             this.lbl_P_10.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_10.TabIndex = 75;
@@ -861,7 +873,7 @@
             this.lbl_P_60.AutoSize = true;
             this.lbl_P_60.BackColor = System.Drawing.Color.White;
             this.lbl_P_60.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_60.Location = new System.Drawing.Point(388, 250);
+            this.lbl_P_60.Location = new System.Drawing.Point(376, 352);
             this.lbl_P_60.Name = "lbl_P_60";
             this.lbl_P_60.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_60.TabIndex = 79;
@@ -872,7 +884,7 @@
             this.lbl_P_80.AutoSize = true;
             this.lbl_P_80.BackColor = System.Drawing.Color.White;
             this.lbl_P_80.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_80.Location = new System.Drawing.Point(388, 146);
+            this.lbl_P_80.Location = new System.Drawing.Point(376, 248);
             this.lbl_P_80.Name = "lbl_P_80";
             this.lbl_P_80.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_80.TabIndex = 82;
@@ -883,7 +895,7 @@
             this.lbl_P_50.AutoSize = true;
             this.lbl_P_50.BackColor = System.Drawing.Color.White;
             this.lbl_P_50.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_50.Location = new System.Drawing.Point(388, 301);
+            this.lbl_P_50.Location = new System.Drawing.Point(376, 403);
             this.lbl_P_50.Name = "lbl_P_50";
             this.lbl_P_50.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_50.TabIndex = 80;
@@ -894,7 +906,7 @@
             this.lbl_P_30.AutoSize = true;
             this.lbl_P_30.BackColor = System.Drawing.Color.White;
             this.lbl_P_30.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_30.Location = new System.Drawing.Point(388, 402);
+            this.lbl_P_30.Location = new System.Drawing.Point(376, 504);
             this.lbl_P_30.Name = "lbl_P_30";
             this.lbl_P_30.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_30.TabIndex = 76;
@@ -905,7 +917,7 @@
             this.lbl_P_40.AutoSize = true;
             this.lbl_P_40.BackColor = System.Drawing.Color.White;
             this.lbl_P_40.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_40.Location = new System.Drawing.Point(388, 352);
+            this.lbl_P_40.Location = new System.Drawing.Point(376, 454);
             this.lbl_P_40.Name = "lbl_P_40";
             this.lbl_P_40.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_40.TabIndex = 78;
@@ -916,7 +928,7 @@
             this.lbl_P_70.AutoSize = true;
             this.lbl_P_70.BackColor = System.Drawing.Color.White;
             this.lbl_P_70.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_70.Location = new System.Drawing.Point(388, 198);
+            this.lbl_P_70.Location = new System.Drawing.Point(376, 300);
             this.lbl_P_70.Name = "lbl_P_70";
             this.lbl_P_70.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_70.TabIndex = 81;
@@ -927,7 +939,7 @@
             this.lbl_P_20.AutoSize = true;
             this.lbl_P_20.BackColor = System.Drawing.Color.White;
             this.lbl_P_20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_P_20.Location = new System.Drawing.Point(388, 460);
+            this.lbl_P_20.Location = new System.Drawing.Point(376, 562);
             this.lbl_P_20.Name = "lbl_P_20";
             this.lbl_P_20.Size = new System.Drawing.Size(30, 17);
             this.lbl_P_20.TabIndex = 77;
@@ -943,39 +955,39 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(434, 76);
+            this.chart1.Location = new System.Drawing.Point(419, 181);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "TC-1";
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "TC-2";
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series3.Legend = "Legend1";
             series3.Name = "TC-3";
             series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series4.Legend = "Legend1";
             series4.Name = "TC-4";
             series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series5.Legend = "Legend1";
             series5.Name = "TC-5";
             series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series6.Legend = "Legend1";
             series6.Name = "TC-6";
             series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series7.Legend = "Legend1";
             series7.Name = "TC-7";
             series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series8.Legend = "Legend1";
             series8.Name = "TC-8";
             this.chart1.Series.Add(series1);
@@ -986,7 +998,7 @@
             this.chart1.Series.Add(series6);
             this.chart1.Series.Add(series7);
             this.chart1.Series.Add(series8);
-            this.chart1.Size = new System.Drawing.Size(857, 565);
+            this.chart1.Size = new System.Drawing.Size(876, 529);
             this.chart1.TabIndex = 99;
             this.chart1.Text = "chart1";
             // 
@@ -996,7 +1008,7 @@
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(1164, 88);
+            this.label10.Location = new System.Drawing.Point(1203, 347);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 18);
             this.label10.TabIndex = 100;
@@ -1008,7 +1020,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(1187, 149);
+            this.label12.Location = new System.Drawing.Point(1187, 321);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 18);
             this.label12.TabIndex = 101;
@@ -1030,7 +1042,7 @@
             // 
             this.textBox9.BackColor = System.Drawing.Color.White;
             this.textBox9.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(1130, 113);
+            this.textBox9.Location = new System.Drawing.Point(1137, 336);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(151, 29);
             this.textBox9.TabIndex = 103;
@@ -1039,7 +1051,7 @@
             // 
             this.textBox10.BackColor = System.Drawing.Color.White;
             this.textBox10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(1130, 170);
+            this.textBox10.Location = new System.Drawing.Point(1067, 215);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(151, 29);
             this.textBox10.TabIndex = 104;
@@ -1058,7 +1070,7 @@
             this.cbCOMSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCOMSelect.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCOMSelect.FormattingEnabled = true;
-            this.cbCOMSelect.Location = new System.Drawing.Point(27, 126);
+            this.cbCOMSelect.Location = new System.Drawing.Point(15, 228);
             this.cbCOMSelect.Name = "cbCOMSelect";
             this.cbCOMSelect.Size = new System.Drawing.Size(217, 29);
             this.cbCOMSelect.TabIndex = 106;
@@ -1070,7 +1082,7 @@
             this.lbConnectedStatus.BackColor = System.Drawing.Color.White;
             this.lbConnectedStatus.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbConnectedStatus.ForeColor = System.Drawing.Color.Red;
-            this.lbConnectedStatus.Location = new System.Drawing.Point(25, 95);
+            this.lbConnectedStatus.Location = new System.Drawing.Point(13, 197);
             this.lbConnectedStatus.Name = "lbConnectedStatus";
             this.lbConnectedStatus.Size = new System.Drawing.Size(127, 22);
             this.lbConnectedStatus.TabIndex = 108;
@@ -1099,7 +1111,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.Location = new System.Drawing.Point(27, 620);
+            this.panel4.Location = new System.Drawing.Point(15, 621);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(229, 2);
             this.panel4.TabIndex = 122;
@@ -1108,7 +1120,7 @@
             // 
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Location = new System.Drawing.Point(12, 71);
+            this.label9.Location = new System.Drawing.Point(0, 178);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(413, 571);
             this.label9.TabIndex = 123;
@@ -1118,7 +1130,7 @@
             this.TrackbarTemp.AutoSize = false;
             this.TrackbarTemp.BackColor = System.Drawing.Color.White;
             this.TrackbarTemp.LargeChange = 1;
-            this.TrackbarTemp.Location = new System.Drawing.Point(348, 88);
+            this.TrackbarTemp.Location = new System.Drawing.Point(336, 190);
             this.TrackbarTemp.Maximum = 90;
             this.TrackbarTemp.Name = "TrackbarTemp";
             this.TrackbarTemp.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -1130,7 +1142,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel5.Location = new System.Drawing.Point(0, 745);
+            this.panel5.Location = new System.Drawing.Point(0, 165);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1300, 10);
             this.panel5.TabIndex = 125;
@@ -1138,7 +1150,7 @@
             // label34
             // 
             this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(165, 645);
+            this.label34.Location = new System.Drawing.Point(165, 65);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(10, 104);
             this.label34.TabIndex = 127;
@@ -1146,7 +1158,7 @@
             // label35
             // 
             this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label35.Location = new System.Drawing.Point(970, 645);
+            this.label35.Location = new System.Drawing.Point(970, 65);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(10, 103);
             this.label35.TabIndex = 128;
@@ -1154,7 +1166,7 @@
             // label36
             // 
             this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label36.Location = new System.Drawing.Point(809, 645);
+            this.label36.Location = new System.Drawing.Point(809, 65);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(10, 100);
             this.label36.TabIndex = 129;
@@ -1162,7 +1174,7 @@
             // label37
             // 
             this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label37.Location = new System.Drawing.Point(646, 645);
+            this.label37.Location = new System.Drawing.Point(646, 65);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(10, 103);
             this.label37.TabIndex = 130;
@@ -1170,7 +1182,7 @@
             // label38
             // 
             this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label38.Location = new System.Drawing.Point(486, 645);
+            this.label38.Location = new System.Drawing.Point(486, 65);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(10, 103);
             this.label38.TabIndex = 131;
@@ -1178,7 +1190,7 @@
             // label39
             // 
             this.label39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label39.Location = new System.Drawing.Point(322, 645);
+            this.label39.Location = new System.Drawing.Point(322, 65);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(10, 104);
             this.label39.TabIndex = 132;
@@ -1186,7 +1198,7 @@
             // label40
             // 
             this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label40.Location = new System.Drawing.Point(1290, 645);
+            this.label40.Location = new System.Drawing.Point(1290, 65);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(10, 103);
             this.label40.TabIndex = 133;
@@ -1194,7 +1206,7 @@
             // label41
             // 
             this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label41.Location = new System.Drawing.Point(1130, 645);
+            this.label41.Location = new System.Drawing.Point(1130, 65);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(10, 100);
             this.label41.TabIndex = 134;
@@ -1202,7 +1214,7 @@
             // label42
             // 
             this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label42.Location = new System.Drawing.Point(0, 645);
+            this.label42.Location = new System.Drawing.Point(0, 65);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(10, 103);
             this.label42.TabIndex = 135;
@@ -1230,7 +1242,7 @@
             this.SelectTittle.BackColor = System.Drawing.Color.White;
             this.SelectTittle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectTittle.ForeColor = System.Drawing.Color.Black;
-            this.SelectTittle.Location = new System.Drawing.Point(95, 275);
+            this.SelectTittle.Location = new System.Drawing.Point(83, 377);
             this.SelectTittle.Name = "SelectTittle";
             this.SelectTittle.Size = new System.Drawing.Size(63, 18);
             this.SelectTittle.TabIndex = 62;
@@ -1244,7 +1256,7 @@
             // Chiller1
             // 
             this.Chiller1.BackColor = System.Drawing.Color.Cyan;
-            this.Chiller1.Location = new System.Drawing.Point(325, 360);
+            this.Chiller1.Location = new System.Drawing.Point(313, 462);
             this.Chiller1.Name = "Chiller1";
             this.Chiller1.Size = new System.Drawing.Size(5, 188);
             this.Chiller1.TabIndex = 166;
@@ -1252,7 +1264,7 @@
             // Chiller2
             // 
             this.Chiller2.BackColor = System.Drawing.Color.Cyan;
-            this.Chiller2.Location = new System.Drawing.Point(330, 360);
+            this.Chiller2.Location = new System.Drawing.Point(318, 462);
             this.Chiller2.Name = "Chiller2";
             this.Chiller2.Size = new System.Drawing.Size(20, 5);
             this.Chiller2.TabIndex = 167;
@@ -1260,7 +1272,7 @@
             // Chiller3
             // 
             this.Chiller3.BackColor = System.Drawing.Color.Cyan;
-            this.Chiller3.Location = new System.Drawing.Point(330, 543);
+            this.Chiller3.Location = new System.Drawing.Point(318, 645);
             this.Chiller3.Name = "Chiller3";
             this.Chiller3.Size = new System.Drawing.Size(20, 5);
             this.Chiller3.TabIndex = 168;
@@ -1271,7 +1283,7 @@
             this.Chiller4Label.BackColor = System.Drawing.Color.White;
             this.Chiller4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Chiller4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chiller4Label.Location = new System.Drawing.Point(307, 365);
+            this.Chiller4Label.Location = new System.Drawing.Point(295, 467);
             this.Chiller4Label.Name = "Chiller4Label";
             this.Chiller4Label.Size = new System.Drawing.Size(17, 13);
             this.Chiller4Label.TabIndex = 169;
@@ -1280,7 +1292,7 @@
             // Heat1
             // 
             this.Heat1.BackColor = System.Drawing.Color.Crimson;
-            this.Heat1.Location = new System.Drawing.Point(327, 126);
+            this.Heat1.Location = new System.Drawing.Point(315, 228);
             this.Heat1.Name = "Heat1";
             this.Heat1.Size = new System.Drawing.Size(5, 319);
             this.Heat1.TabIndex = 170;
@@ -1288,7 +1300,7 @@
             // Heat3
             // 
             this.Heat3.BackColor = System.Drawing.Color.Crimson;
-            this.Heat3.Location = new System.Drawing.Point(330, 440);
+            this.Heat3.Location = new System.Drawing.Point(318, 542);
             this.Heat3.Name = "Heat3";
             this.Heat3.Size = new System.Drawing.Size(20, 5);
             this.Heat3.TabIndex = 171;
@@ -1296,7 +1308,7 @@
             // Heat2
             // 
             this.Heat2.BackColor = System.Drawing.Color.Crimson;
-            this.Heat2.Location = new System.Drawing.Point(330, 126);
+            this.Heat2.Location = new System.Drawing.Point(318, 228);
             this.Heat2.Name = "Heat2";
             this.Heat2.Size = new System.Drawing.Size(20, 5);
             this.Heat2.TabIndex = 172;
@@ -1307,7 +1319,7 @@
             this.Heat4Label.BackColor = System.Drawing.Color.White;
             this.Heat4Label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Heat4Label.Font = new System.Drawing.Font("Arial Narrow", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Heat4Label.Location = new System.Drawing.Point(307, 146);
+            this.Heat4Label.Location = new System.Drawing.Point(295, 248);
             this.Heat4Label.Name = "Heat4Label";
             this.Heat4Label.Size = new System.Drawing.Size(17, 13);
             this.Heat4Label.TabIndex = 173;
@@ -1317,7 +1329,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = global::AppleSoftware.Properties.Resources.PngItem_2261483;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 297);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 399);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(33, 36);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1333,7 +1345,7 @@
             this.BtnRefreshCOM.IconColor = System.Drawing.Color.Black;
             this.BtnRefreshCOM.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.BtnRefreshCOM.IconSize = 30;
-            this.BtnRefreshCOM.Location = new System.Drawing.Point(250, 125);
+            this.BtnRefreshCOM.Location = new System.Drawing.Point(238, 227);
             this.BtnRefreshCOM.Name = "BtnRefreshCOM";
             this.BtnRefreshCOM.Size = new System.Drawing.Size(34, 33);
             this.BtnRefreshCOM.TabIndex = 174;
@@ -1352,7 +1364,7 @@
             this.btnSetTemp.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnSetTemp.IconSize = 25;
             this.btnSetTemp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetTemp.Location = new System.Drawing.Point(164, 304);
+            this.btnSetTemp.Location = new System.Drawing.Point(152, 406);
             this.btnSetTemp.Name = "btnSetTemp";
             this.btnSetTemp.Size = new System.Drawing.Size(80, 29);
             this.btnSetTemp.TabIndex = 165;
@@ -1365,9 +1377,9 @@
             // 
             this.picGREEN.BackColor = System.Drawing.Color.White;
             this.picGREEN.Image = global::AppleSoftware.Properties.Resources.tc8off;
-            this.picGREEN.Location = new System.Drawing.Point(1210, 301);
+            this.picGREEN.Location = new System.Drawing.Point(1212, 321);
             this.picGREEN.Name = "picGREEN";
-            this.picGREEN.Size = new System.Drawing.Size(50, 50);
+            this.picGREEN.Size = new System.Drawing.Size(40, 40);
             this.picGREEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picGREEN.TabIndex = 162;
             this.picGREEN.TabStop = false;
@@ -1376,9 +1388,9 @@
             // 
             this.picYELLOW.BackColor = System.Drawing.Color.White;
             this.picYELLOW.Image = global::AppleSoftware.Properties.Resources.tc3off;
-            this.picYELLOW.Location = new System.Drawing.Point(1208, 369);
+            this.picYELLOW.Location = new System.Drawing.Point(1212, 380);
             this.picYELLOW.Name = "picYELLOW";
-            this.picYELLOW.Size = new System.Drawing.Size(50, 50);
+            this.picYELLOW.Size = new System.Drawing.Size(40, 40);
             this.picYELLOW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picYELLOW.TabIndex = 161;
             this.picYELLOW.TabStop = false;
@@ -1387,9 +1399,9 @@
             // 
             this.picRED.BackColor = System.Drawing.Color.White;
             this.picRED.Image = global::AppleSoftware.Properties.Resources.tc1off;
-            this.picRED.Location = new System.Drawing.Point(1208, 440);
+            this.picRED.Location = new System.Drawing.Point(1212, 440);
             this.picRED.Name = "picRED";
-            this.picRED.Size = new System.Drawing.Size(50, 50);
+            this.picRED.Size = new System.Drawing.Size(40, 40);
             this.picRED.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRED.TabIndex = 160;
             this.picRED.TabStop = false;
@@ -1397,7 +1409,7 @@
             // PicTC8
             // 
             this.PicTC8.Image = global::AppleSoftware.Properties.Resources.tc8off;
-            this.PicTC8.Location = new System.Drawing.Point(1242, 666);
+            this.PicTC8.Location = new System.Drawing.Point(1239, 85);
             this.PicTC8.Name = "PicTC8";
             this.PicTC8.Size = new System.Drawing.Size(30, 32);
             this.PicTC8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1407,7 +1419,7 @@
             // PicTC7
             // 
             this.PicTC7.Image = global::AppleSoftware.Properties.Resources.tc7off;
-            this.PicTC7.Location = new System.Drawing.Point(1085, 662);
+            this.PicTC7.Location = new System.Drawing.Point(1082, 81);
             this.PicTC7.Name = "PicTC7";
             this.PicTC7.Size = new System.Drawing.Size(30, 32);
             this.PicTC7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1417,7 +1429,7 @@
             // PicTC6
             // 
             this.PicTC6.Image = global::AppleSoftware.Properties.Resources.tc6off;
-            this.PicTC6.Location = new System.Drawing.Point(919, 662);
+            this.PicTC6.Location = new System.Drawing.Point(916, 81);
             this.PicTC6.Name = "PicTC6";
             this.PicTC6.Size = new System.Drawing.Size(30, 32);
             this.PicTC6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1427,7 +1439,7 @@
             // PicTC5
             // 
             this.PicTC5.Image = global::AppleSoftware.Properties.Resources.tc5off;
-            this.PicTC5.Location = new System.Drawing.Point(757, 662);
+            this.PicTC5.Location = new System.Drawing.Point(754, 81);
             this.PicTC5.Name = "PicTC5";
             this.PicTC5.Size = new System.Drawing.Size(30, 32);
             this.PicTC5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1437,7 +1449,7 @@
             // PicTC4
             // 
             this.PicTC4.Image = global::AppleSoftware.Properties.Resources.tc4off;
-            this.PicTC4.Location = new System.Drawing.Point(595, 662);
+            this.PicTC4.Location = new System.Drawing.Point(592, 81);
             this.PicTC4.Name = "PicTC4";
             this.PicTC4.Size = new System.Drawing.Size(30, 32);
             this.PicTC4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1447,7 +1459,7 @@
             // PicTC3
             // 
             this.PicTC3.Image = global::AppleSoftware.Properties.Resources.tc3off;
-            this.PicTC3.Location = new System.Drawing.Point(431, 662);
+            this.PicTC3.Location = new System.Drawing.Point(428, 81);
             this.PicTC3.Name = "PicTC3";
             this.PicTC3.Size = new System.Drawing.Size(30, 32);
             this.PicTC3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1457,7 +1469,7 @@
             // PicTC2
             // 
             this.PicTC2.Image = global::AppleSoftware.Properties.Resources.tc2off;
-            this.PicTC2.Location = new System.Drawing.Point(273, 662);
+            this.PicTC2.Location = new System.Drawing.Point(270, 81);
             this.PicTC2.Name = "PicTC2";
             this.PicTC2.Size = new System.Drawing.Size(30, 32);
             this.PicTC2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1467,7 +1479,7 @@
             // PicTC1
             // 
             this.PicTC1.Image = global::AppleSoftware.Properties.Resources.tc1off;
-            this.PicTC1.Location = new System.Drawing.Point(116, 662);
+            this.PicTC1.Location = new System.Drawing.Point(113, 81);
             this.PicTC1.Name = "PicTC1";
             this.PicTC1.Size = new System.Drawing.Size(30, 32);
             this.PicTC1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1478,7 +1490,7 @@
             // 
             this.led2.BackColor = System.Drawing.Color.White;
             this.led2.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.led2.Location = new System.Drawing.Point(215, 222);
+            this.led2.Location = new System.Drawing.Point(203, 324);
             this.led2.Name = "led2";
             this.led2.Size = new System.Drawing.Size(29, 29);
             this.led2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1489,7 +1501,7 @@
             // 
             this.led1.BackColor = System.Drawing.Color.White;
             this.led1.Image = global::AppleSoftware.Properties.Resources.led_off;
-            this.led1.Location = new System.Drawing.Point(98, 222);
+            this.led1.Location = new System.Drawing.Point(86, 324);
             this.led1.Name = "led1";
             this.led1.Size = new System.Drawing.Size(29, 29);
             this.led1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1519,7 +1531,7 @@
             this.btnConnect.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
             this.btnConnect.IconColor = System.Drawing.Color.Black;
             this.btnConnect.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnConnect.Location = new System.Drawing.Point(201, 92);
+            this.btnConnect.Location = new System.Drawing.Point(189, 194);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(48, 33);
             this.btnConnect.TabIndex = 107;
@@ -1530,7 +1542,7 @@
             // 
             this.btnEMO.BackColor = System.Drawing.Color.White;
             this.btnEMO.Image = global::AppleSoftware.Properties.Resources.EMO2;
-            this.btnEMO.Location = new System.Drawing.Point(265, 561);
+            this.btnEMO.Location = new System.Drawing.Point(15, 649);
             this.btnEMO.Name = "btnEMO";
             this.btnEMO.Size = new System.Drawing.Size(59, 61);
             this.btnEMO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1549,7 +1561,7 @@
             this.btnON.IconColor = System.Drawing.Color.White;
             this.btnON.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnON.IconSize = 35;
-            this.btnON.Location = new System.Drawing.Point(37, 574);
+            this.btnON.Location = new System.Drawing.Point(25, 575);
             this.btnON.Name = "btnON";
             this.btnON.Size = new System.Drawing.Size(56, 34);
             this.btnON.TabIndex = 0;
@@ -1559,25 +1571,25 @@
             // txtActualSetPoint
             // 
             this.txtActualSetPoint.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActualSetPoint.Location = new System.Drawing.Point(33, 377);
+            this.txtActualSetPoint.Location = new System.Drawing.Point(1172, 557);
             this.txtActualSetPoint.Name = "txtActualSetPoint";
             this.txtActualSetPoint.ReadOnly = true;
             this.txtActualSetPoint.ShortcutsEnabled = false;
-            this.txtActualSetPoint.Size = new System.Drawing.Size(211, 29);
+            this.txtActualSetPoint.Size = new System.Drawing.Size(116, 29);
             this.txtActualSetPoint.TabIndex = 176;
             this.txtActualSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(57, 356);
+            this.label8.Location = new System.Drawing.Point(1190, 510);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 18);
+            this.label8.Size = new System.Drawing.Size(80, 40);
             this.label8.TabIndex = 177;
-            this.label8.Text = "Temperature Setpoint";
+            this.label8.Text = "Current Setpoint";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbC2
             // 
@@ -1622,7 +1634,7 @@
             this.btnAddMin.IconColor = System.Drawing.Color.Black;
             this.btnAddMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddMin.IconSize = 10;
-            this.btnAddMin.Location = new System.Drawing.Point(85, 532);
+            this.btnAddMin.Location = new System.Drawing.Point(1206, 638);
             this.btnAddMin.Name = "btnAddMin";
             this.btnAddMin.Size = new System.Drawing.Size(20, 20);
             this.btnAddMin.TabIndex = 153;
@@ -1654,7 +1666,7 @@
             this.btnReset.IconColor = System.Drawing.Color.Black;
             this.btnReset.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnReset.IconSize = 15;
-            this.btnReset.Location = new System.Drawing.Point(187, 498);
+            this.btnReset.Location = new System.Drawing.Point(1251, 669);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(29, 29);
             this.btnReset.TabIndex = 155;
@@ -1670,7 +1682,7 @@
             this.btnAddSeg.IconColor = System.Drawing.Color.Black;
             this.btnAddSeg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddSeg.IconSize = 10;
-            this.btnAddSeg.Location = new System.Drawing.Point(111, 532);
+            this.btnAddSeg.Location = new System.Drawing.Point(1232, 638);
             this.btnAddSeg.Name = "btnAddSeg";
             this.btnAddSeg.Size = new System.Drawing.Size(20, 20);
             this.btnAddSeg.TabIndex = 154;
@@ -1755,7 +1767,7 @@
             // 
             this.txtTemporizador.BackColor = System.Drawing.Color.White;
             this.txtTemporizador.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemporizador.Location = new System.Drawing.Point(69, 498);
+            this.txtTemporizador.Location = new System.Drawing.Point(1190, 604);
             this.txtTemporizador.Name = "txtTemporizador";
             this.txtTemporizador.ReadOnly = true;
             this.txtTemporizador.ShortcutsEnabled = false;
@@ -1770,7 +1782,7 @@
             this.label45.AutoSize = true;
             this.label45.BackColor = System.Drawing.Color.White;
             this.label45.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(435, 326);
+            this.label45.Location = new System.Drawing.Point(419, 440);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(35, 16);
             this.label45.TabIndex = 179;
@@ -1781,7 +1793,7 @@
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.White;
             this.label31.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(832, 620);
+            this.label31.Location = new System.Drawing.Point(820, 694);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(35, 16);
             this.label31.TabIndex = 180;
@@ -1800,7 +1812,7 @@
             this.btnPlayTemp.IconColor = System.Drawing.Color.Black;
             this.btnPlayTemp.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPlayTemp.IconSize = 15;
-            this.btnPlayTemp.Location = new System.Drawing.Point(33, 498);
+            this.btnPlayTemp.Location = new System.Drawing.Point(1181, 669);
             this.btnPlayTemp.Name = "btnPlayTemp";
             this.btnPlayTemp.Size = new System.Drawing.Size(29, 29);
             this.btnPlayTemp.TabIndex = 181;
@@ -1816,7 +1828,7 @@
             this.btnPause.IconColor = System.Drawing.Color.Black;
             this.btnPause.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPause.IconSize = 15;
-            this.btnPause.Location = new System.Drawing.Point(152, 498);
+            this.btnPause.Location = new System.Drawing.Point(1216, 669);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(29, 29);
             this.btnPause.TabIndex = 182;
@@ -1824,22 +1836,189 @@
             this.btnPause.Visible = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
+            // btnChartMode
+            // 
+            this.btnChartMode.BackColor = System.Drawing.Color.Transparent;
+            this.btnChartMode.FlatAppearance.BorderSize = 0;
+            this.btnChartMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChartMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            this.btnChartMode.IconColor = System.Drawing.Color.Black;
+            this.btnChartMode.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnChartMode.Location = new System.Drawing.Point(694, 716);
+            this.btnChartMode.Name = "btnChartMode";
+            this.btnChartMode.Size = new System.Drawing.Size(48, 33);
+            this.btnChartMode.TabIndex = 183;
+            this.btnChartMode.UseVisualStyleBackColor = false;
+            this.btnChartMode.Click += new System.EventHandler(this.btnChartMode_Click);
+            // 
+            // btnRecordDataChart
+            // 
+            this.btnRecordDataChart.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecordDataChart.FlatAppearance.BorderSize = 0;
+            this.btnRecordDataChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecordDataChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            this.btnRecordDataChart.IconColor = System.Drawing.Color.Black;
+            this.btnRecordDataChart.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnRecordDataChart.Location = new System.Drawing.Point(1247, 715);
+            this.btnRecordDataChart.Name = "btnRecordDataChart";
+            this.btnRecordDataChart.Size = new System.Drawing.Size(48, 33);
+            this.btnRecordDataChart.TabIndex = 184;
+            this.btnRecordDataChart.UseVisualStyleBackColor = false;
+            this.btnRecordDataChart.Click += new System.EventHandler(this.btnRecordDataChart_Click);
+            // 
+            // btnStartStopChart
+            // 
+            this.btnStartStopChart.BackColor = System.Drawing.Color.Transparent;
+            this.btnStartStopChart.FlatAppearance.BorderSize = 0;
+            this.btnStartStopChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartStopChart.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            this.btnStartStopChart.IconColor = System.Drawing.Color.Black;
+            this.btnStartStopChart.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnStartStopChart.Location = new System.Drawing.Point(517, 716);
+            this.btnStartStopChart.Name = "btnStartStopChart";
+            this.btnStartStopChart.Size = new System.Drawing.Size(48, 33);
+            this.btnStartStopChart.TabIndex = 185;
+            this.btnStartStopChart.UseVisualStyleBackColor = false;
+            this.btnStartStopChart.Click += new System.EventHandler(this.btnStartStopChart_Click);
+            // 
+            // btnClearChart
+            // 
+            this.btnClearChart.BackColor = System.Drawing.Color.White;
+            this.btnClearChart.FlatAppearance.BorderSize = 0;
+            this.btnClearChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearChart.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnClearChart.IconColor = System.Drawing.Color.Black;
+            this.btnClearChart.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnClearChart.IconSize = 30;
+            this.btnClearChart.Location = new System.Drawing.Point(419, 677);
+            this.btnClearChart.Name = "btnClearChart";
+            this.btnClearChart.Size = new System.Drawing.Size(38, 33);
+            this.btnClearChart.TabIndex = 186;
+            this.btnClearChart.UseVisualStyleBackColor = false;
+            this.btnClearChart.Click += new System.EventHandler(this.btnClearChart_Click);
+            // 
+            // lbCharMode
+            // 
+            this.lbCharMode.BackColor = System.Drawing.Color.Transparent;
+            this.lbCharMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCharMode.ForeColor = System.Drawing.Color.White;
+            this.lbCharMode.Location = new System.Drawing.Point(571, 721);
+            this.lbCharMode.Name = "lbCharMode";
+            this.lbCharMode.Size = new System.Drawing.Size(117, 19);
+            this.lbCharMode.TabIndex = 187;
+            this.lbCharMode.Text = "Chart Dinamic";
+            this.lbCharMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbRecord
+            // 
+            this.lbRecord.AutoSize = true;
+            this.lbRecord.BackColor = System.Drawing.Color.Transparent;
+            this.lbRecord.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRecord.ForeColor = System.Drawing.Color.White;
+            this.lbRecord.Location = new System.Drawing.Point(1141, 721);
+            this.lbRecord.Name = "lbRecord";
+            this.lbRecord.Size = new System.Drawing.Size(104, 19);
+            this.lbRecord.TabIndex = 188;
+            this.lbRecord.Text = "Record Data";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(419, 721);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(93, 19);
+            this.label32.TabIndex = 189;
+            this.label32.Text = "Start / Stop";
+            // 
+            // NumMinChart
+            // 
+            this.NumMinChart.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.NumMinChart.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NumMinChart.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumMinChart.ForeColor = System.Drawing.Color.White;
+            this.NumMinChart.Location = new System.Drawing.Point(748, 720);
+            this.NumMinChart.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.NumMinChart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NumMinChart.Name = "NumMinChart";
+            this.NumMinChart.ReadOnly = true;
+            this.NumMinChart.Size = new System.Drawing.Size(57, 22);
+            this.NumMinChart.TabIndex = 190;
+            this.NumMinChart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NumMinChart.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // lbMinChartMode
+            // 
+            this.lbMinChartMode.AutoSize = true;
+            this.lbMinChartMode.BackColor = System.Drawing.Color.Transparent;
+            this.lbMinChartMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMinChartMode.ForeColor = System.Drawing.Color.White;
+            this.lbMinChartMode.Location = new System.Drawing.Point(807, 721);
+            this.lbMinChartMode.Name = "lbMinChartMode";
+            this.lbMinChartMode.Size = new System.Drawing.Size(36, 19);
+            this.lbMinChartMode.TabIndex = 191;
+            this.lbMinChartMode.Text = "Min";
+            // 
+            // btnTypeTime
+            // 
+            this.btnTypeTime.BackColor = System.Drawing.Color.White;
+            this.btnTypeTime.FlatAppearance.BorderSize = 0;
+            this.btnTypeTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTypeTime.IconChar = FontAwesome.Sharp.IconChar.Stopwatch;
+            this.btnTypeTime.IconColor = System.Drawing.Color.Black;
+            this.btnTypeTime.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnTypeTime.IconSize = 30;
+            this.btnTypeTime.Location = new System.Drawing.Point(419, 638);
+            this.btnTypeTime.Name = "btnTypeTime";
+            this.btnTypeTime.Size = new System.Drawing.Size(38, 33);
+            this.btnTypeTime.TabIndex = 192;
+            this.btnTypeTime.UseVisualStyleBackColor = false;
+            this.btnTypeTime.Click += new System.EventHandler(this.btnTypeTime_Click);
+            // 
             // FrmMainSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 751);
+            this.Controls.Add(this.btnTypeTime);
+            this.Controls.Add(this.lbMinChartMode);
+            this.Controls.Add(this.NumMinChart);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.lbRecord);
+            this.Controls.Add(this.lbCharMode);
+            this.Controls.Add(this.btnClearChart);
+            this.Controls.Add(this.btnStartStopChart);
+            this.Controls.Add(this.btnRecordDataChart);
+            this.Controls.Add(this.btnChartMode);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnPlayTemp);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnAddSeg);
+            this.Controls.Add(this.btnAddMin);
+            this.Controls.Add(this.txtTemporizador);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtActualSetPoint);
             this.Controls.Add(this.picRED);
             this.Controls.Add(this.picYELLOW);
             this.Controls.Add(this.picGREEN);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label45);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtActualSetPoint);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.BtnRefreshCOM);
             this.Controls.Add(this.Heat4Label);
@@ -1857,9 +2036,6 @@
             this.Controls.Add(this.btnAddSeg2);
             this.Controls.Add(this.btnAddMin2);
             this.Controls.Add(this.txtTemporizador2);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnAddSeg);
-            this.Controls.Add(this.btnAddMin);
             this.Controls.Add(this.PicTC8);
             this.Controls.Add(this.PicTC7);
             this.Controls.Add(this.PicTC6);
@@ -1880,7 +2056,6 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.TrackbarTemp);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.txtTemporizador);
             this.Controls.Add(this.led2);
             this.Controls.Add(this.led1);
             this.Controls.Add(this.label2);
@@ -1920,7 +2095,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtActualTempTCGeneral);
             this.Controls.Add(this.checkTemp2);
-            this.Controls.Add(this.checkTemp1);
             this.Controls.Add(this.lbSetTemp2);
             this.Controls.Add(this.txtSetTemp2);
             this.Controls.Add(this.checkByRanges);
@@ -1961,6 +2135,7 @@
             this.Controls.Add(this.btnON);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.checkTemp1);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1988,6 +2163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.led2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.led1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumMinChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2139,5 +2315,16 @@
         private System.Windows.Forms.Timer TimerEMOActive;
         private FontAwesome.Sharp.IconButton btnPlayTemp;
         private FontAwesome.Sharp.IconButton btnPause;
+        private FontAwesome.Sharp.IconButton btnChartMode;
+        private FontAwesome.Sharp.IconButton btnRecordDataChart;
+        private FontAwesome.Sharp.IconButton btnStartStopChart;
+        private FontAwesome.Sharp.IconButton btnClearChart;
+        private System.Windows.Forms.Label lbCharMode;
+        private System.Windows.Forms.Label lbRecord;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown NumMinChart;
+        private System.Windows.Forms.Label lbMinChartMode;
+        private FontAwesome.Sharp.IconButton btnTypeTime;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
